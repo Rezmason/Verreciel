@@ -2,19 +2,21 @@
 //  Copyright © 2017 XXIIVV. All rights reserved.
 
 class LocationSatellite extends Location {
-  constructor (name, system, at, message, item, mapRequirement = null) {
+  constructor (data) {
+    const {
+      name,
+      message,
+      itemID
+    } = data
     // assertArgs(arguments, 5);
     super(
-      name,
-      system,
-      at,
+      data,
       new IconSatellite(),
       name === 'wreck' ? new StructureSpaceship() : name == 'spawn' ? new Structure() : new StructureSatellite()
     )
-
+    const item = verreciel.items[itemID]
     this.details = item.name
     this.isComplete = false
-    this.mapRequirement = mapRequirement
     this.message = message
 
     this.port = new ScenePortSlot(

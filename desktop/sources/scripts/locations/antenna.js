@@ -2,15 +2,18 @@
 //  Copyright © 2017 XXIIVV. All rights reserved.
 
 class LocationAntenna extends Location {
-  constructor (name, system, at, installation, installationName, mapRequirement = null) {
+  constructor (data) {
     // assertArgs(arguments, 6);
-    super(name, system, at, new IconStation(), new StructureStation())
-
-    this.installation = installation
-    this.installationName = installationName
-    this.details = installationName
-    this.mapRequirement = mapRequirement
+    super(data, new IconStation(), new StructureStation())
+    const { installID, installName } = data
+    this.installer = this.makeInstaller(installID)
+    this.installName = installName
+    this.details = installName
     this.isComplete = false
+  }
+
+  makeInstaller(id) {
+    return () => verreciel[id].install()
   }
 
   makePanel () {
@@ -20,7 +23,7 @@ class LocationAntenna extends Location {
     // assertArgs(arguments, 0);
     let newPanel = new Panel()
 
-    let text = new SceneLabel('Orient Transmitters$install ' + this.installationName, 0.1, Alignment.left)
+    let text = new SceneLabel('Orient Transmitters$install ' + this.installName, 0.1, Alignment.left)
     text.position.set(-1.5, 1, 0)
     newPanel.add(text)
 
@@ -76,7 +79,7 @@ class LocationAntenna extends Location {
     // assertArgs(arguments, 1);
     super.touch(id)
     if (id == 1) {
-      this.installation()
+      this.installer()
       this.onComplete()
     }
     return true

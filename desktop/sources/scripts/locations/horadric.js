@@ -2,12 +2,11 @@
 //  Copyright © 2017 XXIIVV. All rights reserved.
 
 class LocationHoradric extends Location {
-  constructor (name, system, at, mapRequirement = null) {
+  constructor (data) {
     // assertArgs(arguments, 3);
-    super(name, system, at, new IconHoradric(), new StructureHoradric())
+    super(data, new IconHoradric(), new StructureHoradric())
 
     this.details = 'unknown'
-    this.mapRequirement = mapRequirement
     this.recipeValid = null
     this.combinationPercentage = 0
   }
@@ -134,7 +133,7 @@ class LocationHoradric extends Location {
       ingredients.push(this.inPort2.event)
     }
 
-    for (let recipe of verreciel.recipes.horadric) {
+    for (let recipe of verreciel.recipes) {
       if (recipe.isValid(ingredients) == true) {
         this.recipeValid = recipe
         this.combine(recipe)

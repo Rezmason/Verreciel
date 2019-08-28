@@ -43,7 +43,7 @@ class Icon extends Empty {
     // assertArgs(arguments, 0);
     super.whenStart()
 
-    if (this.host.mapRequirement != null) {
+    if (this.host.mapRequirementID != null) {
       this.label.color = verreciel.cyan
       this.add(this.marker)
     }

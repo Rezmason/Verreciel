@@ -1,525 +1,479 @@
 //  Created by Devine Lu Linvega.
 //  Copyright © 2017 XXIIVV. All rights reserved.
 
-class Locations {
-  constructor () {
-    // assertArgs(arguments, 0);
-    this.loiqe = new Loiqe(new THREE.Vector2(0, -3))
-    this.usul = new Usul(new THREE.Vector2(-3, 0))
-    this.valen = new Valen(new THREE.Vector2(3, 0))
-    this.senni = new Senni(new THREE.Vector2(0, 3))
-    this.aitasla = new Aitasla(new THREE.Vector2(0, 0))
-  }
-}
-
-class Loiqe {
-  constructor (offset) {
-    // assertArgs(arguments, 1);
-    this.system = Systems.loiqe
-    this.offset = offset
-  }
-
-  star () {
-    // assertArgs(arguments, 0);
-    return new LocationStar('Loiqe', this.system, this.offset)
-  }
-
-  spawn () {
-    // assertArgs(arguments, 0);
-    return new LocationSatellite(
-      'spawn',
-      this.system,
-      new THREE.Vector2(this.offset.x, this.offset.y - 2.75),
-      'Are you sure$that you are in$space.',
-      verreciel.items.teapot,
-      verreciel.items.map2
-    )
-  }
-
-  harvest () {
-    // assertArgs(arguments, 0);
-    return new LocationHarvest(
-      'Harvest',
-      this.system,
-      new THREE.Vector2(this.offset.x, this.offset.y - 2),
-      Item.like(verreciel.items.currency1)
-    )
-  }
-
-  city () {
-    // assertArgs(arguments, 0);
-    return new LocationTrade(
-      'City',
-      this.system,
-      new THREE.Vector2(this.offset.x, this.offset.y - 1),
-      verreciel.items.currency1,
-      verreciel.items.valenPortalFragment1
-    )
-  }
-
-  horadric () {
-    // assertArgs(arguments, 0);
-    return new LocationHoradric(
-      'Horadric',
-      this.system,
-      new THREE.Vector2(this.offset.x + 2, this.offset.y)
-    )
-  }
-
-  portal () {
-    // assertArgs(arguments, 0);
-    return new LocationPortal(
-      'portal',
-      this.system,
-      new THREE.Vector2(this.offset.x, this.offset.y + 1)
-    )
-  }
-
-  satellite () {
-    // assertArgs(arguments, 0);
-    return new LocationSatellite(
-      'satellite',
-      this.system,
-      new THREE.Vector2(this.offset.x + 1, this.offset.y),
-      'something broken$somewhen lost',
-      verreciel.items.valenPortalFragment2
-    )
-  }
-
-  port () {
-    // assertArgs(arguments, 0);
-    return new LocationTrade(
-      'port',
-      this.system,
-      new THREE.Vector2(this.offset.x - 1, this.offset.y),
-      verreciel.items.currency4,
-      verreciel.items.senniPortalKey
-    )
-  }
-
-  // MARK: Fog
-
-  transit () {
-    // assertArgs(arguments, 0);
-    return new LocationTransit(
-      'transit',
-      this.system,
-      new THREE.Vector2(this.offset.x, this.offset.y + 2),
-      verreciel.items.map2
-    )
-  }
-
-  fog () {
-    // assertArgs(arguments, 0);
-    return new LocationSatellite(
-      'fog',
-      this.system,
-      new THREE.Vector2(this.offset.x - 2, this.offset.y),
-      'something broken$somehow lost',
-      verreciel.items.usulPortalFragment2,
-      verreciel.items.map1
-    )
-  }
-
-  transmitter () {
-    // assertArgs(arguments, 0);
-    return new LocationTransmitter(
-      'transmitter',
-      this.system,
-      new THREE.Vector2(this.offset.x - 1, this.offset.y - 1),
-      verreciel.items.map1
-    )
-  }
-
-  // Map2
-
-  cargo () {
-    // assertArgs(arguments, 0);
-    return new LocationSatellite(
-      'cargo',
-      this.system,
-      new THREE.Vector2(this.offset.x + 1, this.offset.y - 1),
-      'le soleil est noir',
-      verreciel.items.veil1,
-      verreciel.items.map2
-    )
-  }
-
-  // Constellations
-
-  c_1 () {
-    // assertArgs(arguments, 0);
-    return new LocationConstellation(
-      '',
-      this.system,
-      new THREE.Vector2(this.offset.x, this.offset.y - 1.5),
-      new StructureTunnel()
-    )
-  }
-}
-
-class Valen {
-  constructor (offset) {
-    // assertArgs(arguments, 1);
-    this.system = Systems.valen
-    this.offset = offset
-  }
-
-  star () {
-    // assertArgs(arguments, 0);
-    return new LocationStar('Valen', this.system, this.offset)
-  }
-
-  bank () {
-    // assertArgs(arguments, 0);
-    return new LocationBank(
-      'Bank',
-      this.system,
-      new THREE.Vector2(this.offset.x, this.offset.y + 1)
-    )
-  }
-
-  portal () {
-    // assertArgs(arguments, 0);
-    return new LocationPortal(
-      'portal',
-      this.system,
-      new THREE.Vector2(this.offset.x - 1, this.offset.y)
-    )
-  }
-
-  harvest () {
-    // assertArgs(arguments, 0);
-    return new LocationHarvest(
-      'harvest',
-      this.system,
-      new THREE.Vector2(this.offset.x, this.offset.y + 2),
-      Item.like(verreciel.items.currency2)
-    )
-  }
-
-  station () {
-    // assertArgs(arguments, 0);
-    return new LocationStation(
-      'station',
-      this.system,
-      new THREE.Vector2(this.offset.x + 1, this.offset.y + 1),
-      verreciel.items.currency2,
-      function () {
-        verreciel.radio.install()
+const locationData = [
+  {
+    at: {x: 0, y: -3},
+    systemID: 'loiqe',
+    locations: [
+      {
+        id: 'star',
+        type: 'star',
+        name: 'Loiqe',
+        at: {x: 0, y: 0},
+        connectedSystem: null,
+        connectedID: null
       },
-      'Radio'
-    )
-  }
-
-  cargo () {
-    // assertArgs(arguments, 0);
-    return new LocationSatellite(
-      'cargo',
-      this.system,
-      new THREE.Vector2(this.offset.x + 1, this.offset.y + 2),
-      'Extra power$battery format',
-      verreciel.items.battery2
-    )
-  }
-
-  market () {
-    // assertArgs(arguments, 0);
-    return new LocationTrade(
-      'market',
-      this.system,
-      new THREE.Vector2(this.offset.x + 1, this.offset.y - 1),
-      verreciel.items.waste,
-      verreciel.items.kelp
-    )
-  }
-
-  // MARK: Fog
-
-  transit () {
-    // assertArgs(arguments, 0);
-    return new LocationTransit(
-      'transit',
-      this.system,
-      new THREE.Vector2(this.offset.x - 2, this.offset.y),
-      verreciel.items.map2
-    )
-  }
-
-  fog () {
-    // assertArgs(arguments, 0);
-    return new LocationSatellite(
-      'fog',
-      this.system,
-      new THREE.Vector2(this.offset.x, this.offset.y - 1),
-      'something broken$somehow lost',
-      verreciel.items.usulPortalFragment1,
-      verreciel.items.map1
-    )
-  }
-
-  antenna () {
-    // assertArgs(arguments, 0);
-    return new LocationAntenna(
-      'antenna',
-      this.system,
-      new THREE.Vector2(this.offset.x + 1, this.offset.y - 1),
-      function () {
-        verreciel.veil.install()
+      {
+        id: 'spawn',
+        type: 'satellite',
+        name: 'spawn',
+        at: {x: 0, y: -2.75},
+        connectedSystem: null,
+        connectedID: null,
+        message: 'Are you sure$that you are in$space.',
+        itemID: 'teapot',
+        mapRequirementID: 'map2'
       },
-      'veil',
-      verreciel.items.map2
-    )
-  }
-
-  c_1 () {
-    // assertArgs(arguments, 0);
-    return new LocationConstellation(
-      '',
-      this.system,
-      new THREE.Vector2(this.offset.x + 0.5, this.offset.y + 1.5),
-      new StructureDoor()
-    )
-  }
-
-  // MARK: map2
-
-  wreck () {
-    // assertArgs(arguments, 0);
-    return new LocationSatellite(
-      'wreck',
-      this.system,
-      new THREE.Vector2(this.offset.x + 1, this.offset.y - 2),
-      'Memories$of misfortune',
-      verreciel.items.record2,
-      verreciel.items.map2
-    )
-  }
-}
-
-class Senni {
-  constructor (offset) {
-    // assertArgs(arguments, 1);
-    this.system = Systems.senni
-    this.offset = offset
-  }
-
-  star () {
-    // assertArgs(arguments, 0);
-    return new LocationStar('Senni', this.system, this.offset)
-  }
-
-  portal () {
-    // assertArgs(arguments, 0);
-    return new LocationPortal(
-      'portal',
-      this.system,
-      new THREE.Vector2(this.offset.x, this.offset.y - 1)
-    )
-  }
-
-  cargo () {
-    // assertArgs(arguments, 0);
-    return new LocationSatellite(
-      'cargo',
-      this.system,
-      new THREE.Vector2(this.offset.x - 1, this.offset.y),
-      'extra sight$map format',
-      verreciel.items.map1
-    )
-  }
-
-  harvest () {
-    // assertArgs(arguments, 0);
-    return new LocationHarvest(
-      'harvest',
-      this.system,
-      new THREE.Vector2(this.offset.x, this.offset.y + 1),
-      Item.like(verreciel.items.currency3)
-    )
-  }
-
-  station () {
-    // assertArgs(arguments, 0);
-    return new LocationStation(
-      'station',
-      this.system,
-      new THREE.Vector2(this.offset.x + 1, this.offset.y),
-      verreciel.items.currency3,
-      function () {
-        verreciel.nav.install()
+      {
+        id: 'harvest',
+        type: 'harvest',
+        name: 'Harvest',
+        at: {x: 0, y: -2},
+        connectedSystem: null,
+        connectedID: null,
+        harvestedID: 'currency1'
       },
-      'Map'
-    )
-  }
-
-  transmitter () {
-    // assertArgs(arguments, 0);
-    return new LocationTransmitter(
-      'transmitter',
-      this.system,
-      new THREE.Vector2(this.offset.x - 1, this.offset.y + 1)
-    )
-  }
-
-  // MARK: map1
-
-  transit () {
-    // assertArgs(arguments, 0);
-    return new LocationTransit(
-      'transit',
-      this.system,
-      new THREE.Vector2(this.offset.x, this.offset.y - 2),
-      verreciel.items.map2
-    )
-  }
-
-  horadric () {
-    // assertArgs(arguments, 0);
-    return new LocationHoradric(
-      'Horadric',
-      this.system,
-      new THREE.Vector2(this.offset.x, this.offset.y + 2),
-      verreciel.items.map1
-    )
-  }
-
-  fog () {
-    // assertArgs(arguments, 0);
-    return new LocationSatellite(
-      'fog',
-      this.system,
-      new THREE.Vector2(this.offset.x + 2, this.offset.y),
-      'Extra power$battery format',
-      verreciel.items.battery3,
-      verreciel.items.map1
-    )
-  }
-
-  wreck () {
-    // assertArgs(arguments, 0);
-    return new LocationSatellite(
-      'wreck',
-      this.system,
-      new THREE.Vector2(this.offset.x + 1, this.offset.y - 2),
-      'Memories$of misfortune',
-      verreciel.items.record3,
-      verreciel.items.map1
-    )
-  }
-
-  // MARK: map2
-
-  tower () {
-    // assertArgs(arguments, 0);
-    return new LocationTrade(
-      'tower',
-      this.system,
-      new THREE.Vector2(this.offset.x + 1, this.offset.y + 1),
-      verreciel.items.currency6,
-      verreciel.items.shield2,
-      verreciel.items.map2
-    )
-  }
-}
-
-class Usul {
-  constructor (offset) {
-    // assertArgs(arguments, 1);
-    this.system = Systems.usul
-    this.offset = offset
-  }
-
-  star () {
-    // assertArgs(arguments, 0);
-    return new LocationStar('usul', this.system, this.offset)
-  }
-
-  portal () {
-    // assertArgs(arguments, 0);
-    return new LocationPortal(
-      'portal',
-      this.system,
-      new THREE.Vector2(this.offset.x + 1, this.offset.y),
-      verreciel.items.map1
-    )
-  }
-
-  // MARK: Fog
-
-  transit () {
-    // assertArgs(arguments, 0);
-    return new LocationTransit(
-      'transit',
-      this.system,
-      new THREE.Vector2(this.offset.x + 2, this.offset.y),
-      verreciel.items.map2
-    )
-  }
-
-  cargo () {
-    // assertArgs(arguments, 0);
-    return new LocationSatellite(
-      'cargo',
-      this.system,
-      new THREE.Vector2(this.offset.x, this.offset.y + 1),
-      'as above$so below',
-      verreciel.items.map2,
-      verreciel.items.map1
-    )
-  }
-
-  telescope () {
-    // assertArgs(arguments, 0);
-    return new LocationSatellite(
-      'telescope',
-      this.system,
-      new THREE.Vector2(this.offset.x - 1, this.offset.y),
-      'star injection$glass capsule',
-      verreciel.items.shield,
-      verreciel.items.map1
-    )
-  }
-
-  antenna () {
-    // assertArgs(arguments, 0);
-    return new LocationAntenna(
-      'antenna',
-      this.system,
-      new THREE.Vector2(this.offset.x, this.offset.y - 1),
-      function () {
-        verreciel.shield.install()
+      {
+        id: 'city',
+        type: 'trade',
+        name: 'City',
+        at: {x: 0, y: -1},
+        connectedSystem: null,
+        connectedID: 'satellite',
+        wantID: 'currency1',
+        giveID: 'valenPortalFragment1'
       },
-      'shield',
-      verreciel.items.map1
-    )
-  }
+      {
+        id: 'horadric',
+        type: 'horadric',
+        name: 'Horadric',
+        at: {x: 2, y: 0},
+        connectedSystem: null,
+        connectedID: 'satellite'
+      },
+      {
+        id: 'portal',
+        type: 'portal',
+        name: 'portal',
+        at: {x: 0, y: 1},
+        connectedSystem: null,
+        connectedID: 'transit'
+      },
+      {
+        id: 'satellite',
+        type: 'satellite',
+        name: 'satellite',
+        at: {x: 1, y: 0},
+        connectedSystem: null,
+        connectedID: 'portal',
+        message: 'something broken$somewhen lost',
+        itemID: 'valenPortalFragment2'
+      },
+      {
+        id: 'port',
+        type: 'trade',
+        name: 'port',
+        at: {x: -1, y: 0},
+        connectedSystem: null,
+        connectedID: null,
+        wantID: 'currency4',
+        giveID: 'senniPortalKey'
+      },
+      // MARK: Fog
+      {
+        id: 'transit',
+        type: 'transit',
+        name: 'transit',
+        at: {x: 0, y: 2},
+        connectedSystem: 'valen',
+        connectedID: 'transit',
+        mapRequirementID: 'map2'
+      },
+      {
+        id: 'fog',
+        type: 'satellite',
+        name: 'fog',
+        at: {x: -2, y: 0},
+        connectedSystem: null,
+        connectedID: 'port',
+        message: 'something broken$somehow lost',
+        itemID: 'usulPortalFragment2',
+        mapRequirementID: 'map1'
+      },
+      {
+        id: 'transmitter',
+        type: 'transmitter',
+        name: 'transmitter',
+        at: {x: -1, y: -1},
+        connectedSystem: null,
+        connectedID: null,
+        mapRequirementID: 'map1'
+      },
+      // Map2
+      {
+        id: 'cargo',
+        type: 'satellite',
+        name: 'cargo',
+        at: {x: 1, y: -1},
+        connectedSystem: null,
+        connectedID: null,
+        message: 'le soleil est noir',
+        itemID: 'veil1',
+        mapRequirementID: 'map2'
+      },
+      // Constellations
+      {
+        id: 'c_1',
+        type: 'constellation',
+        name: '',
+        at: {x: 0, y: -1.5},
+        connectedSystem: null,
+        connectedID: null,
+        structureID: 'tunnel'
+      }
+    ]
+  },
+  {
+    at: {x: -3, y: 0},
+    systemID: 'usul',
+    locations: [
+      {
+        id: 'star',
+        type: 'star',
+        name: 'usul',
+        at: {x: 0, y: 0},
+        connectedSystem: null,
+        connectedID: null
+      },
+      {
+        id: 'portal',
+        type: 'portal',
+        name: 'portal',
+        at: {x: 1, y: 0},
+        connectedSystem: null,
+        connectedID: 'transit',
+        mapRequirementID: 'map1'
+      },
+      // MARK: Fog
+      {
+        id: 'transit',
+        type: 'transit',
+        name: 'transit',
+        at: {x: 2, y: 0},
+        connectedSystem: 'loiqe',
+        connectedID: 'transit',
+        mapRequirementID: 'map2'
+      },
+      {
+        id: 'cargo',
+        type: 'satellite',
+        name: 'cargo',
+        at: {x: 0, y: 1},
+        connectedSystem: null,
+        connectedID: 'portal',
+        message: 'as above$so below',
+        itemID: 'map2',
+        mapRequirementID: 'map1'
+      },
+      {
+        id: 'telescope',
+        type: 'satellite',
+        name: 'telescope',
+        at: {x: -1, y: 0},
+        connectedSystem: null,
+        connectedID: 'antenna',
+        message: 'star injection$glass capsule',
+        itemID: 'shield',
+        mapRequirementID: 'map1'
+      },
+      {
+        id: 'antenna',
+        type: 'antenna',
+        name: 'antenna',
+        at: {x: 0, y: -1},
+        connectedSystem: null,
+        connectedID: 'portal',
+        installID: 'shield',
+        installName: 'shield',
+        mapRequirementID: 'map1'
+      },
+      {
+        id: 'transmitter',
+        type: 'transmitter',
+        name: 'transmitter',
+        at: {x: 1, y: -1},
+        connectedSystem: null,
+        connectedID: null,
+        mapRequirementID: 'map1'
+      }
+    ]
+  },
+  {
+    at: {x: 3, y: 0},
+    systemID: 'valen',
+    locations: [
+      {
+        id: 'star',
+        type: 'star',
+        name: 'Valen',
+        at: {x: 0, y: 0},
+        connectedSystem: null,
+        connectedID: null
+      },
+      {
+        id: 'bank',
+        type: 'bank',
+        name: 'Bank',
+        at: {x: 0, y: 1},
+        connectedSystem: null,
+        connectedID: 'portal'
+      },
+      {
+        id: 'portal',
+        type: 'portal',
+        name: 'portal',
+        at: {x: -1, y: 0},
+        connectedSystem: null,
+        connectedID: 'transit'
+      },
+      {
+        id: 'harvest',
+        type: 'harvest',
+        name: 'harvest',
+        at: {x: 0, y: 2},
+        connectedSystem: null,
+        connectedID: 'bank',
+        harvestedID: 'currency2'
+      },
+      {
+        id: 'station',
+        type: 'station',
+        name: 'station',
+        at: {x: 1, y: 1},
+        connectedSystem: null,
+        connectedID: 'bank',
+        wantID: 'currency2',
+        installID: 'radio',
+        installName: 'Radio'
+      },
+      {
+        id: 'cargo',
+        type: 'satellite',
+        name: 'cargo',
+        at: {x: 1, y: 2},
+        connectedSystem: null,
+        connectedID: null,
+        message: 'Extra power$battery format',
+        itemID: 'battery2'
+      },
+      {
+        id: 'market',
+        type: 'trade',
+        name: 'market',
+        at: {x: 1, y: -1},
+        connectedSystem: null,
+        connectedID: null,
+        wantID: 'waste',
+        giveID: 'kelp'
+      },
+      // MARK: Fog
+      {
+        id: 'transit',
+        type: 'transit',
+        name: 'transit',
+        at: {x: -2, y: 0},
+        connectedSystem: 'senni',
+        connectedID: 'transit',
+        mapRequirementID: 'map2'
+      },
+      {
+        id: 'fog',
+        type: 'satellite',
+        name: 'fog',
+        at: {x: 0, y: -1},
+        connectedSystem: null,
+        connectedID: 'portal',
+        message: 'something broken$somehow lost',
+        itemID: 'usulPortalFragment1',
+        mapRequirementID: 'map1'
+      },
+      {
+        id: 'antenna',
+        type: 'antenna',
+        name: 'antenna',
+        at: {x: 1, y: -1},
+        connectedSystem: null,
+        connectedID: 'fog',
+        installID: 'veil',
+        installName: 'veil',
+        mapRequirementID: 'map2'
+      },
+      {
+        id: 'c_1',
+        type: 'constellation',
+        name: '',
+        at: {x: 0.5, y: 1.5},
+        connectedSystem: null,
+        connectedID: null,
+        structureID: 'door'
+      },
+      // MARK: map2
+      {
+        id: 'wreck',
+        type: 'satellite',
+        name: 'wreck',
+        at: {x: 1, y: -2},
+        connectedSystem: null,
+        connectedID: null,
+        message: 'Memories$of misfortune',
+        itemID: 'record2',
+        mapRequirementID: 'map2'
+      }
+    ]
+  },
+  {
+    at: {x: 0, y: 3},
+    systemID: 'senni',
+    locations: [
+      {
+        id: 'star',
+        type: 'star',
+        name: 'Senni',
+        at: {x: 0, y: 0},
+        connectedSystem: null,
+        connectedID: null
+      },
+      {
+        id: 'portal',
+        type: 'portal',
+        name: 'portal',
+        at: {x: 0, y: -1},
+        connectedSystem: null,
+        connectedID: 'transit'
+      },
+      {
+        id: 'cargo',
+        type: 'satellite',
+        name: 'cargo',
+        at: {x: -1, y: 0},
+        connectedSystem: null,
+        connectedID: 'portal',
+        message: 'extra sight$map format',
+        itemID: 'map1'
+      },
+      {
+        id: 'harvest',
+        type: 'harvest',
+        name: 'harvest',
+        at: {x: 0, y: 1},
+        connectedSystem: null,
+        connectedID: null,
+        harvestedID: 'currency3'
+      },
+      {
+        id: 'station',
+        type: 'station',
+        name: 'station',
+        at: {x: 1, y: 0},
+        connectedSystem: null,
+        connectedID: 'portal',
+        wantID: 'currency3',
+        installID: 'nav',
+        installName: 'Map'
+      },
+      {
+        id: 'transmitter',
+        type: 'transmitter',
+        name: 'transmitter',
+        at: {x: -1, y: 1},
+        connectedSystem: null,
+        connectedID: null
+      },
+      // MARK: map1
+      {
+        id: 'transit',
+        type: 'transit',
+        name: 'transit',
+        at: {x: 0, y: -2},
+        connectedSystem: 'usul',
+        connectedID: 'transit',
+        mapRequirementID: 'map2'
+      },
+      {
+        id: 'horadric',
+        type: 'horadric',
+        name: 'Horadric',
+        at: {x: 0, y: 2},
+        connectedSystem: null,
+        connectedID: 'harvest',
+        mapRequirementID: 'map1'
+      },
+      {
+        id: 'fog',
+        type: 'satellite',
+        name: 'fog',
+        at: {x: 2, y: 0},
+        connectedSystem: null,
+        connectedID: 'station',
+        message: 'Extra power$battery format',
+        itemID: 'battery3',
+        mapRequirementID: 'map1'
+      },
+      {
+        id: 'wreck',
+        type: 'satellite',
+        name: 'wreck',
+        at: {x: 1, y: -2},
+        connectedSystem: null,
+        connectedID: null,
+        message: 'Memories$of misfortune',
+        itemID: 'record3',
+        mapRequirementID: 'map1'
+      },
+      // MARK: map2
+      {
+        id: 'tower',
+        type: 'trade',
+        name: 'tower',
+        at: {x: 1, y: 1},
+        connectedSystem: null,
+        connectedID: null,
+        wantID: 'currency6',
+        giveID: 'shield2',
+        mapRequirementID: 'map2'
+      }
+    ]
+  },
+  {
+    at: {x: 0, y: 0},
+    systemID: 'aitasla',
+    locations: [
+      {
+        id: 'void',
+        type: 'aitasla',
+        name: 'aitasla',
+        at: {x: 0, y: 0},
+        connectedSystem: null,
+        connectedID: null,
+        mapRequirementID: 'map2'
+      }
+    ]
+  },
+]
 
-  transmitter () {
-    // assertArgs(arguments, 0);
-    return new LocationTransmitter(
-      'transmitter',
-      this.system,
-      new THREE.Vector2(this.offset.x + 1, this.offset.y - 1),
-      verreciel.items.map1
-    )
-  }
-}
-
-class Aitasla {
-  constructor (offset) {
-    // assertArgs(arguments, 1);
-    this.system = Systems.aitasla
-    this.offset = offset
-  }
-
-  void () {
-    // assertArgs(arguments, 0);
-    return new LocationAitasla(
-      'aitasla',
-      this.system,
-      this.offset,
-      verreciel.items.map2
-    )
-  }
+const locationClassesByType = {
+  aitasla: LocationAitasla,
+  antenna: LocationAntenna,
+  bank: LocationBank,
+  constellation: LocationConstellation,
+  harvest: LocationHarvest,
+  horadric: LocationHoradric,
+  portal: LocationPortal,
+  satellite: LocationSatellite,
+  star: LocationStar,
+  station: LocationStation,
+  trade: LocationTrade,
+  transit: LocationTransit,
+  transmitter: LocationTransmitter
 }

@@ -2,14 +2,16 @@
 //  Copyright © 2017 XXIIVV. All rights reserved.
 
 class LocationTrade extends Location {
-  constructor (name, system, at, want, give, mapRequirement = null) {
+  constructor (data) {
+    const { name, wantID, giveID } = data
     // assertArgs(arguments, 5);
-    super(name, system, at, new IconTrade(), name === 'tower' ? new StructureTower() : new StructureTrade())
+    super(data, new IconTrade(), name === 'tower' ? new StructureTower() : new StructureTrade())
 
+    const give = verreciel.items[giveID]
+    const want = verreciel.items[wantID]
     this.details = give.name
 
     this.isComplete = false
-    this.mapRequirement = mapRequirement
     this.isTradeAccepted = false
 
     this.wantPort = new ScenePortSlot(this, this.code + '_want')

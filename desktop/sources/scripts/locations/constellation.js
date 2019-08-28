@@ -2,9 +2,10 @@
 //  Copyright © 2017 XXIIVV. All rights reserved.
 
 class LocationConstellation extends Location {
-  constructor (name, system, at, structure, isTargetable = false) {
+  constructor (data) {
     // assertArgs(arguments, 4);
-    super(name, system, at, new IconConstellation(), structure)
+    const structure = new (structureClassesByID[data.structureID])()
+    super(data, new IconConstellation(), structure)
     this.isTargetable = false
   }
 
@@ -80,4 +81,9 @@ class StructureDoor extends Structure {
 
     this.root.rotation.y += 0.001
   }
+}
+
+const structureClassesByID = {
+  tunnel: StructureTunnel,
+  door: StructureDoor
 }

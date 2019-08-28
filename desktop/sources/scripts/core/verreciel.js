@@ -76,8 +76,7 @@ class Verreciel {
 
     // Collections
     this.items = makeItems()
-    this.locations = new Locations()
-    this.recipes = new Recipes()
+    this.recipes = makeRecipes()
 
     // Panels
     this.battery = new Battery()
@@ -358,8 +357,6 @@ class Phase {}
 setEnumValues(Phase, ['init', 'start', 'render', 'idle'])
 class Alignment {}
 setEnumValues(Alignment, ['left', 'center', 'right'])
-class Systems {}
-setEnumValues(Systems, ['loiqe', 'valen', 'senni', 'usul', 'aitasla', 'unknown'])
 
 const Records = {
   record1: 'loiqe',

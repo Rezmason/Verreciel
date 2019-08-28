@@ -2,16 +2,15 @@
 //  Copyright © 2017 XXIIVV. All rights reserved.
 
 class LocationTransmitter extends Location {
-  constructor (name, system, at, mapRequirement = null) {
+  constructor (data) {
     // assertArgs(arguments, 4);
-    super(name, system, at, new IconTransmitter(), new StructureTransmitter())
+    super(data, new IconTransmitter(), new StructureTransmitter())
 
     this.target = null
     this.shouldAlign = false
     this.orientation = 0
 
     this.details = 'broadcast'
-    this.mapRequirement = mapRequirement
   }
 
   makePanel () {

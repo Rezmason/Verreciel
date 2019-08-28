@@ -2,11 +2,9 @@
 //  Copyright © 2017 XXIIVV. All rights reserved.
 
 class LocationPortal extends Location {
-  constructor (name, system, at, requirement) {
+  constructor (data) {
     // assertArgs(arguments, 3);
-    super(name, system, at, new IconPortal(), new StructurePortal())
-
-    this.mapRequirement = requirement
+    super(data, new IconPortal(), new StructurePortal())
 
     this.details = 'transit'
     this.keyLabel = new SceneLabel(

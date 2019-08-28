@@ -1,16 +1,37 @@
 //  Created by Devine Lu Linvega.
 //  Copyright © 2017 XXIIVV. All rights reserved.
 
+class Systems {}
+setEnumValues(Systems, ['loiqe', 'valen', 'senni', 'usul', 'aitasla', 'unknown'])
+
 class Location extends Event {
-  constructor (name, system, at, icon, structure) {
+  constructor (data, icon, structure) {
+    const {
+      id,
+      type,
+      name,
+      system,
+      at,
+      mapRequirementID,
+      connectedID,
+      connectedSystem
+    } = data
     // assertArgs(arguments, 5);
-    super(name, at, 'unknown', verreciel.grey, false)
+    super(name, new THREE.Vector2(at.x, at.y), 'unknown', verreciel.grey, false)
 
     this.system = system
     this.icon = icon
     this.structure = structure
     this.code = system + '-' + name
+    this.id = id
+    this.type = type
     this.storage = []
+    this.mapRequirementID = mapRequirementID
+    this.connectedID = connectedID
+    this.connectedSystem = connectedSystem
+    if (this.connectedSystem == null) {
+      this.connectedSystem = system
+    }
 
     this.isDocked = false
     this.inCollision = false
@@ -235,8 +256,8 @@ class Location extends Event {
     }
 
     // Connections
-    if (this.connection != null) {
-      if (this.connection.opacity != 0) {
+    if (this.connectedLocation != null) {
+      if (this.connectedLocation.opacity != 0) {
         this.icon.wire.show()
       } else {
         this.icon.wire.hide()
@@ -244,14 +265,20 @@ class Location extends Event {
     }
   }
 
-  connect (location) {
+  connect () {
+    if (this.connectedID == null) {
+      return
+    }
     // assertArgs(arguments, 1);
-    this.connection = location
+    const connectedKey = verreciel.universe.getKey(
+      this.connectedSystem, this.connectedID
+    )
+    this.connectedLocation = verreciel.universe[connectedKey]
     this.icon.wire.updateVertices([
       new THREE.Vector3(0, 0, 0),
       new THREE.Vector3(
-        this.connection.at.x - this.at.x,
-        this.connection.at.y - this.at.y,
+        this.connectedLocation.at.x - this.at.x,
+        this.connectedLocation.at.y - this.at.y,
         0
       )
     ])
@@ -336,14 +363,14 @@ class Location extends Event {
   }
 
   isVisible () {
-    if (!this.mapRequirement) {
+    if (!this.mapRequirementID) {
       return true
     }
-    if (this.mapRequirement && verreciel.nav.port.event && this.mapRequirement.code === verreciel.nav.port.event.code) {
+    if (this.mapRequirementID && verreciel.nav.port.event && this.mapRequirementID === verreciel.nav.port.event.id) {
       return true
     }
     // Map3 sees all
-    if (verreciel.nav.port.event && verreciel.nav.port.event.code === verreciel.items.map3.code) {
+    if (verreciel.nav.port.event && verreciel.nav.port.event.id === verreciel.items.map3.id) {
       return true
     }
     return false

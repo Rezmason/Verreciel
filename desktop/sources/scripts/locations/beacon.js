@@ -2,12 +2,10 @@
 //  Copyright © 2017 XXIIVV. All rights reserved.
 
 class LocationBeacon extends Location {
-  constructor (name, system, at, message, mapRequirement = null) {
+  constructor (data) {
     // assertArgs(arguments, 5);
-    super(name, system, at, new IconBeacon(), new Structure())
-
-    this.mapRequirement = mapRequirement
-    this.message = message
+    super(data, new IconBeacon(), new Structure())
+    this.message = data.message
   }
 
   makePanel () {

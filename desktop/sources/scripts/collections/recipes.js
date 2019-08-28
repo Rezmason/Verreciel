@@ -59,16 +59,10 @@ const recipeData = [
   }
 ]
 
-class Recipes {
-  constructor () {
-    // assertArgs(arguments, 0);
-    this.horadric = []
-
-    recipeData.forEach(data => {
-      const {ingredientIDs, resultID, like} = data
-      const ingredients = ingredientIDs.map(id => verreciel.items[id])
-      const result = verreciel.items[resultID]
-      this.horadric.push(new Recipe(ingredients, result))
-    })
-  }
-}
+const makeRecipes = () =>
+  recipeData.map(data => {
+    const {ingredientIDs, resultID, like} = data
+    const ingredients = ingredientIDs.map(id => verreciel.items[id])
+    const result = verreciel.items[resultID]
+    return new Recipe(ingredients, result)
+  })

@@ -2,9 +2,9 @@
 //  Copyright © 2017 XXIIVV. All rights reserved.
 
 class LocationBank extends Location {
-  constructor (name, system, at) {
+  constructor (data) {
     // assertArgs(arguments, 3);
-    super(name, system, at, new IconBank(), new StructureBank())
+    super(data, new IconBank(), new StructureBank())
 
     this.details = 'storage'
 

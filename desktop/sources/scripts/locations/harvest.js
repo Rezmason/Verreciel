@@ -2,13 +2,11 @@
 //  Copyright © 2017 XXIIVV. All rights reserved.
 
 class LocationHarvest extends Location {
-  constructor (name, system, at, grows, mapRequirement = null) {
+  constructor (data) {
     // assertArgs(arguments, 4);
-    super(name, system, at, new IconHarvest(), new StructureHarvest())
+    super(data, new IconHarvest(), new StructureHarvest())
 
-    this.mapRequirement = mapRequirement
-
-    this.grows = grows
+    this.grows = Item.like(verreciel.items[data.harvestedID])
 
     this.details = this.grows.name
 

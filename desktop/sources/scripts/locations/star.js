@@ -2,9 +2,9 @@
 //  Copyright © 2017 XXIIVV. All rights reserved.
 
 class LocationStar extends Location {
-  constructor (name, system, at) {
+  constructor (data) {
     // assertArgs(arguments, 3);
-    super(name, system, at, new IconStar(), new StructureStar())
+    super(data, new IconStar(), new StructureStar())
     this.isComplete = false
   }
 

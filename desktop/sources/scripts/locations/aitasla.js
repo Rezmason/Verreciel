@@ -2,12 +2,11 @@
 //  Copyright © 2017 XXIIVV. All rights reserved.
 
 class LocationAitasla extends Location {
-  constructor (name, system, at, mapRequirement = null) {
+  constructor (data) {
     // assertArgs(arguments, 3);
-    super(name, system, at, new IconStar(), new StructureStar())
+    super(data, new IconStar(), new StructureStar())
 
     this.isComplete = false
-    this.mapRequirement = mapRequirement
     this.icon.color = verreciel.black
   }
 

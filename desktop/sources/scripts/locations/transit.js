@@ -2,11 +2,9 @@
 //  Copyright © 2017 XXIIVV. All rights reserved.
 
 class LocationTransit extends Location {
-  constructor (name, system, at, mapRequirement = null) {
+  constructor (data) {
     // assertArgs(arguments, 3);
-    super(name, system, at, new IconTransit(), new StructureTransit())
-
-    this.mapRequirement = mapRequirement
+    super(data, new IconTransit(), new StructureTransit())
   }
 
   // MARK: Panel -

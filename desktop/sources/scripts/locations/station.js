@@ -2,24 +2,25 @@
 //  Copyright © 2017 XXIIVV. All rights reserved.
 
 class LocationStation extends Location {
-  constructor (
-    name,
-    system,
-    at,
-    requirement = null,
-    installation,
-    installationName,
-    mapRequirement = null
-  ) {
+  constructor (data) {
     // assertArgs(arguments, 6);
-    super(name, system, at, new IconStation(), new StructureStation())
+    super(data, new IconStation(), new StructureStation())
 
-    this.installation = installation
-    this.requirement = requirement
-    this.installationName = installationName
-    this.details = installationName
-    this.mapRequirement = mapRequirement
+    const {
+      wantID,
+      installID,
+      installName
+    } = data
+
+    this.installer = this.makeInstaller(installID)
+    this.requirement = verreciel.items[wantID]
+    this.installName = installName
+    this.details = installName
     this.isComplete = false
+  }
+
+  makeInstaller(id) {
+    return () => verreciel[id].install()
   }
 
   makePanel () {
@@ -33,7 +34,7 @@ class LocationStation extends Location {
       'Exchange ' +
         this.requirement.name +
         '$install the ' +
-        this.installationName
+        this.installName
     )
     requirementLabel.position.set(
       Templates.leftMargin,
@@ -89,7 +90,7 @@ class LocationStation extends Location {
     // assertArgs(arguments, 1);
     super.touch(id)
     if (id == 1) {
-      this.installation()
+      this.installer()
       this.onComplete()
     }
     return true
