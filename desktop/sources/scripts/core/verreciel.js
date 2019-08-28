@@ -77,6 +77,12 @@ class Verreciel {
     // Collections
     this.items = makeItems()
     this.recipes = makeRecipes()
+    const [locations, universe] = makeLocations()
+    this.locations = locations
+    this.universe = universe
+    this.locations.forEach(location => {
+      location.connect()
+    })
 
     // Panels
     this.battery = new Battery()
@@ -103,7 +109,6 @@ class Verreciel {
 
     // Core
     this.game = new Game()
-    this.universe = new Universe()
     this.capsule = new Capsule()
     this.player = new Player()
     this.space = new Space()
@@ -145,7 +150,6 @@ class Verreciel {
     this.root.add(this.ghost)
 
     this.ghost.whenStart()
-    this.universe.whenStart()
     this.player.whenStart()
     this.helmet.whenStart()
     this.capsule.whenStart()

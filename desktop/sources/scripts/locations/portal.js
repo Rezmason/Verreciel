@@ -121,8 +121,8 @@ class LocationPortal extends Location {
       let key = verreciel.intercom.port.origin.event
       if (
         key instanceof Item &&
-        (key.locationID == null ||
-          verreciel.universe[key.locationID] == verreciel.capsule.lastLocation)
+        (key.locationCode == null ||
+          verreciel.universe[key.locationCode] == verreciel.capsule.lastLocation)
       ) {
         this.inactive()
       } else {
@@ -163,7 +163,9 @@ class LocationPortal extends Location {
       return
     }
 
-    let destination = verreciel.universe.locationLike(verreciel.universe[key.locationID])
+    let destination = verreciel.locations.find(
+      location => location.code == key.locationCode
+    ) // TODO: replace with simple lookup
 
     destination.isKnown = true
 

@@ -20,7 +20,7 @@ class Progress extends Monitor {
     var totalQuestLocations = 0
     var totalQuestLocations_complete = 0
 
-    for (let location of verreciel.universe.allLocations) {
+    for (let location of verreciel.locations) {
       if (location.isComplete != null) {
         totalQuestLocations += 1
         if (location.isComplete == true) {

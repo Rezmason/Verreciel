@@ -7,7 +7,7 @@ const itemData = [
     id: 'kelp',
     name: 'space kelp',
     type: 'waste',
-    locationID: null,
+    locationCode: null,
     details: 'useless',
     isQuest: false,
     code: 'kelp'
@@ -16,7 +16,7 @@ const itemData = [
     id: 'waste',
     name: 'waste',
     type: 'waste',
-    locationID: null,
+    locationCode: null,
     details: 'useless',
     isQuest: false,
     code: 'waste'
@@ -27,7 +27,7 @@ const itemData = [
     id: 'endPortalKey',
     name: 'aitasla key',
     type: 'key',
-    locationID: 'aitasla',
+    locationCode: 'aitasla-star',
     details: 'aitasla warp key',
     isQuest: true,
     code: 'end-key'
@@ -36,7 +36,7 @@ const itemData = [
     id: 'endPortalKeyFragment1',
     name: 'horizontal part',
     type: 'fragment',
-    locationID: null,
+    locationCode: null,
     details: 'half Portal key',
     isQuest: true,
     code: 'end-key-1'
@@ -45,7 +45,7 @@ const itemData = [
     id: 'endPortalKeyFragment2',
     name: 'vertical part',
     type: 'fragment',
-    locationID: null,
+    locationCode: null,
     details: 'half Portal key',
     isQuest: true,
     code: 'end-key-2'
@@ -54,7 +54,7 @@ const itemData = [
     id: 'loiqePortalKey',
     name: 'loiqe key',
     type: 'key',
-    locationID: 'loiqe_portal',
+    locationCode: 'loiqe-portal',
     details: 'complete key',
     isQuest: true,
     code: 'loiqe-key'
@@ -63,7 +63,7 @@ const itemData = [
     id: 'senniPortalKey',
     name: 'senni key',
     type: 'key',
-    locationID: 'senni_portal',
+    locationCode: 'senni-portal',
     details: 'complete key',
     isQuest: true,
     code: 'senni-key'
@@ -72,7 +72,7 @@ const itemData = [
     id: 'usulPortalFragment1',
     name: 'usul Part 1',
     type: 'fragment',
-    locationID: null,
+    locationCode: null,
     details: 'half Portal key',
     isQuest: true,
     code: 'usul-key-1'
@@ -81,7 +81,7 @@ const itemData = [
     id: 'usulPortalFragment2',
     name: 'usul Part 2',
     type: 'fragment',
-    locationID: null,
+    locationCode: null,
     details: 'half Portal key',
     isQuest: true,
     code: 'usul-key-2'
@@ -90,7 +90,7 @@ const itemData = [
     id: 'usulPortalKey',
     name: 'usul key',
     type: 'key',
-    locationID: 'usul_portal',
+    locationCode: 'usul-portal',
     details: 'complete key',
     isQuest: true,
     code: 'usul-key'
@@ -99,7 +99,7 @@ const itemData = [
     id: 'valenPortalFragment1',
     name: 'valen part 1',
     type: 'fragment',
-    locationID: null,
+    locationCode: null,
     details: 'half Portal key',
     isQuest: true,
     code: 'valen-key-1'
@@ -108,7 +108,7 @@ const itemData = [
     id: 'valenPortalFragment2',
     name: 'valen part 2',
     type: 'fragment',
-    locationID: null,
+    locationCode: null,
     details: 'half Portal key',
     isQuest: true,
     code: 'valen-key-2'
@@ -117,7 +117,7 @@ const itemData = [
     id: 'valenPortalKey',
     name: 'valen key',
     type: 'key',
-    locationID: 'valen_portal',
+    locationCode: 'valen-portal',
     details: 'complete key',
     isQuest: true,
     code: 'valen-key'
@@ -128,7 +128,7 @@ const itemData = [
     id: 'warpDrive',
     name: 'warpdrive',
     type: 'drive',
-    locationID: null,
+    locationCode: null,
     details: 'local warpdrive',
     isQuest: true,
     code: 'warp'
@@ -139,7 +139,7 @@ const itemData = [
     id: 'record1',
     name: 'record',
     type: 'record',
-    locationID: null,
+    locationCode: null,
     details: 'audio format',
     isQuest: true,
     code: 'record1'
@@ -148,7 +148,7 @@ const itemData = [
     id: 'record2',
     name: 'disk',
     type: 'record',
-    locationID: null,
+    locationCode: null,
     details: 'audio format',
     isQuest: true,
     code: 'record2'
@@ -157,7 +157,7 @@ const itemData = [
     id: 'record3',
     name: 'tape',
     type: 'record',
-    locationID: null,
+    locationCode: null,
     details: 'audio format',
     isQuest: true,
     code: 'record3'
@@ -166,7 +166,7 @@ const itemData = [
     id: 'record4',
     name: 'drive',
     type: 'record',
-    locationID: null,
+    locationCode: null,
     details: 'audio format',
     isQuest: true,
     code: 'record4'
@@ -177,7 +177,7 @@ const itemData = [
     id: 'map1',
     name: 'Red Map',
     type: 'map',
-    locationID: null,
+    locationCode: null,
     details: 'map expension',
     isQuest: true,
     code: 'map-1'
@@ -186,7 +186,7 @@ const itemData = [
     id: 'map2',
     name: 'Cyan Map',
     type: 'map',
-    locationID: null,
+    locationCode: null,
     details: 'map expension',
     isQuest: true,
     code: 'map-2'
@@ -195,7 +195,7 @@ const itemData = [
     id: 'map3',
     name: 'Opal Map',
     type: 'map',
-    locationID: null,
+    locationCode: null,
     details: 'map expension',
     isQuest: true,
     code: 'map-3'
@@ -208,7 +208,7 @@ const itemData = [
     id: 'currency1',
     name: 'metal',
     type: 'currency',
-    locationID: null,
+    locationCode: null,
     details: 'trading currency',
     isQuest: false,
     code: 'currency-1'
@@ -217,7 +217,7 @@ const itemData = [
     id: 'currency2',
     name: 'sutal',
     type: 'currency',
-    locationID: null,
+    locationCode: null,
     details: 'trading currency',
     isQuest: false,
     code: 'currency-2'
@@ -226,7 +226,7 @@ const itemData = [
     id: 'currency3',
     name: 'vital',
     type: 'currency',
-    locationID: null,
+    locationCode: null,
     details: 'trading currency',
     isQuest: false,
     code: 'currency-3'
@@ -235,7 +235,7 @@ const itemData = [
     id: 'currency4',
     name: 'meseta',
     type: 'currency',
-    locationID: null,
+    locationCode: null,
     details: 'From 1 & 2',
     isQuest: false,
     code: 'currency-4'
@@ -244,7 +244,7 @@ const itemData = [
     id: 'currency5',
     name: 'suveta',
     type: 'currency',
-    locationID: null,
+    locationCode: null,
     details: 'From 2 & 3',
     isQuest: false,
     code: 'currency-5'
@@ -253,7 +253,7 @@ const itemData = [
     id: 'currency6',
     name: 'icon',
     type: 'currency',
-    locationID: null,
+    locationCode: null,
     details: 'From 4 & 5',
     isQuest: false,
     code: 'currency-6'
@@ -262,7 +262,7 @@ const itemData = [
     id: 'record_oquonie',
     name: 'record',
     type: 'record',
-    locationID: null,
+    locationCode: null,
     details: 'wet',
     isQuest: true,
     code: 'record5'
@@ -271,7 +271,7 @@ const itemData = [
     id: 'shield',
     name: 'glass',
     type: 'shield',
-    locationID: null,
+    locationCode: null,
     details: 'star sand',
     isQuest: true,
     code: 'shield-1'
@@ -280,7 +280,7 @@ const itemData = [
     id: 'shield2',
     name: 'mirror',
     type: 'shield',
-    locationID: null,
+    locationCode: null,
     details: 'red mirror',
     isQuest: true,
     code: 'shield-2'
@@ -291,7 +291,7 @@ const itemData = [
     id: 'battery1',
     name: 'cell',
     type: 'battery',
-    locationID: null,
+    locationCode: null,
     details: 'power source',
     isQuest: true,
     code: 'battery-1'
@@ -300,7 +300,7 @@ const itemData = [
     id: 'battery2',
     name: 'cell',
     type: 'battery',
-    locationID: null,
+    locationCode: null,
     details: 'power source',
     isQuest: true,
     code: 'battery-2'
@@ -309,7 +309,7 @@ const itemData = [
     id: 'battery3',
     name: 'cell',
     type: 'battery',
-    locationID: null,
+    locationCode: null,
     details: 'power source',
     isQuest: true,
     code: 'battery-3'
@@ -320,7 +320,7 @@ const itemData = [
     id: 'veil1',
     name: 'sphere veil',
     type: 'veil',
-    locationID: null,
+    locationCode: null,
     details: 'dyson sphere',
     isQuest: true,
     code: 'veil-1'
@@ -331,7 +331,7 @@ const itemData = [
     id: 'teapot',
     name: 'a teapot',
     type: 'unknown',
-    locationID: null,
+    locationCode: null,
     details: 'is paradise',
     isQuest: true,
     code: 'echoes-1'
@@ -359,11 +359,10 @@ setEnumValues(ItemTypes, [
 ])
 
 const makeItems = () => {
-  const collection = {}
+  const itemsByID = {}
   itemData.forEach(data => {
-    const {id, name, type, locationID, details, isQuest, code} = data
-    const item = new Item(name, ItemTypes[type], locationID, details, isQuest, code)
-    collection[id] = item
+    const item = new Item(data)
+    itemsByID[data.id] = item
   })
-  return collection
+  return itemsByID
 }

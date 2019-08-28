@@ -161,7 +161,7 @@ class Capsule extends Empty {
   closestLocation () {
     // assertArgs(arguments, 0);
     var closestLocation = null
-    for (let location of verreciel.universe.allLocations) {
+    for (let location of verreciel.locations) {
       if (closestLocation == null) {
         closestLocation = location
       }
@@ -203,7 +203,7 @@ class Capsule extends Empty {
   closestKnownLocation () {
     // assertArgs(arguments, 0);
     var closestLocation = null
-    for (let location of verreciel.universe.allLocations) {
+    for (let location of verreciel.locations) {
       if (location.isKnown == false) {
         continue
       }

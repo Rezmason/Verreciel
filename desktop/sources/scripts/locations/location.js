@@ -23,16 +23,18 @@ class Location extends Event {
     this.icon = icon
     this.structure = structure
     this.code = system + '-' + name
+    const isStar = type === "star" || type === "void"
+    this.key = this.getKey(system, id, isStar)
     this.id = id
     this.type = type
     this.storage = []
     this.mapRequirementID = mapRequirementID
-    this.connectedID = connectedID
-    this.connectedSystem = connectedSystem
-    if (this.connectedSystem == null) {
-      this.connectedSystem = system
+    if (connectedID != null) {
+      this.connectedKey = this.getKey(
+        connectedSystem == null ? system : connectedSystem,
+        connectedID
+      )
     }
-
     this.isDocked = false
     this.inCollision = false
     this.inApproach = false
@@ -41,7 +43,6 @@ class Location extends Event {
     this.isTargetable = true
     this.isTargeted = false
     this.isKnown = false
-    this.isSeen = false
     this.isSelected = false
     this.isComplete = null
     this.isPortEnabled = false
@@ -90,7 +91,6 @@ class Location extends Event {
       if (this.inSight == false) {
         this.onSight()
         this.inSight = true
-        this.isSeen = true
       }
       this.sightUpdate()
     } else {
@@ -139,7 +139,6 @@ class Location extends Event {
 
   onSight () {
     // assertArgs(arguments, 0);
-    this.isSeen = true
     this.update()
     this.icon.onUpdate()
 
@@ -265,15 +264,15 @@ class Location extends Event {
     }
   }
 
+  getKey(systemID, id, isStar = false) {
+    return isStar ? systemID : `${systemID}_${id}`
+  }
+
   connect () {
-    if (this.connectedID == null) {
+    if (this.connectedKey == null) {
       return
     }
-    // assertArgs(arguments, 1);
-    const connectedKey = verreciel.universe.getKey(
-      this.connectedSystem, this.connectedID
-    )
-    this.connectedLocation = verreciel.universe[connectedKey]
+    this.connectedLocation = verreciel.universe[this.connectedKey]
     this.icon.wire.updateVertices([
       new THREE.Vector3(0, 0, 0),
       new THREE.Vector3(

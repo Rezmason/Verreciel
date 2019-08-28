@@ -21,7 +21,7 @@ class Exploration extends Monitor {
     super.refresh()
 
     var kl = 0
-    for (let location of verreciel.universe.allLocations) {
+    for (let location of verreciel.locations) {
       if (location.isKnown == true) {
         kl += 1
       }
@@ -31,7 +31,7 @@ class Exploration extends Monitor {
     if (kl > this.knownLocations) {
       this.knownLocations = kl
       this.nameLabel.updateText(
-        this.knownLocations + '/' + verreciel.universe.allLocations.length,
+        this.knownLocations + '/' + verreciel.locations.length,
         verreciel.cyan
       )
       delay(

@@ -13,6 +13,10 @@ class Radar extends MainPanel {
     this.eventPivot = new Empty()
     this.eventView = new Empty()
 
+    verreciel.locations.forEach(location => {
+      this.eventView.add(location)
+    })
+
     this.details = 'displays locations'
     this.port.isPersistent = true
 
@@ -219,7 +223,7 @@ class Radar extends MainPanel {
     this.updateTarget()
 
     // Check for overlapping events
-    for (let newEvent of verreciel.universe.allLocations) {
+    for (let newEvent of verreciel.locations) {
       if (
         newEvent.position.x == event.position.x &&
         newEvent.position.y == event.position.y &&
@@ -261,7 +265,7 @@ class Radar extends MainPanel {
     this.footer.show()
     this.handle.show()
 
-    for (let location of verreciel.universe.allLocations) {
+    for (let location of verreciel.locations) {
       location.onRadarView()
     }
   }
@@ -276,7 +280,7 @@ class Radar extends MainPanel {
     this.header.hide()
     this.handle.hide()
 
-    for (let location of verreciel.universe.allLocations) {
+    for (let location of verreciel.locations) {
       location.onHelmetView()
     }
   }

@@ -2,7 +2,15 @@
 //  Copyright © 2017 XXIIVV. All rights reserved.
 
 class Item extends Event {
-  constructor (name, type, locationID, details, isQuest, code) {
+  constructor (data) {
+    const {
+      name,
+      type,
+      locationCode,
+      details,
+      isQuest,
+      code
+    } = data
     // assertArgs(arguments, 6);
     super(name, new THREE.Vector2(), details, verreciel.grey, false)
 
@@ -10,7 +18,7 @@ class Item extends Event {
     this.type = type
     this.details = details
     this.isQuest = isQuest
-    this.locationID = locationID
+    this.locationCode = locationCode
     this.code = code
   }
 
@@ -25,14 +33,7 @@ class Item extends Event {
   static like (other) {
     // assertArgs(arguments, 1);
     if (other.type === ItemTypes.currency) {
-      return new Item(
-        other.name,
-        other.type,
-        null,
-        other.details,
-        other.isQuest,
-        other.code
-      )
+      return new Item({ ...other, locationCode: null })
     } else {
       return other
     }

@@ -21,12 +21,12 @@ class LocationHarvest extends Location {
     )
     this.port.enable()
 
-    this.generate()
   }
 
   whenStart () {
     // assertArgs(arguments, 0);
     super.whenStart()
+    this.generate()
     this.port.addEvent(this.grows)
     verreciel.ghost.report(LogType.harvest, this.grows.code)
   }

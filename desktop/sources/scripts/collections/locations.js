@@ -5,7 +5,7 @@ const locationData = [
   {
     at: {x: 0, y: -3},
     systemID: 'loiqe',
-    locations: [
+    systemLocations: [
       {
         id: 'star',
         type: 'star',
@@ -137,7 +137,7 @@ const locationData = [
   {
     at: {x: -3, y: 0},
     systemID: 'usul',
-    locations: [
+    systemLocations: [
       {
         id: 'star',
         type: 'star',
@@ -212,7 +212,7 @@ const locationData = [
   {
     at: {x: 3, y: 0},
     systemID: 'valen',
-    locations: [
+    systemLocations: [
       {
         id: 'star',
         type: 'star',
@@ -335,7 +335,7 @@ const locationData = [
   {
     at: {x: 0, y: 3},
     systemID: 'senni',
-    locations: [
+    systemLocations: [
       {
         id: 'star',
         type: 'star',
@@ -448,7 +448,7 @@ const locationData = [
   {
     at: {x: 0, y: 0},
     systemID: 'aitasla',
-    locations: [
+    systemLocations: [
       {
         id: 'void',
         type: 'aitasla',
@@ -476,4 +476,29 @@ const locationClassesByType = {
   trade: LocationTrade,
   transit: LocationTransit,
   transmitter: LocationTransmitter
+}
+
+const makeLocations = () => {
+  const locations = []
+  const locationsByKey = {}
+
+  locationData.forEach(systemData => {
+    const { at, systemID, systemLocations } = systemData
+    const system = Systems[systemID]
+    systemLocations.forEach(data => {
+      const { type, id } = data
+      const appendedData = {
+        ...data,
+        system,
+        at: {
+          x: at.x + data.at.x,
+          y: at.y + data.at.y
+        }
+      }
+      const location = new (locationClassesByType[type])(appendedData)
+      locations.push(location)
+      locationsByKey[location.key] = location
+    })
+  })
+  return [locations, locationsByKey]
 }
