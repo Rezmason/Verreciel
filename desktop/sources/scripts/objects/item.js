@@ -2,7 +2,7 @@
 //  Copyright © 2017 XXIIVV. All rights reserved.
 
 class Item extends Event {
-  constructor (name, type, location, details, isQuest, code) {
+  constructor (name, type, locationID, details, isQuest, code) {
     // assertArgs(arguments, 6);
     super(name, new THREE.Vector2(), details, verreciel.grey, false)
 
@@ -10,7 +10,7 @@ class Item extends Event {
     this.type = type
     this.details = details
     this.isQuest = isQuest
-    this.location = location
+    this.locationID = locationID
     this.code = code
   }
 

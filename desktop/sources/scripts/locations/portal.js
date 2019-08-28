@@ -120,11 +120,11 @@ class LocationPortal extends Location {
   validate () {
     // assertArgs(arguments, 0);
     if (verreciel.intercom.port.isReceivingItemOfType(ItemTypes.key) == true) {
-      let item = verreciel.intercom.port.origin.event
+      let key = verreciel.intercom.port.origin.event
       if (
-        item instanceof Item &&
-        (item.location == null ||
-          item.location == verreciel.capsule.lastLocation)
+        key instanceof Item &&
+        (key.locationID == null ||
+          verreciel.universe[key.locationID] == verreciel.capsule.lastLocation)
       ) {
         this.inactive()
       } else {
@@ -165,7 +165,7 @@ class LocationPortal extends Location {
       return
     }
 
-    let destination = verreciel.universe.locationLike(key.location)
+    let destination = verreciel.universe.locationLike(verreciel.universe[key.locationID])
 
     destination.isKnown = true
 

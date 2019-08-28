@@ -75,7 +75,7 @@ class Verreciel {
     this.ghost = new Ghost()
 
     // Collections
-    this.items = new Items()
+    this.items = makeItems()
     this.locations = new Locations()
     this.recipes = new Recipes()
 
@@ -152,7 +152,6 @@ class Verreciel {
     this.capsule.whenStart()
     this.space.whenStart()
     this.game.whenStart(jump_mission)
-    this.items.whenStart()
 
     if (DEBUG_SHOW_STATS) {
       this.stats = new Stats()
@@ -361,25 +360,6 @@ class Alignment {}
 setEnumValues(Alignment, ['left', 'center', 'right'])
 class Systems {}
 setEnumValues(Systems, ['loiqe', 'valen', 'senni', 'usul', 'aitasla', 'unknown'])
-class ItemTypes {}
-setEnumValues(ItemTypes, [
-  'generic',
-  'fragment',
-  'battery',
-  'star',
-  'quest',
-  'waste',
-  'panel',
-  'key',
-  'currency',
-  'drive',
-  'cargo',
-  'shield',
-  'map',
-  'record',
-  'veil',
-  'unknown'
-])
 
 const Records = {
   record1: 'loiqe',
