@@ -227,7 +227,7 @@ class LocationHoradric extends Location {
     this.inPort1.label.color = verreciel.grey
     this.inPort2.label.color = verreciel.grey
 
-    this.outPort.addEvent(this.combinationRecipe.result)
+    this.outPort.addEvent(Item.like(this.combinationRecipe.result))
 
     this.combinationPercentage = 0
 

@@ -24,13 +24,17 @@ class Item extends Event {
 
   static like (other) {
     // assertArgs(arguments, 1);
-    return new Item(
-      other.name,
-      other.type,
-      null,
-      other.details,
-      other.isQuest,
-      other.code
-    )
+    if (other.type === ItemTypes.currency) {
+      return new Item(
+        other.name,
+        other.type,
+        null,
+        other.details,
+        other.isQuest,
+        other.code
+      )
+    } else {
+      return other
+    }
   }
 }
