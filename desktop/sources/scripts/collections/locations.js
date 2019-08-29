@@ -11,16 +11,14 @@ const locationData = [
         type: 'star',
         name: 'Loiqe',
         at: {x: 0, y: 0},
-        connectedSystem: null,
-        connectedID: null
+        connectedAddress: null
       },
       {
         id: 'spawn',
         type: 'satellite',
         name: 'spawn',
         at: {x: 0, y: -2.75},
-        connectedSystem: null,
-        connectedID: null,
+        connectedAddress: null,
         message: 'Are you sure$that you are in$space.',
         itemID: 'teapot',
         mapRequirementID: 'map2'
@@ -30,8 +28,7 @@ const locationData = [
         type: 'harvest',
         name: 'Harvest',
         at: {x: 0, y: -2},
-        connectedSystem: null,
-        connectedID: null,
+        connectedAddress: null,
         harvestedID: 'currency1'
       },
       {
@@ -39,8 +36,7 @@ const locationData = [
         type: 'trade',
         name: 'City',
         at: {x: 0, y: -1},
-        connectedSystem: null,
-        connectedID: 'satellite',
+        connectedAddress: { systemID: null, id: 'satellite' },
         wantID: 'currency1',
         giveID: 'valenPortalFragment1'
       },
@@ -49,24 +45,21 @@ const locationData = [
         type: 'horadric',
         name: 'Horadric',
         at: {x: 2, y: 0},
-        connectedSystem: null,
-        connectedID: 'satellite'
+        connectedAddress: { systemID: null, id: 'satellite' }
       },
       {
         id: 'portal',
         type: 'portal',
         name: 'portal',
         at: {x: 0, y: 1},
-        connectedSystem: null,
-        connectedID: 'transit'
+        connectedAddress: { systemID: null, id: 'transit' }
       },
       {
         id: 'satellite',
         type: 'satellite',
         name: 'satellite',
         at: {x: 1, y: 0},
-        connectedSystem: null,
-        connectedID: 'portal',
+        connectedAddress: { systemID: null, id: 'portal' },
         message: 'something broken$somewhen lost',
         itemID: 'valenPortalFragment2'
       },
@@ -75,8 +68,7 @@ const locationData = [
         type: 'trade',
         name: 'port',
         at: {x: -1, y: 0},
-        connectedSystem: null,
-        connectedID: null,
+        connectedAddress: null,
         wantID: 'currency4',
         giveID: 'senniPortalKey'
       },
@@ -86,8 +78,7 @@ const locationData = [
         type: 'transit',
         name: 'transit',
         at: {x: 0, y: 2},
-        connectedSystem: 'valen',
-        connectedID: 'transit',
+        connectedAddress: { systemID: 'valen', id: 'transit' },
         mapRequirementID: 'map2'
       },
       {
@@ -95,8 +86,7 @@ const locationData = [
         type: 'satellite',
         name: 'fog',
         at: {x: -2, y: 0},
-        connectedSystem: null,
-        connectedID: 'port',
+        connectedAddress: { systemID: null, id: 'port' },
         message: 'something broken$somehow lost',
         itemID: 'usulPortalFragment2',
         mapRequirementID: 'map1'
@@ -106,8 +96,7 @@ const locationData = [
         type: 'transmitter',
         name: 'transmitter',
         at: {x: -1, y: -1},
-        connectedSystem: null,
-        connectedID: null,
+        connectedAddress: null,
         mapRequirementID: 'map1'
       },
       // Map2
@@ -116,8 +105,7 @@ const locationData = [
         type: 'satellite',
         name: 'cargo',
         at: {x: 1, y: -1},
-        connectedSystem: null,
-        connectedID: null,
+        connectedAddress: null,
         message: 'le soleil est noir',
         itemID: 'veil1',
         mapRequirementID: 'map2'
@@ -128,8 +116,7 @@ const locationData = [
         type: 'constellation',
         name: '',
         at: {x: 0, y: -1.5},
-        connectedSystem: null,
-        connectedID: null,
+        connectedAddress: null,
         structureID: 'tunnel'
       }
     ]
@@ -143,16 +130,14 @@ const locationData = [
         type: 'star',
         name: 'usul',
         at: {x: 0, y: 0},
-        connectedSystem: null,
-        connectedID: null
+        connectedAddress: null
       },
       {
         id: 'portal',
         type: 'portal',
         name: 'portal',
         at: {x: 1, y: 0},
-        connectedSystem: null,
-        connectedID: 'transit',
+        connectedAddress: { systemID: null, id: 'transit' },
         mapRequirementID: 'map1'
       },
       // MARK: Fog
@@ -161,8 +146,7 @@ const locationData = [
         type: 'transit',
         name: 'transit',
         at: {x: 2, y: 0},
-        connectedSystem: 'loiqe',
-        connectedID: 'transit',
+        connectedAddress: { systemID: 'loiqe', id: 'transit' },
         mapRequirementID: 'map2'
       },
       {
@@ -170,8 +154,7 @@ const locationData = [
         type: 'satellite',
         name: 'cargo',
         at: {x: 0, y: 1},
-        connectedSystem: null,
-        connectedID: 'portal',
+        connectedAddress: { systemID: null, id: 'portal' },
         message: 'as above$so below',
         itemID: 'map2',
         mapRequirementID: 'map1'
@@ -181,8 +164,7 @@ const locationData = [
         type: 'satellite',
         name: 'telescope',
         at: {x: -1, y: 0},
-        connectedSystem: null,
-        connectedID: 'antenna',
+        connectedAddress: { systemID: null, id: 'antenna' },
         message: 'star injection$glass capsule',
         itemID: 'shield',
         mapRequirementID: 'map1'
@@ -192,21 +174,20 @@ const locationData = [
         type: 'antenna',
         name: 'antenna',
         at: {x: 0, y: -1},
-        connectedSystem: null,
-        connectedID: 'portal',
+        connectedAddress: { systemID: null, id: 'portal' },
         installID: 'shield',
         installName: 'shield',
         mapRequirementID: 'map1'
-      },
-      {
-        id: 'transmitter',
-        type: 'transmitter',
-        name: 'transmitter',
-        at: {x: 1, y: -1},
-        connectedSystem: null,
-        connectedID: null,
-        mapRequirementID: 'map1'
       }
+      // ,
+      // {
+      //   id: 'transmitter',
+      //   type: 'transmitter',
+      //   name: 'transmitter',
+      //   at: {x: 1, y: -1},
+      //   connectedAddress: null,
+      //   mapRequirementID: 'map1'
+      // }
     ]
   },
   {
@@ -218,32 +199,28 @@ const locationData = [
         type: 'star',
         name: 'Valen',
         at: {x: 0, y: 0},
-        connectedSystem: null,
-        connectedID: null
+        connectedAddress: null
       },
       {
         id: 'bank',
         type: 'bank',
         name: 'Bank',
         at: {x: 0, y: 1},
-        connectedSystem: null,
-        connectedID: 'portal'
+        connectedAddress: { systemID: null, id: 'portal' }
       },
       {
         id: 'portal',
         type: 'portal',
         name: 'portal',
         at: {x: -1, y: 0},
-        connectedSystem: null,
-        connectedID: 'transit'
+        connectedAddress: { systemID: null, id: 'transit' }
       },
       {
         id: 'harvest',
         type: 'harvest',
         name: 'harvest',
         at: {x: 0, y: 2},
-        connectedSystem: null,
-        connectedID: 'bank',
+        connectedAddress: { systemID: null, id: 'bank' },
         harvestedID: 'currency2'
       },
       {
@@ -251,8 +228,7 @@ const locationData = [
         type: 'station',
         name: 'station',
         at: {x: 1, y: 1},
-        connectedSystem: null,
-        connectedID: 'bank',
+        connectedAddress: { systemID: null, id: 'bank' },
         wantID: 'currency2',
         installID: 'radio',
         installName: 'Radio'
@@ -262,29 +238,26 @@ const locationData = [
         type: 'satellite',
         name: 'cargo',
         at: {x: 1, y: 2},
-        connectedSystem: null,
-        connectedID: null,
+        connectedAddress: null,
         message: 'Extra power$battery format',
         itemID: 'battery2'
       },
-      {
-        id: 'market',
-        type: 'trade',
-        name: 'market',
-        at: {x: 1, y: -1},
-        connectedSystem: null,
-        connectedID: null,
-        wantID: 'waste',
-        giveID: 'kelp'
-      },
+      // {
+      //   id: 'market',
+      //   type: 'trade',
+      //   name: 'market',
+      //   at: {x: 1, y: -1},
+      //   connectedAddress: null,
+      //   wantID: 'waste',
+      //   giveID: 'kelp'
+      // },
       // MARK: Fog
       {
         id: 'transit',
         type: 'transit',
         name: 'transit',
         at: {x: -2, y: 0},
-        connectedSystem: 'senni',
-        connectedID: 'transit',
+        connectedAddress: { systemID: 'senni', id: 'transit' },
         mapRequirementID: 'map2'
       },
       {
@@ -292,8 +265,7 @@ const locationData = [
         type: 'satellite',
         name: 'fog',
         at: {x: 0, y: -1},
-        connectedSystem: null,
-        connectedID: 'portal',
+        connectedAddress: { systemID: null, id: 'portal' },
         message: 'something broken$somehow lost',
         itemID: 'usulPortalFragment1',
         mapRequirementID: 'map1'
@@ -303,8 +275,7 @@ const locationData = [
         type: 'antenna',
         name: 'antenna',
         at: {x: 1, y: -1},
-        connectedSystem: null,
-        connectedID: 'fog',
+        connectedAddress: { systemID: null, id: 'fog' },
         installID: 'veil',
         installName: 'veil',
         mapRequirementID: 'map2'
@@ -314,8 +285,7 @@ const locationData = [
         type: 'constellation',
         name: '',
         at: {x: 0.5, y: 1.5},
-        connectedSystem: null,
-        connectedID: null,
+        connectedAddress: null,
         structureID: 'door'
       },
       // MARK: map2
@@ -324,8 +294,7 @@ const locationData = [
         type: 'satellite',
         name: 'wreck',
         at: {x: 1, y: -2},
-        connectedSystem: null,
-        connectedID: null,
+        connectedAddress: null,
         message: 'Memories$of misfortune',
         itemID: 'record2',
         mapRequirementID: 'map2'
@@ -341,24 +310,21 @@ const locationData = [
         type: 'star',
         name: 'Senni',
         at: {x: 0, y: 0},
-        connectedSystem: null,
-        connectedID: null
+        connectedAddress: null
       },
       {
         id: 'portal',
         type: 'portal',
         name: 'portal',
         at: {x: 0, y: -1},
-        connectedSystem: null,
-        connectedID: 'transit'
+        connectedAddress: { systemID: null, id: 'transit' }
       },
       {
         id: 'cargo',
         type: 'satellite',
         name: 'cargo',
         at: {x: -1, y: 0},
-        connectedSystem: null,
-        connectedID: 'portal',
+        connectedAddress: { systemID: null, id: 'portal' },
         message: 'extra sight$map format',
         itemID: 'map1'
       },
@@ -367,8 +333,7 @@ const locationData = [
         type: 'harvest',
         name: 'harvest',
         at: {x: 0, y: 1},
-        connectedSystem: null,
-        connectedID: null,
+        connectedAddress: null,
         harvestedID: 'currency3'
       },
       {
@@ -376,8 +341,7 @@ const locationData = [
         type: 'station',
         name: 'station',
         at: {x: 1, y: 0},
-        connectedSystem: null,
-        connectedID: 'portal',
+        connectedAddress: { systemID: null, id: 'portal' },
         wantID: 'currency3',
         installID: 'nav',
         installName: 'Map'
@@ -387,8 +351,7 @@ const locationData = [
         type: 'transmitter',
         name: 'transmitter',
         at: {x: -1, y: 1},
-        connectedSystem: null,
-        connectedID: null
+        connectedAddress: null
       },
       // MARK: map1
       {
@@ -396,8 +359,7 @@ const locationData = [
         type: 'transit',
         name: 'transit',
         at: {x: 0, y: -2},
-        connectedSystem: 'usul',
-        connectedID: 'transit',
+        connectedAddress: { systemID: 'usul', id: 'transit' },
         mapRequirementID: 'map2'
       },
       {
@@ -405,8 +367,7 @@ const locationData = [
         type: 'horadric',
         name: 'Horadric',
         at: {x: 0, y: 2},
-        connectedSystem: null,
-        connectedID: 'harvest',
+        connectedAddress: { systemID: null, id: 'harvest' },
         mapRequirementID: 'map1'
       },
       {
@@ -414,8 +375,7 @@ const locationData = [
         type: 'satellite',
         name: 'fog',
         at: {x: 2, y: 0},
-        connectedSystem: null,
-        connectedID: 'station',
+        connectedAddress: { systemID: null, id: 'station' },
         message: 'Extra power$battery format',
         itemID: 'battery3',
         mapRequirementID: 'map1'
@@ -425,8 +385,7 @@ const locationData = [
         type: 'satellite',
         name: 'wreck',
         at: {x: 1, y: -2},
-        connectedSystem: null,
-        connectedID: null,
+        connectedAddress: null,
         message: 'Memories$of misfortune',
         itemID: 'record3',
         mapRequirementID: 'map1'
@@ -437,8 +396,7 @@ const locationData = [
         type: 'trade',
         name: 'tower',
         at: {x: 1, y: 1},
-        connectedSystem: null,
-        connectedID: null,
+        connectedAddress: null,
         wantID: 'currency6',
         giveID: 'shield2',
         mapRequirementID: 'map2'
@@ -454,8 +412,7 @@ const locationData = [
         type: 'aitasla',
         name: 'aitasla',
         at: {x: 0, y: 0},
-        connectedSystem: null,
-        connectedID: null,
+        connectedAddress: null,
         mapRequirementID: 'map2'
       }
     ]
@@ -480,11 +437,12 @@ const locationClassesByType = {
 
 const makeLocations = () => {
   const locations = []
-  const locationsByKey = {}
+  const locationsBySystem = {}
 
   locationData.forEach(systemData => {
     const { at, systemID, systemLocations } = systemData
     const system = Systems[systemID]
+    locationsBySystem[system] = {}
     systemLocations.forEach(data => {
       const { type, id } = data
       const appendedData = {
@@ -497,8 +455,8 @@ const makeLocations = () => {
       }
       const location = new (locationClassesByType[type])(appendedData)
       locations.push(location)
-      locationsByKey[location.key] = location
+      locationsBySystem[system][location.id] = location
     })
   })
-  return [locations, locationsByKey]
+  return [locations, locationsBySystem]
 }

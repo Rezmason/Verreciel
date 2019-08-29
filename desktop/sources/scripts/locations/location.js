@@ -13,8 +13,7 @@ class Location extends Event {
       system,
       at,
       mapRequirementID,
-      connectedID,
-      connectedSystem
+      connectedAddress,
     } = data
     // assertArgs(arguments, 5);
     super(name, new THREE.Vector2(at.x, at.y), 'unknown', verreciel.grey, false)
@@ -23,17 +22,15 @@ class Location extends Event {
     this.icon = icon
     this.structure = structure
     this.code = system + '-' + name
-    const isStar = type === "star" || type === "void"
-    this.key = this.getKey(system, id, isStar)
     this.id = id
     this.type = type
     this.storage = []
     this.mapRequirementID = mapRequirementID
-    if (connectedID != null) {
-      this.connectedKey = this.getKey(
-        connectedSystem == null ? system : connectedSystem,
-        connectedID
-      )
+    if (connectedAddress != null) {
+      this.connectedAddress = {
+        id: connectedAddress.id,
+        systemID: connectedAddress.systemID != null ? connectedAddress.systemID : system
+      }
     }
     this.isDocked = false
     this.inCollision = false
@@ -177,7 +174,7 @@ class Location extends Event {
     // assertArgs(arguments, 0);
     if (
       verreciel.thruster.isLocked &&
-      verreciel.universe.loiqe_city.isKnown == true
+      verreciel.universe.loiqe.city.isKnown == true
     ) {
       verreciel.thruster.unlock()
     }
@@ -264,15 +261,13 @@ class Location extends Event {
     }
   }
 
-  getKey(systemID, id, isStar = false) {
-    return isStar ? systemID : `${systemID}_${id}`
-  }
-
   connect () {
-    if (this.connectedKey == null) {
+    if (this.connectedAddress == null) {
       return
     }
-    this.connectedLocation = verreciel.universe[this.connectedKey]
+    const connectedSystemID = this.connectedAddress.systemID
+    const connectedID = this.connectedAddress.id
+    this.connectedLocation = verreciel.universe[connectedSystemID][connectedID]
     this.icon.wire.updateVertices([
       new THREE.Vector3(0, 0, 0),
       new THREE.Vector3(

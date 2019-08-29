@@ -118,12 +118,8 @@ class LocationPortal extends Location {
   validate () {
     // assertArgs(arguments, 0);
     if (verreciel.intercom.port.isReceivingItemOfType(ItemTypes.key) == true) {
-      let key = verreciel.intercom.port.origin.event
-      if (
-        key instanceof Item &&
-        (key.locationCode == null ||
-          verreciel.universe[key.locationCode] == verreciel.capsule.lastLocation)
-      ) {
+      const location = this.getLocation(verreciel.intercom.port.origin.event)
+      if (location != null && location == verreciel.capsule.lastLocation) {
         this.inactive()
       } else {
         this.unlock()
@@ -131,6 +127,17 @@ class LocationPortal extends Location {
     } else {
       this.lock()
     }
+  }
+
+  getLocation(key) {
+    if (key == null || !(key instanceof Item)) {
+      return null
+    }
+    const address = key.portalAddress
+    if (address == null) {
+      return null
+    }
+    return verreciel.universe[address.systemID][address.id]
   }
 
   inactive () {
@@ -149,6 +156,7 @@ class LocationPortal extends Location {
     this.pilotPort.disable()
     this.thrusterPort.disable()
     this.keyLabel.updateText('no key', verreciel.red)
+    this.destinationLabel.updateText('--')
 
     if (this.structure instanceof StructurePortal) {
       this.structure.onLock()
@@ -163,10 +171,7 @@ class LocationPortal extends Location {
       return
     }
 
-    let destination = verreciel.locations.find(
-      location => location.code == key.locationCode
-    ) // TODO: replace with simple lookup
-
+    let destination = this.getLocation(key)
     destination.isKnown = true
 
     this.keyLabel.updateText(key.name, verreciel.cyan)

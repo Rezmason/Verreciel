@@ -7,7 +7,7 @@ class Item extends Event {
       id,
       name,
       type,
-      locationCode,
+      portalAddress,
       details,
       isDestroyable
     } = data
@@ -18,7 +18,7 @@ class Item extends Event {
     this.type = type
     this.details = details
     this.isDestroyable = isDestroyable
-    this.locationCode = locationCode
+    this.portalAddress = portalAddress
   }
 
   payload () {
@@ -32,7 +32,7 @@ class Item extends Event {
   static like (other) {
     // assertArgs(arguments, 1);
     if (other.type === ItemTypes.currency) {
-      return new Item({ ...other, locationCode: null })
+      return new Item(other)
     } else {
       return other
     }

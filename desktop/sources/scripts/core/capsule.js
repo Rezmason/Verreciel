@@ -10,7 +10,7 @@ class Capsule extends Empty {
 
     console.info('^ Capsule | Init')
 
-    this.at = verreciel.universe.loiqe_spawn.at.clone()
+    this.at = verreciel.universe.loiqe.spawn.at.clone()
     this.direction = 1
     this.system = Systems.loiqe
     this.shieldRoot = new Empty()
@@ -179,22 +179,22 @@ class Capsule extends Empty {
 
     switch (this.system) {
       case Systems.loiqe:
-        star = verreciel.universe.loiqe
+        star = verreciel.universe.loiqe.star
         break
       case Systems.valen:
-        star = verreciel.universe.valen
+        star = verreciel.universe.valen.star
         break
       case Systems.senni:
-        star = verreciel.universe.senni
+        star = verreciel.universe.senni.star
         break
       case Systems.usul:
-        star = verreciel.universe.usul
+        star = verreciel.universe.usul.star
         break
       case Systems.aitasla:
-        star = verreciel.universe.aitasla
+        star = verreciel.universe.aitasla.star
         break
       default:
-        star = verreciel.universe.loiqe
+        star = verreciel.universe.loiqe.star
     }
 
     return star

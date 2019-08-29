@@ -79,7 +79,7 @@ class Space extends Empty {
   whenRenderer () {
     super.whenRenderer()
     if (
-      verreciel.capsule.isDockedAtLocation(verreciel.universe.aitasla) == true
+      verreciel.capsule.isDockedAtLocation(verreciel.universe.aitasla.star) == true
     ) {
       verreciel.journey.distance += 3
     }
@@ -256,7 +256,7 @@ class StarCluster extends Empty {
 
     starSpeed *= 0.15
 
-    if (verreciel.capsule.isDockedAtLocation(verreciel.universe.aitasla) == true) {
+    if (verreciel.capsule.isDockedAtLocation(verreciel.universe.aitasla.star) == true) {
       starSpeed = 0.15
     }
 
