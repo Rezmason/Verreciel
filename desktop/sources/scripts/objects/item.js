@@ -4,22 +4,21 @@
 class Item extends Event {
   constructor (data) {
     const {
+      id,
       name,
       type,
       locationCode,
       details,
-      isQuest,
-      code
+      isDestroyable
     } = data
     // assertArgs(arguments, 6);
     super(name, new THREE.Vector2(), details, verreciel.grey, false)
-
+    this.id = id
     this.name = name
     this.type = type
     this.details = details
-    this.isQuest = isQuest
+    this.isDestroyable = isDestroyable
     this.locationCode = locationCode
-    this.code = code
   }
 
   payload () {

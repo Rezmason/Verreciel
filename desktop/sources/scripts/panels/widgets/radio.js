@@ -46,7 +46,7 @@ class Radio extends Widget {
 
   play () {
     // assertArgs(arguments, 0);
-    verreciel.music.setRecord(Records[this.port.event.code])
+    verreciel.music.setRecord(Records[this.port.event.id])
     verreciel.music.playRecord()
   }
 

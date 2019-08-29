@@ -104,7 +104,7 @@ class Hatch extends MainPanel {
     if (this.port.isReceiving() == false) {
       return false
     }
-    if (this.port.origin.event.isQuest == true) {
+    if (this.port.origin.event.isDestroyable == false) {
       return false
     }
 
@@ -121,7 +121,7 @@ class Hatch extends MainPanel {
     var load = this.port.origin == null ? null : this.port.origin.event
 
     if (load != null) {
-      if (load.isQuest == true || load instanceof Item == false) {
+      if (load.isDestroyable == false || load instanceof Item == false) {
         this.detailsLabel.updateText('error', verreciel.red)
         this.outline.updateChildrenColors(verreciel.red)
       } else {

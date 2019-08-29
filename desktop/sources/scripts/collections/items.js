@@ -9,8 +9,7 @@ const itemData = [
     type: 'waste',
     locationCode: null,
     details: 'useless',
-    isQuest: false,
-    code: 'kelp'
+    isDestroyable: true
   },
   {
     id: 'waste',
@@ -18,8 +17,7 @@ const itemData = [
     type: 'waste',
     locationCode: null,
     details: 'useless',
-    isQuest: false,
-    code: 'waste'
+    isDestroyable: true
   },
 
   // "Keys"
@@ -29,8 +27,7 @@ const itemData = [
     type: 'key',
     locationCode: 'aitasla-star',
     details: 'aitasla warp key',
-    isQuest: true,
-    code: 'end-key'
+    isDestroyable: false
   },
   {
     id: 'endPortalKeyFragment1',
@@ -38,8 +35,7 @@ const itemData = [
     type: 'fragment',
     locationCode: null,
     details: 'half Portal key',
-    isQuest: true,
-    code: 'end-key-1'
+    isDestroyable: false
   },
   {
     id: 'endPortalKeyFragment2',
@@ -47,8 +43,7 @@ const itemData = [
     type: 'fragment',
     locationCode: null,
     details: 'half Portal key',
-    isQuest: true,
-    code: 'end-key-2'
+    isDestroyable: false
   },
   {
     id: 'loiqePortalKey',
@@ -56,8 +51,7 @@ const itemData = [
     type: 'key',
     locationCode: 'loiqe-portal',
     details: 'complete key',
-    isQuest: true,
-    code: 'loiqe-key'
+    isDestroyable: false
   },
   {
     id: 'senniPortalKey',
@@ -65,8 +59,7 @@ const itemData = [
     type: 'key',
     locationCode: 'senni-portal',
     details: 'complete key',
-    isQuest: true,
-    code: 'senni-key'
+    isDestroyable: false
   },
   {
     id: 'usulPortalFragment1',
@@ -74,8 +67,7 @@ const itemData = [
     type: 'fragment',
     locationCode: null,
     details: 'half Portal key',
-    isQuest: true,
-    code: 'usul-key-1'
+    isDestroyable: false
   },
   {
     id: 'usulPortalFragment2',
@@ -83,8 +75,7 @@ const itemData = [
     type: 'fragment',
     locationCode: null,
     details: 'half Portal key',
-    isQuest: true,
-    code: 'usul-key-2'
+    isDestroyable: false
   },
   {
     id: 'usulPortalKey',
@@ -92,8 +83,7 @@ const itemData = [
     type: 'key',
     locationCode: 'usul-portal',
     details: 'complete key',
-    isQuest: true,
-    code: 'usul-key'
+    isDestroyable: false
   },
   {
     id: 'valenPortalFragment1',
@@ -101,8 +91,7 @@ const itemData = [
     type: 'fragment',
     locationCode: null,
     details: 'half Portal key',
-    isQuest: true,
-    code: 'valen-key-1'
+    isDestroyable: false
   },
   {
     id: 'valenPortalFragment2',
@@ -110,8 +99,7 @@ const itemData = [
     type: 'fragment',
     locationCode: null,
     details: 'half Portal key',
-    isQuest: true,
-    code: 'valen-key-2'
+    isDestroyable: false
   },
   {
     id: 'valenPortalKey',
@@ -119,8 +107,7 @@ const itemData = [
     type: 'key',
     locationCode: 'valen-portal',
     details: 'complete key',
-    isQuest: true,
-    code: 'valen-key'
+    isDestroyable: false
   },
 
   // "Etc.."
@@ -130,8 +117,7 @@ const itemData = [
     type: 'drive',
     locationCode: null,
     details: 'local warpdrive',
-    isQuest: true,
-    code: 'warp'
+    isDestroyable: false
   },
 
   // "Records"
@@ -141,8 +127,7 @@ const itemData = [
     type: 'record',
     locationCode: null,
     details: 'audio format',
-    isQuest: true,
-    code: 'record1'
+    isDestroyable: false
   },
   {
     id: 'record2',
@@ -150,8 +135,7 @@ const itemData = [
     type: 'record',
     locationCode: null,
     details: 'audio format',
-    isQuest: true,
-    code: 'record2'
+    isDestroyable: false
   },
   {
     id: 'record3',
@@ -159,8 +143,7 @@ const itemData = [
     type: 'record',
     locationCode: null,
     details: 'audio format',
-    isQuest: true,
-    code: 'record3'
+    isDestroyable: false
   },
   {
     id: 'record4',
@@ -168,8 +151,7 @@ const itemData = [
     type: 'record',
     locationCode: null,
     details: 'audio format',
-    isQuest: true,
-    code: 'record4'
+    isDestroyable: false
   },
 
   // "Maps"
@@ -179,8 +161,7 @@ const itemData = [
     type: 'map',
     locationCode: null,
     details: 'map expension',
-    isQuest: true,
-    code: 'map-1'
+    isDestroyable: false
   },
   {
     id: 'map2',
@@ -188,8 +169,7 @@ const itemData = [
     type: 'map',
     locationCode: null,
     details: 'map expension',
-    isQuest: true,
-    code: 'map-2'
+    isDestroyable: false
   },
   {
     id: 'map3',
@@ -197,8 +177,7 @@ const itemData = [
     type: 'map',
     locationCode: null,
     details: 'map expension',
-    isQuest: true,
-    code: 'map-3'
+    isDestroyable: false
   },
 
   // "Shields(fields)"
@@ -210,8 +189,7 @@ const itemData = [
     type: 'currency',
     locationCode: null,
     details: 'trading currency',
-    isQuest: false,
-    code: 'currency-1'
+    isDestroyable: true
   },
   {
     id: 'currency2',
@@ -219,8 +197,7 @@ const itemData = [
     type: 'currency',
     locationCode: null,
     details: 'trading currency',
-    isQuest: false,
-    code: 'currency-2'
+    isDestroyable: true
   },
   {
     id: 'currency3',
@@ -228,8 +205,7 @@ const itemData = [
     type: 'currency',
     locationCode: null,
     details: 'trading currency',
-    isQuest: false,
-    code: 'currency-3'
+    isDestroyable: true
   },
   {
     id: 'currency4',
@@ -237,8 +213,7 @@ const itemData = [
     type: 'currency',
     locationCode: null,
     details: 'From 1 & 2',
-    isQuest: false,
-    code: 'currency-4'
+    isDestroyable: true
   },
   {
     id: 'currency5',
@@ -246,8 +221,7 @@ const itemData = [
     type: 'currency',
     locationCode: null,
     details: 'From 2 & 3',
-    isQuest: false,
-    code: 'currency-5'
+    isDestroyable: true
   },
   {
     id: 'currency6',
@@ -255,8 +229,7 @@ const itemData = [
     type: 'currency',
     locationCode: null,
     details: 'From 4 & 5',
-    isQuest: false,
-    code: 'currency-6'
+    isDestroyable: true
   },
   {
     id: 'record_oquonie',
@@ -264,8 +237,7 @@ const itemData = [
     type: 'record',
     locationCode: null,
     details: 'wet',
-    isQuest: true,
-    code: 'record5'
+    isDestroyable: false
   },
   {
     id: 'shield',
@@ -273,8 +245,7 @@ const itemData = [
     type: 'shield',
     locationCode: null,
     details: 'star sand',
-    isQuest: true,
-    code: 'shield-1'
+    isDestroyable: false
   },
   {
     id: 'shield2',
@@ -282,8 +253,7 @@ const itemData = [
     type: 'shield',
     locationCode: null,
     details: 'red mirror',
-    isQuest: true,
-    code: 'shield-2'
+    isDestroyable: false
   },
 
   // "Batteries"
@@ -293,8 +263,7 @@ const itemData = [
     type: 'battery',
     locationCode: null,
     details: 'power source',
-    isQuest: true,
-    code: 'battery-1'
+    isDestroyable: false
   },
   {
     id: 'battery2',
@@ -302,8 +271,7 @@ const itemData = [
     type: 'battery',
     locationCode: null,
     details: 'power source',
-    isQuest: true,
-    code: 'battery-2'
+    isDestroyable: false
   },
   {
     id: 'battery3',
@@ -311,8 +279,7 @@ const itemData = [
     type: 'battery',
     locationCode: null,
     details: 'power source',
-    isQuest: true,
-    code: 'battery-3'
+    isDestroyable: false
   },
   // Veils
 
@@ -322,8 +289,7 @@ const itemData = [
     type: 'veil',
     locationCode: null,
     details: 'dyson sphere',
-    isQuest: true,
-    code: 'veil-1'
+    isDestroyable: false
   },
 
   // "Echoes"
@@ -333,8 +299,7 @@ const itemData = [
     type: 'unknown',
     locationCode: null,
     details: 'is paradise',
-    isQuest: true,
-    code: 'echoes-1'
+    isDestroyable: false
   },
 ]
 

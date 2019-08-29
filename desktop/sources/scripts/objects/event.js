@@ -7,12 +7,12 @@ class Event extends Empty {
     at = new THREE.Vector2(),
     details = '',
     color = verreciel.grey,
-    isQuest = false
+    isDestroyable = true
   ) {
     // assertArgs(arguments, 5);
     super()
 
-    this.isQuest = isQuest
+    this.isDestroyable = isDestroyable
 
     this.name = name
     this.details = details

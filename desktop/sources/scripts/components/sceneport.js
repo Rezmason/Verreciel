@@ -239,7 +239,7 @@ class ScenePort extends Empty {
     if (this.event === null) {
       return false
     }
-    if (this.event.code === target.code) {
+    if (this.event.id === target.id) {
       return true
     }
     return false

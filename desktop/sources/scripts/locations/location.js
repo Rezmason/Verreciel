@@ -336,7 +336,7 @@ class Location extends Event {
     // assertArgs(arguments, 0);
     var collection = []
     for (let port of this.storage) {
-      if (port.hasEvent() == true && port.event.isQuest == true) {
+      if (port.hasEvent() == true && port.event.isDestroyable == false) {
         collection.push(port.event)
       }
     }

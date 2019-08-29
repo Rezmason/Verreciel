@@ -182,39 +182,39 @@ class Cargo extends MainPanel {
 
     if (this.cargohold.content.length > 0) {
       this.line1.color =
-        this.cargohold.content[0].isQuest == true
-          ? verreciel.cyan
-          : verreciel.white
+        this.cargohold.content[0].isDestroyable == true
+          ? verreciel.white
+          : verreciel.cyan
     }
     if (this.cargohold.content.length > 1) {
       this.line2.color =
-        this.cargohold.content[1].isQuest == true
-          ? verreciel.cyan
-          : verreciel.white
+        this.cargohold.content[1].isDestroyable == true
+          ? verreciel.white
+          : verreciel.cyan
     }
     if (this.cargohold.content.length > 2) {
       this.line3.color =
-        this.cargohold.content[2].isQuest == true
-          ? verreciel.cyan
-          : verreciel.white
+        this.cargohold.content[2].isDestroyable == true
+          ? verreciel.white
+          : verreciel.cyan
     }
     if (this.cargohold.content.length > 3) {
       this.line4.color =
-        this.cargohold.content[3].isQuest == true
-          ? verreciel.cyan
-          : verreciel.white
+        this.cargohold.content[3].isDestroyable == true
+          ? verreciel.white
+          : verreciel.cyan
     }
     if (this.cargohold.content.length > 4) {
       this.line5.color =
-        this.cargohold.content[4].isQuest == true
-          ? verreciel.cyan
-          : verreciel.white
+        this.cargohold.content[4].isDestroyable == true
+          ? verreciel.white
+          : verreciel.cyan
     }
     if (this.cargohold.content.length > 5) {
       this.line6.color =
-        this.cargohold.content[5].isQuest == true
-          ? verreciel.cyan
-          : verreciel.white
+        this.cargohold.content[5].isDestroyable == true
+          ? verreciel.white
+          : verreciel.cyan
     }
 
     if (this.cargohold.content.length == 0) {

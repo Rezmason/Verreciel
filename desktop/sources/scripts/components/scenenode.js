@@ -4,8 +4,8 @@
 class SceneNode {
   constructor () {
     // assertArgs(arguments, 0);
-    this.id = SceneNode.ids++
-    // console.debug(this.id);
+    this.nodeID = SceneNode.nodeIDs++
+    // console.debug(this.nodeID);
     this.children = []
 
     if (DEBUG_REPORT_NODE_USE) {
@@ -195,4 +195,4 @@ class SceneNode {
   }
 }
 
-SceneNode.ids = 0
+SceneNode.nodeIDs = 0

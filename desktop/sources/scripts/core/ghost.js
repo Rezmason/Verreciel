@@ -517,7 +517,7 @@ class Ghost extends Empty {
         record = {
           from: 'port',
           numberlessName: trigger.host.numberlessName,
-          event: trigger.host.event == null ? null : trigger.host.event.code
+          event: trigger.host.event == null ? null : trigger.host.event.id
         }
       } else {
         record = {
@@ -543,7 +543,7 @@ class Ghost extends Empty {
         target = this.portsByName[record.name].trigger
       } else {
         for (let port of this.portsByName[record.numberlessName]) {
-          let eventCode = port.event == null ? null : port.event.code
+          let eventCode = port.event == null ? null : port.event.id
           if (eventCode == record.event) {
             target = port.trigger
             break
