@@ -13,7 +13,7 @@ class Location extends Event {
       system,
       at,
       mapRequirementID,
-      connectedAddress,
+      connectedAddress
     } = data
     // assertArgs(arguments, 5);
     super(name, new THREE.Vector2(at.x, at.y), 'unknown', verreciel.grey, false)
@@ -49,7 +49,7 @@ class Location extends Event {
     this.structure.addHost(this)
     this.icon.addHost(this)
 
-    let trigger = new SceneTrigger(this, 'location_' + this.code, 1, 1, 0)
+    const trigger = new SceneTrigger(this, 'location_' + this.code, 1, 1, 0)
     trigger.position.set(0, 0, -0.1)
     this.add(trigger)
   }
@@ -202,7 +202,7 @@ class Location extends Event {
       return
     }
 
-    for (let port of this.storage) {
+    for (const port of this.storage) {
       if (port.hasItem() == true) {
         verreciel.cargo.addItem(port.event)
         port.removeEvent()
@@ -306,7 +306,7 @@ class Location extends Event {
 
   calculateAngle () {
     // assertArgs(arguments, 0);
-    let angle = angleBetweenTwoPoints(
+    const angle = angleBetweenTwoPoints(
       verreciel.capsule.at,
       this.at,
       verreciel.capsule.at
@@ -330,7 +330,7 @@ class Location extends Event {
   storedItems () {
     // assertArgs(arguments, 0);
     var collection = []
-    for (let port of this.storage) {
+    for (const port of this.storage) {
       if (port.hasEvent() == true && port.event.isDestroyable == false) {
         collection.push(port.event)
       }
@@ -351,8 +351,8 @@ class Location extends Event {
   }
 
   isReach () {
-    let verticalDistance = Math.abs(verreciel.capsule.at.y - this.at.y)
-    let horizontalDistance = Math.abs(verreciel.capsule.at.x - this.at.x)
+    const verticalDistance = Math.abs(verreciel.capsule.at.y - this.at.y)
+    const horizontalDistance = Math.abs(verreciel.capsule.at.x - this.at.x)
     return (verticalDistance <= 1.5 && horizontalDistance <= 1.5) || verreciel.radar.overviewMode == true
   }
 

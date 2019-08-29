@@ -315,7 +315,7 @@ const itemData = [
     portalAddress: null,
     details: 'is paradise',
     isDestroyable: false
-  },
+  }
 ]
 
 class ItemTypes {}

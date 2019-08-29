@@ -61,7 +61,7 @@ const recipeData = [
 
 const makeRecipes = () =>
   recipeData.map(data => {
-    const {ingredientIDs, resultID, like} = data
+    const { ingredientIDs, resultID, like } = data
     const ingredients = ingredientIDs.map(id => verreciel.items[id])
     const result = verreciel.items[resultID]
     return new Recipe(ingredients, result)
