@@ -44,14 +44,12 @@ class Location extends Event {
     this.isComplete = null
     this.isPortEnabled = false
 
-    this.add(this.icon)
-
     this.structure.addHost(this)
     this.icon.addHost(this)
 
     const trigger = new SceneTrigger(this, 'location_' + this.code, 1, 1, 0)
     trigger.position.set(0, 0, -0.1)
-    this.add(trigger)
+    this.icon.add(trigger)
   }
 
   makePanel () {
@@ -62,9 +60,8 @@ class Location extends Event {
 
   whenStart () {
     // assertArgs(arguments, 0);
-    super.whenStart()
     this.panel = this.makePanel()
-    this.position.set(this.at.x, this.at.y, 0)
+    this.icon.position.set(this.at.x, this.at.y, 0)
     this.distance = distanceBetweenTwoPoints(verreciel.capsule.at, this.at)
     this.angle = this.calculateAngle()
     this.align = this.calculateAlignment()
@@ -77,9 +74,8 @@ class Location extends Event {
 
   whenRenderer () {
     // assertArgs(arguments, 0);
-    super.whenRenderer()
 
-    this.position.set(this.at.x, this.at.y, 0)
+    this.icon.position.set(this.at.x, this.at.y, 0)
     this.distance = distanceBetweenTwoPoints(verreciel.capsule.at, this.at)
     this.angle = this.calculateAngle()
     this.align = this.calculateAlignment()
@@ -121,7 +117,6 @@ class Location extends Event {
     }
 
     this.radarCulling()
-    this.clean()
   }
 
   onRadarView () {
@@ -223,6 +218,11 @@ class Location extends Event {
     verreciel.music.playEffect('beep1')
   }
 
+  update () {
+    super.update()
+    this.icon.update()
+  }
+
   sightUpdate () {
     // assertArgs(arguments, 0);
     this.structure.sightUpdate()
@@ -243,12 +243,11 @@ class Location extends Event {
 
   radarCulling () {
     // assertArgs(arguments, 0);
-    this.hide()
 
-    if (this.isReach() === true) {
-      if (this.isVisible() === true) {
-        this.show()
-      }
+    if (this.isReach() === true && this.isVisible() === true) {
+      this.icon.show()
+    } else {
+      this.icon.hide()
     }
 
     // Connections

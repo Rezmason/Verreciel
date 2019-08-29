@@ -14,7 +14,7 @@ class Radar extends MainPanel {
     this.eventView = new Empty()
 
     verreciel.locations.forEach(location => {
-      this.eventView.add(location)
+      this.eventView.add(location.icon)
     })
 
     this.details = 'displays locations'
@@ -225,15 +225,15 @@ class Radar extends MainPanel {
     // Check for overlapping events
     for (let newEvent of verreciel.locations) {
       if (
-        newEvent.position.x == event.position.x &&
-        newEvent.position.y == event.position.y &&
+        newEvent.at.x == event.at.x &&
+        newEvent.at.y == event.at.y &&
         event != newEvent
       ) {
         console.warn(
           'Overlapping event:',
           newEvent.name,
           '->',
-          event.position.x
+          event.at.x
         )
       }
     }

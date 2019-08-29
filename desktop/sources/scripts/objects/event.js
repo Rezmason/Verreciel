@@ -1,7 +1,7 @@
 //  Created by Devine Lu Linvega.
 //  Copyright © 2017 XXIIVV. All rights reserved.
 
-class Event extends Empty {
+class Event {
   constructor (
     name = '',
     at = new THREE.Vector2(),
@@ -10,7 +10,6 @@ class Event extends Empty {
     isDestroyable = true
   ) {
     // assertArgs(arguments, 5);
-    super()
 
     this.isDestroyable = isDestroyable
 
@@ -21,19 +20,18 @@ class Event extends Empty {
     this.color = color
   }
 
-  // MARK: Radar -
+  update() {
 
-  update () {
-    // assertArgs(arguments, 0);
-    super.update()
   }
 
-  remove () {
-    // assertArgs(arguments, 0);
-    this.removeFromParentNode()
+  onConnect () {
+    this.update()
   }
 
-  clean () {
-    // assertArgs(arguments, 0);
+  onDisconnect () {
+    this.update()
+  }
+
+  onUploadComplete () {
   }
 }

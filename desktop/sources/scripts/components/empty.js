@@ -69,10 +69,6 @@ class Empty extends SceneNode {
     // assertArgs(arguments, 0);
   }
 
-  onMissionComplete () {
-    // assertArgs(arguments, 0);
-  }
-
   payload () {
     // assertArgs(arguments, 0);
     return new ConsolePayload([new ConsoleData('unknown', 'unknown')])
