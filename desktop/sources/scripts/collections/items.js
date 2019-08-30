@@ -126,14 +126,14 @@ const itemData = [
   },
 
   // "Etc.."
-  // {
-  //   id: 'warpDrive',
-  //   name: 'warpdrive',
-  //   type: 'drive',
-  //   portalAddress: null,
-  //   details: 'local warpdrive',
-  //   isDestroyable: false
-  // },
+  {
+    id: 'warpDrive',
+    name: 'warpdrive',
+    type: 'drive',
+    portalAddress: null,
+    details: 'local warpdrive',
+    isDestroyable: false
+  },
 
   // "Records"
   {

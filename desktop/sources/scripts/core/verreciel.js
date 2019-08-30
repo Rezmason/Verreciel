@@ -83,6 +83,7 @@ class Verreciel {
     this.locations.forEach(location => {
       location.connect()
     })
+    this.installers = makeInstallers()
 
     // Panels
     this.battery = new Battery()
@@ -156,6 +157,8 @@ class Verreciel {
     this.space.whenStart()
     this.game.whenStart(jump_mission)
 
+    this.locations.forEach(location => location.whenStart())
+
     if (DEBUG_SHOW_STATS) {
       this.stats = new Stats()
       this.stats.showPanel(1)
@@ -196,6 +199,7 @@ class Verreciel {
       // TODO: divide role of whenRenderer
       // between game tick and render logic
       this.root.whenRenderer()
+      this.locations.forEach(location => location.whenRenderer())
     }
     this.helmet.updatePortWires()
 

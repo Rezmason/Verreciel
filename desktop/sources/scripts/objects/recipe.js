@@ -11,9 +11,9 @@ class Recipe {
   isValid (inputs) {
     // assertArgs(arguments, 1);
     // Check if ingredients are all inputs
-    for (let ingredient of this.ingredients) {
+    for (const ingredient of this.ingredients) {
       var isFound = false
-      for (let input of inputs) {
+      for (const input of inputs) {
         if (input.name == ingredient.name) {
           isFound = true
         }
@@ -24,9 +24,9 @@ class Recipe {
     }
 
     // Check if inputs are all ingredients
-    for (let input of inputs) {
+    for (const input of inputs) {
       var isFound = false
-      for (let ingredient of this.ingredients) {
+      for (const ingredient of this.ingredients) {
         if (input.name == ingredient.name) {
           isFound = true
         }

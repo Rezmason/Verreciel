@@ -218,7 +218,11 @@ class Radar extends MainPanel {
       return
     }
 
+    if (this.port.event != null) {
+      this.port.event.isSelected = false
+    }
     this.port.event = event
+    event.isSelected = true
 
     this.updateTarget()
 
@@ -241,7 +245,10 @@ class Radar extends MainPanel {
 
   removeTarget () {
     // assertArgs(arguments, 0);
-    this.port.event = null
+    if (this.port.event != null) {
+      this.port.event.isSelected = false
+      this.port.event = null
+    }
     this.targetter.hide()
   }
 

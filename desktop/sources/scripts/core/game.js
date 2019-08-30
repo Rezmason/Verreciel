@@ -85,6 +85,7 @@ class Game {
       this.seconds = 0
       verreciel.capsule.whenSecond()
       verreciel.missions.refresh()
+      verreciel.installers.forEach(installer => installer.refresh())
     }
   }
 }

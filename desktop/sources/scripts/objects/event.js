@@ -20,7 +20,7 @@ class Event {
     this.color = color
   }
 
-  update() {
+  update () {
 
   }
 
@@ -33,5 +33,6 @@ class Event {
   }
 
   onUploadComplete () {
+
   }
 }
