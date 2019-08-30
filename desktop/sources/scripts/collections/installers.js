@@ -11,7 +11,20 @@ const installerData = [
   },
   {
     cause: {
-      type: 'thrusterActive'
+      type: 'or',
+      conditions: [
+        {
+          type: 'thrusterAtOrAboveSpeed',
+          speed: 0.1
+        },
+        {
+          type: 'locationIsKnown',
+          locationAddress: {
+            systemID: 'loiqe',
+            id: 'harvest'
+          }
+        }
+      ]
     },
     result: {
       subject: 'intercom',
@@ -43,11 +56,17 @@ const installerData = [
   },
   {
     cause: {
-      type: 'locationIsComplete',
-      locationAddress: {
-        systemID: 'loiqe',
-        id: 'city'
-      }
+      type: 'and',
+      conditions: [
+        {
+          type: 'cargoContains',
+          itemID: 'currency1'
+        },
+        {
+          type: 'thrusterAtOrAboveSpeed',
+          speed: '0.1'
+        }
+      ]
     },
     result: {
       subject: 'radar',
@@ -66,11 +85,20 @@ const installerData = [
   },
   {
     cause: {
-      type: 'locationIsSelected',
-      locationAddress: {
-        systemID: 'loiqe',
-        id: 'satellite'
-      }
+      type: 'and',
+      conditions: [
+        {
+          type: 'cargoContains',
+          itemID: 'valenPortalFragment1'
+        },
+        {
+          type: 'locationIsSelected',
+          locationAddress: {
+            systemID: 'loiqe',
+            id: 'satellite'
+          }
+        }
+      ]
     },
     result: {
       subject: 'pilot',

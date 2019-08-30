@@ -1,10 +1,6 @@
 const conditionsByType = {
-  and: ({ conditions }) => {
-    return conditions.every(condition => {
-      const result = conditionsByType[condition.type](condition)
-      return result
-    })
-  },
+  and: ({ conditions }) =>
+    conditions.every(condition => conditionsByType[condition.type](condition)),
   batteryContains: ({ itemID }) =>
     verreciel.battery.hasCell(verreciel.items[itemID]) || verreciel.cargo.contains(verreciel.items[itemID]),
   capsuleIsDocked: () =>
@@ -27,8 +23,8 @@ const conditionsByType = {
     conditions.some(condition => conditionsByType[condition.type](condition)),
   panelIsInstalled: ({ panelID }) =>
     verreciel[panelID].isInstalled,
-  thrusterActive: () =>
-    verreciel.thruster.speed > 0
+  thrusterAtOrAboveSpeed: ({ speed }) =>
+    verreciel.thruster.speed >= speed
 }
 
 const makeCondition = data => () => conditionsByType[data.type](data)

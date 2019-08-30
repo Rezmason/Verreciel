@@ -252,7 +252,7 @@ class Location extends Event {
 
     // Connections
     if (this.connectedLocation != null) {
-      if (this.connectedLocation.opacity != 0) {
+      if (this.connectedLocation.icon.opacity != 0) {
         this.icon.wire.show()
       } else {
         this.icon.wire.hide()
