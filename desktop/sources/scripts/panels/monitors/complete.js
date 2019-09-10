@@ -16,10 +16,12 @@ class Complete extends Monitor {
   refresh () {
     // assertArgs(arguments, 0);
     super.refresh()
-    this.nameLabel.updateText(
-      verreciel.missions.currentMission.id +
-        '/' +
-        (verreciel.missions.story.length - 1)
-    )
+    if (!DEBUG_DISABLE_MISSIONS) {
+      this.nameLabel.updateText(
+        verreciel.missions.currentMission.id +
+          '/' +
+          (verreciel.missions.story.length - 1)
+      )
+    }
   }
 }

@@ -115,10 +115,11 @@ class Verreciel {
     this.space = new Space()
     this.helmet = new Helmet()
 
-    this.missions = new Missions()
+    if (!DEBUG_DISABLE_MISSIONS) {
+      this.missions = new Missions()
+    }
 
     this.render = this.render.bind( this )
-
   }
 
   start (jump_mission) {
@@ -158,6 +159,42 @@ class Verreciel {
     this.game.whenStart(jump_mission)
 
     this.locations.forEach(location => location.whenStart())
+
+    if (DEBUG_DISABLE_MISSIONS) {
+      this.capsule.beginAtLocation(this.universe.loiqe.spawn)
+      this.battery.install()
+      this.battery.cellPort1.enable()
+      this.battery.cellPort1.addEvent(this.items.battery1)
+      // this.battery.cellPort2.enable('empty', this.grey)
+      // this.battery.cellPort3.enable('empty', this.grey)
+      // this.locations.forEach(location => {
+      //   location.isKnown = true
+      // })
+      this.universe.valen.bank.addItems([
+        this.items.loiqePortalKey,
+        this.items.record1,
+        this.items.waste
+      ])
+
+      this.universe.loiqe.spawn.isKnown = true
+
+      // this.thruster.install()
+      // this.intercom.install()
+      // this.cargo.install()
+      // this.console.install()
+      // this.radar.install()
+      // this.progress.install()
+      // this.pilot.install()
+      // this.exploration.install()
+      // this.journey.install()
+      // this.hatch.install()
+      // this.completion.install()
+
+      // this.nav.install()
+      // this.battery.cellPort3.addEvent(this.items.battery3)
+      // this.battery.cellPort3.connect(this.battery.navPort)
+      // this.nav.setMap(this.items.map3)
+    }
 
     if (DEBUG_SHOW_STATS) {
       this.stats = new Stats()

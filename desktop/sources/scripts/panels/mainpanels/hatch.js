@@ -95,8 +95,10 @@ class Hatch extends MainPanel {
       this.port.origin.disconnect()
       verreciel.music.playEffect('click3')
       verreciel.game.erase()
-      verreciel.missions.refresh()
-      verreciel.missions.updateCurrentMission()
+      if (!DEBUG_DISABLE_MISSIONS) {
+        verreciel.missions.refresh()
+        verreciel.missions.updateCurrentMission()
+      }
       verreciel.player.ejectViaHatch()
       return true
     }
@@ -111,7 +113,9 @@ class Hatch extends MainPanel {
     this.port.origin.removeEvent()
     this.count += 1
     this.update()
-    verreciel.missions.refresh()
+    if (!DEBUG_DISABLE_MISSIONS) {
+      verreciel.missions.refresh()
+    }
     verreciel.music.playEffect('click3')
     return true
   }

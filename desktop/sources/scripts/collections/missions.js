@@ -36,7 +36,6 @@ class Missions {
           )
         },
         function () {
-          verreciel.thruster.install()
         }
       ),
       new Quest(
@@ -61,7 +60,6 @@ class Missions {
           )
         },
         function () {
-          verreciel.intercom.install()
           verreciel.thruster.lock()
         }
       ),
@@ -72,7 +70,6 @@ class Missions {
           return u.loiqe.harvest.isKnown == true
         },
         function () {
-          verreciel.cargo.install()
           verreciel.thruster.lock()
         }
       ),
@@ -83,7 +80,6 @@ class Missions {
           return verreciel.cargo.containsLike(i.currency1)
         },
         function () {
-          verreciel.console.install()
           verreciel.thruster.unlock()
         }
       ),
@@ -105,7 +101,6 @@ class Missions {
           return verreciel.capsule.location != u.loiqe.harvest
         },
         function () {
-          verreciel.radar.install()
         }
       ),
       new Quest(
@@ -171,7 +166,6 @@ class Missions {
           return verreciel.cargo.contains(i.valenPortalFragment1) == true
         },
         function () {
-          verreciel.progress.install()
         }
       )
     ]
@@ -212,7 +206,6 @@ class Missions {
           )
         },
         function () {
-          verreciel.pilot.install()
           verreciel.thruster.unlock()
         }
       ),
@@ -289,7 +282,6 @@ class Missions {
           return verreciel.cargo.contains(i.valenPortalKey) == true
         },
         function () {
-          verreciel.exploration.install()
         }
       )
     ]
@@ -446,7 +438,6 @@ class Missions {
           return verreciel.radio.isInstalled == true
         },
         function () {
-          verreciel.journey.install()
         }
       )
     ]
@@ -574,7 +565,6 @@ class Missions {
           return verreciel.cargo.containsLike(i.waste)
         },
         function () {
-          verreciel.hatch.install()
         }
       ),
       new Quest(
@@ -592,7 +582,6 @@ class Missions {
           return verreciel.hatch.count > 0
         },
         function () {
-          verreciel.completion.install()
         }
       )
     ]

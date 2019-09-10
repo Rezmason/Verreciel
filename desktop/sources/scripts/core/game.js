@@ -48,12 +48,14 @@ class Game {
 
     console.info('@ GAME     | Loaded State to ' + id)
 
-    for (let mission of verreciel.missions.story) {
-      if (mission.id < id) {
-        mission.complete()
+    if (!DEBUG_DISABLE_MISSIONS) {
+      for (let mission of verreciel.missions.story) {
+        if (mission.id < id) {
+          mission.complete()
+        }
       }
+      verreciel.missions.story[id].state()
     }
-    verreciel.missions.story[id].state()
   }
 
   get state () {
@@ -84,7 +86,9 @@ class Game {
     if( this.seconds > ( 1 / this.gameSpeed )) {
       this.seconds = 0
       verreciel.capsule.whenSecond()
-      verreciel.missions.refresh()
+      if (!DEBUG_DISABLE_MISSIONS) {
+        verreciel.missions.refresh()
+      }
       verreciel.installers.forEach(installer => installer.refresh())
     }
   }
