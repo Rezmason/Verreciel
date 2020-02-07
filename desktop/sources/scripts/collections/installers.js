@@ -147,8 +147,16 @@ const installerData = [
   },
   {
     cause: {
-      type: 'cargoContains',
-      itemID: 'waste'
+      type: 'or',
+      conditions: [
+        {
+          type: 'cargoContains',
+          itemID: 'waste'
+        },
+        {
+          type: 'cargoIsFull'
+        }
+      ]
     },
     result: {
       subject: 'hatch',

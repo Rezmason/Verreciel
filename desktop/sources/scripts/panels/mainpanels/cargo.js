@@ -219,7 +219,7 @@ class Cargo extends MainPanel {
 
     if (this.cargohold.content.length == 0) {
       this.detailsLabel.updateText('Empty', verreciel.grey)
-    } else if (this.cargohold.content.length == 6) {
+    } else if (this.isFull()) {
       this.detailsLabel.updateText('FULL', verreciel.red)
     } else {
       this.detailsLabel.updateText(
@@ -231,6 +231,10 @@ class Cargo extends MainPanel {
     if (this.port.isConnectedToPanel(verreciel.console) == true) {
       verreciel.console.onConnect()
     }
+  }
+
+  isFull () {
+    return this.cargohold.content.length == 6
   }
 
   onUploadComplete () {

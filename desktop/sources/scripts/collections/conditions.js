@@ -7,6 +7,8 @@ const conditionsByType = {
     verreciel.capsule.isDocked === true,
   cargoContains: ({ itemID }) =>
     verreciel.cargo.containsLike(verreciel.items[itemID]),
+  cargoIsFull: () =>
+    verreciel.cargo.isFull(),
   hatchUsed: () =>
     verreciel.hatch.count > 0,
   isBatteryPortPowered: ({ batteryPortID }) =>
