@@ -218,9 +218,6 @@ class Capsule extends Empty {
     portal.pilotPort.disconnect()
     portal.thrusterPort.disconnect()
     portal.onWarp()
-    if (verreciel.intercom.port.origin != null) {
-      verreciel.intercom.port.origin.disconnect()
-    }
 
     destination.isKnown = true
     verreciel.radar.addTarget(destination)

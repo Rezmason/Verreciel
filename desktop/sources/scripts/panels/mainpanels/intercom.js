@@ -127,7 +127,7 @@ class Intercom extends MainPanel {
       verreciel.capsule.location != null ||
       verreciel.radar.port.hasEvent() == true
     ) {
-      let target =
+      const target =
         verreciel.radar.port.hasEvent() == true
           ? verreciel.radar.port.event
           : verreciel.capsule.location
@@ -232,7 +232,10 @@ class Intercom extends MainPanel {
 
   connectToLocation (location) {
     this.locationPanel.empty()
-    let panel = location.panel
+    if (location.isComplete) {
+      return
+    }
+    const panel = location.panel
     if (panel != null) {
       this.locationPanel.add(panel)
     } else {
@@ -269,18 +272,9 @@ class Intercom extends MainPanel {
       verreciel.animator.commit()
     }.bind(this)
     verreciel.animator.commit()
-
-    this.port.addEvent(location)
-
-    if (location.isPortEnabled == true) {
-      this.port.enable()
-    } else {
-      this.port.disable()
-    }
   }
 
   disconnectFromLocation () {
-
     ScenePort.stripAllPorts(this)
 
     verreciel.animator.completeAnimation('intercom_connect_1')
@@ -308,8 +302,6 @@ class Intercom extends MainPanel {
       verreciel.animator.commit()
     }.bind(this)
     verreciel.animator.commit()
-
-    this.port.removeEvent()
   }
 
   onInstallationBegin () {
@@ -322,17 +314,5 @@ class Intercom extends MainPanel {
     super.onInstallationComplete()
 
     this.touch(1)
-  }
-
-  onConnect () {
-    if (verreciel.capsule.isDocked == true) {
-      verreciel.capsule.location.onConnect()
-    }
-  }
-
-  onDisconnect () {
-    if (verreciel.capsule.isDocked == true) {
-      verreciel.capsule.location.onDisconnect()
-    }
   }
 }

@@ -152,9 +152,8 @@ class Verreciel {
     this.helmet.whenStart()
     this.capsule.whenStart()
     this.space.whenStart()
-    this.game.whenStart(jump_mission)
-
     this.locations.forEach(location => location.whenStart())
+    this.game.whenStart(jump_mission)
 
     if (DEBUG_DISABLE_MISSIONS) {
       this.capsule.beginAtLocation(this.universe.loiqe.spawn)
@@ -419,30 +418,17 @@ const Templates = (function () {
     lineSpacing: 0.42
   }
 
-  let scale = 1
-  let height = 1.5
+  templates.margin = 0.4
 
-  let highNode = [
-    new THREE.Vector3(2 * scale, height, -4 * scale),
-    new THREE.Vector3(4 * scale, height, -2 * scale),
-    new THREE.Vector3(4 * scale, height, 2 * scale),
-    new THREE.Vector3(2 * scale, height, 4 * scale),
-    new THREE.Vector3(-2 * scale, height, 4 * scale),
-    new THREE.Vector3(-4 * scale, height, 2 * scale),
-    new THREE.Vector3(-4 * scale, height, -2 * scale),
-    new THREE.Vector3(-2 * scale, height, -4 * scale)
-  ]
-
-  templates.left = highNode[7].x
-  templates.right = highNode[0].x
-  templates.top = highNode[0].y
-  templates.bottom = -highNode[0].y
-  templates.leftMargin = highNode[7].x * 0.8
-  templates.rightMargin = highNode[0].x * 0.8
-  templates.topMargin = highNode[0].y * 0.8
-  templates.bottomMargin = -highNode[0].y * 0.8
-  templates.radius = highNode[0].z
-  templates.margin = Math.abs(templates.left - templates.leftMargin)
+  templates.left = -2
+  templates.right = 2
+  templates.top = 1.5
+  templates.bottom = -1.5
+  templates.leftMargin = -2 + 0.4
+  templates.rightMargin = 2 - 0.4
+  templates.topMargin = 1.5 - 0.4
+  templates.bottomMargin = -1.5 + 0.4
+  templates.radius = -4
 
   return templates
 })()

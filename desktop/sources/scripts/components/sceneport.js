@@ -192,7 +192,6 @@ class ScenePort extends Empty {
     }
 
     this.onDisconnect()
-    this.host.onDisconnect()
 
     this.wire.disable()
   }

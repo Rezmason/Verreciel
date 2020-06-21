@@ -24,8 +24,6 @@ class ScenePortSlot extends ScenePort {
     this.detailsLabel = new SceneLabel('', 0.075, align, verreciel.grey)
     this.add(this.detailsLabel)
 
-    this.host = host
-
     if (align == null) {
       this.label.hide()
       this.detailsLabel.hide()
@@ -105,11 +103,6 @@ class ScenePortSlot extends ScenePort {
         this.upload(this.origin.event)
       }
     }
-  }
-
-  onDisconnect () {
-    super.onDisconnect()
-    this.host.onDisconnect()
   }
 
   addEvent (event) {

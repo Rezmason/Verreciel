@@ -12,8 +12,11 @@ class LocationPortal extends Location {
       Alignment.center,
       verreciel.white
     )
-    this.destinationLabel = new SceneLabel(
-      '--',
+    this.keyPort = new ScenePort(this, this.code + '_key')
+    this.keyPort.enable()
+    this.thrusterPort = new ScenePort(this, this.code + '_thruster')
+    this.thrusterLabel = new SceneLabel(
+      'thruster',
       0.08,
       Alignment.center,
       verreciel.grey
@@ -25,37 +28,35 @@ class LocationPortal extends Location {
       Alignment.center,
       verreciel.grey
     )
-    this.thrusterPort = new ScenePort(this, this.code + '_thruster')
-    this.thrusterLabel = new SceneLabel(
-      'thruster',
-      0.08,
-      Alignment.center,
-      verreciel.grey
-    )
-    this.isPortEnabled = true
+  }
+
+  whenStart () {
+    super.whenStart()
+    this.refresh()
   }
 
   // MARK: Panel -
 
   makePanel () {
-    let newPanel = new Panel()
+    const newPanel = new Panel()
 
-    this.pilotPort.add(this.pilotLabel)
     this.thrusterPort.add(this.thrusterLabel)
+    this.pilotPort.add(this.pilotLabel)
 
     newPanel.add(this.keyLabel)
-    newPanel.add(this.pilotPort)
+    newPanel.add(this.keyPort)
     newPanel.add(this.thrusterPort)
+    newPanel.add(this.pilotPort)
 
     this.keyLabel.position.set(0, 0.75, 0)
-    this.keyLabel.add(this.destinationLabel)
-    this.destinationLabel.position.set(0, -0.4, 0)
 
-    this.pilotPort.position.set(0.8, -0.4, 0)
-    this.pilotLabel.position.set(0, -0.4, 0)
+    this.keyPort.position.set(0, 0.2, 0)
 
     this.thrusterPort.position.set(-0.8, -0.4, 0)
     this.thrusterLabel.position.set(0, -0.4, 0)
+
+    this.pilotPort.position.set(0.8, -0.4, 0)
+    this.pilotLabel.position.set(0, -0.4, 0)
 
     newPanel.add(
       new SceneLine(
@@ -88,20 +89,6 @@ class LocationPortal extends Location {
     return newPanel
   }
 
-  onConnect () {
-    this.validate()
-  }
-
-  onDisconnect () {
-    this.validate()
-  }
-
-  onDock () {
-    super.onDock()
-
-    this.validate()
-  }
-
   onWarp () {
     if (this.structure instanceof StructurePortal) {
       this.structure.isWarping = true
@@ -109,10 +96,18 @@ class LocationPortal extends Location {
     }
   }
 
-  validate () {
-    if (verreciel.intercom.port.isReceivingItemOfType(ItemTypes.key) == true) {
-      const location = this.getLocation(verreciel.intercom.port.origin.event)
-      if (location != null && location == verreciel.capsule.lastLocation) {
+  onConnect () {
+    this.refresh()
+  }
+
+  onDisconnect () {
+    this.refresh()
+  }
+
+  refresh () {
+    if (this.keyPort.isReceivingItemOfType(ItemTypes.key) == true) {
+      const location = this.getLocation(this.keyPort.origin.event)
+      if (location == this) {
         this.inactive()
       } else {
         this.unlock()
@@ -122,7 +117,7 @@ class LocationPortal extends Location {
     }
   }
 
-  getLocation(key) {
+  getLocation (key) {
     if (key == null || !(key instanceof Item)) {
       return null
     }
@@ -147,7 +142,6 @@ class LocationPortal extends Location {
     this.pilotPort.disable()
     this.thrusterPort.disable()
     this.keyLabel.updateText('no key', verreciel.red)
-    this.destinationLabel.updateText('--')
 
     if (this.structure instanceof StructurePortal) {
       this.structure.onLock()
@@ -155,18 +149,20 @@ class LocationPortal extends Location {
   }
 
   unlock () {
-    let key = verreciel.intercom.port.origin.event
+    const key = this.keyPort.origin.event
 
     if (!(key instanceof Item)) {
       return
     }
 
-    let destination = this.getLocation(key)
+    const destination = this.getLocation(key)
     destination.isKnown = true
 
-    this.keyLabel.updateText(key.name, verreciel.cyan)
-    this.destinationLabel.updateText(
-      'to ' + destination.system + ' ' + destination.name
+    this.keyLabel.updateText(
+      destination.type === "aitasla"
+      ? destination.name
+      : destination.system + ' ' + destination.name,
+      verreciel.cyan
     )
 
     this.pilotPort.addEvent(destination)
@@ -231,11 +227,11 @@ class StructurePortal extends Structure {
 
     this.root.position.set(0, 10, 0)
 
-    let nodes = 52
+    const nodes = 52
     var i = 0
     while (i < nodes) {
-      let node = new Empty()
-      let line = new SceneLine(
+      const node = new Empty()
+      const line = new SceneLine(
         [new THREE.Vector3(2, 2, 0), new THREE.Vector3(0, 0, 10)],
         verreciel.red
       )
@@ -259,7 +255,7 @@ class StructurePortal extends Structure {
     verreciel.animator.begin()
     verreciel.animator.animationDuration = 1.5
 
-    for (let node of this.root.children) {
+    for (const node of this.root.children) {
       node.children[0].position.set(2, 1, 2)
     }
 
@@ -272,7 +268,7 @@ class StructurePortal extends Structure {
     verreciel.animator.begin()
     verreciel.animator.animationDuration = 0.5
 
-    for (let node of this.root.children) {
+    for (const node of this.root.children) {
       node.children[0].position.set(0, 0, 0)
     }
 
@@ -289,7 +285,7 @@ class StructurePortal extends Structure {
     verreciel.animator.begin()
     verreciel.animator.animationDuration = 0.5
 
-    for (let node of this.root.children) {
+    for (const node of this.root.children) {
       node.children[0].position.set(-2, 0, 0)
     }
 

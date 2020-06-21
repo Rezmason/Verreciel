@@ -325,7 +325,7 @@ class Missions {
         function () {
           return (
             verreciel.capsule.isDockedAtLocation(u.loiqe.portal) &&
-            verreciel.intercom.port.isReceivingEvent(i.valenPortalKey) == true
+            verreciel.capsule.location.keyPort.isReceivingEvent(i.valenPortalKey) == true
           )
         },
         function () {}
@@ -1401,33 +1401,33 @@ class Missions {
       ),
       new Quest(
         'Extinguish Loiqe',
-        u.loiqe,
+        u.loiqe.star,
         function () {
-          return u.loiqe.isComplete === true
+          return u.loiqe.star.isComplete === true
         },
         function () {}
       ),
       new Quest(
         'Extinguish Valen',
-        u.valen,
+        u.valen.star,
         function () {
-          return u.valen.isComplete === true
+          return u.valen.star.isComplete === true
         },
         function () {}
       ),
       new Quest(
         'Extinguish Senni',
-        u.senni,
+        u.senni.star,
         function () {
-          return u.senni.isComplete === true
+          return u.senni.star.isComplete === true
         },
         function () {}
       ),
       new Quest(
         'Extinguish Usul',
-        u.usul,
+        u.usul.star,
         function () {
-          return u.usul.isComplete === true
+          return u.usul.star.isComplete === true
         },
         function () {}
       )
@@ -1493,10 +1493,10 @@ class Missions {
         u.usul.telescope,
         u.usul.cargo,
         u.valen.antenna,
-        u.loiqe,
-        u.valen,
-        u.senni,
-        u.usul
+        u.loiqe.star,
+        u.valen.star,
+        u.senni.star,
+        u.usul.star
       ])
       verreciel.battery.cellPort1.connect(verreciel.battery.thrusterPort)
       verreciel.battery.cellPort2.connect(verreciel.battery.radioPort)
@@ -1602,10 +1602,10 @@ class Missions {
         u.usul.telescope,
         u.usul.cargo,
         u.valen.antenna,
-        u.loiqe,
-        u.valen,
-        u.senni,
-        u.usul
+        u.loiqe.star,
+        u.valen.star,
+        u.senni.star,
+        u.usul.star
       ])
       verreciel.battery.cellPort1.connect(verreciel.battery.thrusterPort)
       verreciel.battery.cellPort2.connect(verreciel.battery.radioPort)
@@ -1619,15 +1619,15 @@ class Missions {
       u.valen.bank.addItems([i.record1, i.record2])
     }
     m.predicate = function () {
-      return u.aitasla.isKnown === true
+      return u.aitasla.void.isKnown === true
     }
     m.quests = [
       new Quest(
-        'Enter ' + u.aitasla,
-        u.aitasla,
+        'Enter ' + u.aitasla.void.name,
+        u.aitasla.star,
         function () {
           return (
-            u.aitasla.isKnown === true
+            u.aitasla.void.isKnown === true
           )
         },
         function () {}
