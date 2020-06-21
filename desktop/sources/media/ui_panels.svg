@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 2 2" width="512" height="512">
+  <style type="text/css" >
+    <![CDATA[
+      rect.space {
+        fill: none;
+        stroke: rgba(0, 0, 0, 0.2);
+        stroke-width: 1;
+        vector-effect: non-scaling-stroke;
+      }
+
+      .label {
+        fill: url(#labelFill);
+      }
+
+      path {
+        fill: none;
+        stroke: black;
+        stroke-width: 2;
+        vector-effect: non-scaling-stroke;
+        stroke-linecap: square;
+      }
+
+      #labelFill path {
+        stroke-width: 20;
+      }
+    ]]>
+  </style>
+  <defs>
+    <g id="port">
+      <path d="
+        M 0, 0.0625
+        L 0.0625, 0
+        L 0, -0.0625
+        L -0.0625, 0
+        Z
+      "/>
+      <path d="
+        M 0, 0.125
+        L 0.125, 0
+        L 0, -0.125
+        L -0.125, 0
+        Z
+      "/>
+    </g>
+    <pattern id="labelFill" viewBox="0, 0, 1, 1" width="0.1" height="0.1" patternUnits="userSpaceOnUse">
+      <g transform="translate(0 1) scale(1 -1)">
+        <path d="
+          M 0.0 0.0
+          L 0.3 1.0
+          L 0.5 1.0
+          L 0.8 0.0
+
+          M 0.675 0.4
+          L 0.125 0.4
+        "/>
+      </g>
+    </pattern>
+
+    <g id="console_line">
+    </g>
+
+    <g id="main_panel">
+      <rect stroke="black" stroke-width="0.01" fill="none" x="-0.5" y="-0.5" width="1" height="1"/>
+
+    </g>
+
+    <g id="monitor">
+    </g>
+
+    <g id="widget">
+    </g>
+  </defs>
+
+
+  <g id="ghost"></g>
+
+  <g id="helmet"></g>
+
+
+  <g id="above"></g>
+  <g id="below"></g>
+
+  <g id="battery">
+    <use href="#main_panel"/>
+  </g>
+  <g id="cargo">
+    <use href="#main_panel"/>
+  </g>
+  <g id="console">
+    <use href="#main_panel"/>
+  </g>
+  <g id="hatch">
+    <use href="#main_panel"/>
+  </g>
+  <g id="intercom">
+    <use href="#main_panel"/>
+  </g>
+  <g id="pilot">
+    <use href="#main_panel"/>
+  </g>
+  <g id="radar">
+    <use href="#main_panel"/>
+  </g>
+  <g id="thruster">
+    <use href="#main_panel"/>
+  </g>
+  <g id="complete">
+    <use href="#monitor"/>
+  </g>
+  <g id="exploration">
+    <use href="#monitor"/>
+  </g>
+  <g id="journey">
+    <use href="#monitor"/>
+  </g>
+  <g id="progress">
+    <use href="#monitor"/>
+  </g>
+
+  <g id="nav">
+    <use href="#widget"/>
+  </g>
+  <g id="radio">
+    <use href="#widget"/>
+  </g>
+  <g id="shield">
+    <use href="#widget"/>
+  </g>
+  <g id="veil">
+    <use href="#widget"/>
+  </g>
+
+  <g id="aitasla"></g>
+  <g id="antenna"></g>
+  <g id="bank"></g>
+  <g id="beacon"></g>
+  <g id="constellation"></g>
+  <g id="harvest"></g>
+  <g id="horadric"></g>
+  <g id="portal"></g>
+  <g id="satellite"></g>
+  <g id="star"></g>
+  <g id="station"></g>
+  <g id="trade"></g>
+  <g id="transit"></g>
+  <g id="transmitter"></g>
+</svg>

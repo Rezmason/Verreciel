@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-0.5 -0.5 4 4" width="512" height="512">
+  <style type="text/css" >
+    <![CDATA[
+      rect.space {
+        fill: none;
+        stroke: rgba(0, 0, 0, 0.2);
+        stroke-width: 1;
+        vector-effect: non-scaling-stroke;
+      }
+
+      path {
+        fill: none;
+        stroke: black;
+        vector-effect: non-scaling-stroke;
+        stroke-linecap: square;
+      }
+    ]]>
+  </style>
+  <g id="antenna" transform="translate(0 0) scale(2 -2)">
+    <path d="
+      M -0.1 0
+      L 0 0.1
+      L 0.1 0
+      L 0 -0.1
+      Z
+
+      M -0.1 0
+      L 0.1 0
+    "/>
+  </g>
+  <g id="bank" transform="translate(1 0) scale(2 -2)">
+    <path d="
+      M -0.1 0
+      L 0 0.1
+      L 0.1 0
+      L 0 -0.1
+      Z
+
+      M -0.1 0
+      L 0.1 0
+    "/>
+  </g>
+  <g id="beacon" transform="translate(2 0) scale(2 -2)">
+    <path d="
+      M 0.1 0
+      L 0.1 0
+
+      M 0 -0.1
+      L 0 0.1
+    "/>
+  </g>
+  <g id="constellation" transform="translate(3 0) scale(2 -2)" show-label="false">
+    <path d="
+      M -0.02 0
+      L 0 0.02
+      L 0.02 0
+      L 0 -0.02
+      Z
+    "/>
+  </g>
+  <g id="harvest" transform="translate(0 1) scale(2 -2)">
+    <path d="
+      M -0.1 0
+      L 0 0.1
+      L 0.1 0
+      L 0 -0.1
+      Z
+
+      M 0 -0.1
+      L 0 0.1
+    "/>
+  </g>
+  <g id="horadric" transform="translate(1 1) scale(2 -2)">
+    <path d="
+      M -0.1 0
+      L 0 0.1
+      L 0.1 0
+      L 0 -0.1
+      Z
+
+      M -0.1 0
+      L 0.1 0
+
+      M 0 -0.1
+      L 0 0.1
+    "/>
+  </g>
+  <g id="portal" transform="translate(2 1) scale(2 -2)">
+    <path d="
+      M -0.1 0
+      L 0 0.1
+      L 0.1 0
+      L 0 -0.1
+      Z
+
+      M -0.05 0
+      L 0 0.05
+      L 0.05 0
+      L 0 -0.05
+      Z
+
+      M 0.1 0
+      L 0.075 0
+
+      M -0.1 0
+      L -0.075 0
+    "/>
+  </g>
+  <g id="satellite" transform="translate(3 1) scale(2 -2)">
+    <path d="
+      M -0.1 0
+      L 0 0.1
+      L 0.1 0
+      L 0 -0.1
+      Z
+    "/>
+  </g>
+  <g id="star" transform="translate(0 2) scale(2 -2)">
+    <path d="
+      M -0.1 0
+      L 0 0.1
+      L 0.1 0
+      L 0 -0.1
+      Z
+
+      M 0.1 0
+      L 0.2 0
+
+      M -0.1 0
+      L -0.2 0
+
+      M 0 0.1
+      L 0 0.2
+
+      M 0 -0.1
+      L 0 -0.2
+
+      M 0.05 0.05
+      L 0.1 0.1
+
+      M -0.05 0.05
+      L -0.1 0.1
+
+      M 0.05 -0.05
+      L 0.1 -0.1
+
+      M -0.05 -0.05
+      L -0.1 -0.1
+    "/>
+  </g>
+  <g id="station" transform="translate(1 2) scale(2 -2)">
+    <path d="
+      M -0.1 0
+      L 0 0.1
+      L 0.1 0
+      L 0 -0.1
+      Z
+
+      M -0.1 0
+      L 0.1 0
+    "/>
+  </g>
+  <g id="trade" transform="translate(2 2) scale(2 -2)">
+    <path d="
+      M -0.1 0
+      L 0 0.1
+      L 0.1 0
+      L 0 -0.1
+      Z
+
+      M 0 -0.1
+      L 0 0.1
+    "/>
+  </g>
+  <g id="transit" transform="translate(3 2) scale(2 -2)" show-label="false">
+    <path d="
+      M -0.05 0
+      L 0 0.05
+      L 0.05 0
+      L 0 -0.05
+      Z
+    "/>
+  </g>
+  <g id="transmitter" transform="translate(0 3) scale(2 -2)">
+    <path d="
+      M -0.1 0
+      L 0 0.1
+      L 0.1 0
+      L 0 -0.1
+      Z
+
+      M -0.05 -0.05
+      L 0.05 0.05
+
+      M 0.05 -0.05
+      L -0.05 0.05
+    "/>
+  </g>
+</svg>
