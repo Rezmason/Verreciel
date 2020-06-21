@@ -86,7 +86,7 @@ class Battery extends MainPanel {
     this.cellPort3.disable()
     this.cellPort3.show('--', verreciel.grey)
 
-    this.footer.add(new SceneHandle(new THREE.Vector3(0, 0, -1), this))
+    this.footer.add(new SceneHandle(new THREE.Vector3(0, 0, -2), this))
     this.drawDecals()
   }
 

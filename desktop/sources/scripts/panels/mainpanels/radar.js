@@ -131,7 +131,7 @@ class Radar extends MainPanel {
 
     this.position.set(0, 0, 0)
 
-    this.handle = new SceneHandle(new THREE.Vector3(1, 0, 0), this)
+    this.handle = new SceneHandle(new THREE.Vector3(2, 0, 0), this)
     this.footer.add(this.handle)
     this.drawDecals()
   }

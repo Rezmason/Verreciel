@@ -82,7 +82,7 @@ class Console extends MainPanel {
       this.mainNode.add(line)
     }
 
-    this.footer.add(new SceneHandle(new THREE.Vector3(-1, 0, 0), this))
+    this.footer.add(new SceneHandle(new THREE.Vector3(-2, 0, 0), this))
     this.drawDecals()
   }
 
