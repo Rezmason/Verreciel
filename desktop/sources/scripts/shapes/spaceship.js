@@ -5,7 +5,6 @@ class Spaceship extends SceneLine {
   // Adapted from manual for Supergraphics Three-Dimensional Display System, P . Lutus, Kerby, Oregon 1980
 
   constructor (size, color = verreciel.white) {
-    // assertArgs(arguments, 1);
 
     const nose = [0, 0, -8]
     const topBack = [1, 1, 9]
@@ -62,7 +61,6 @@ class RezSpaceship extends SceneLine {
   // Modified version of above
 
   constructor (size, color = verreciel.white) {
-    // assertArgs(arguments, 1);
 
     const nose = [1, 0, -8]
     const topBack = [1, 1, 10]
@@ -125,7 +123,6 @@ class RezSpaceship extends SceneLine {
 
 class Axes extends SceneLine {
   constructor (size, color = verreciel.white) {
-    // assertArgs(arguments, 1);
     super(
       [
         new THREE.Vector3(0, 0, -size * 0.5),

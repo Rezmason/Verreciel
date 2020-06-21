@@ -3,7 +3,6 @@
 
 class Complete extends Monitor {
   constructor () {
-    // assertArgs(arguments, 0);
     super()
 
     this.distance = 0
@@ -14,7 +13,6 @@ class Complete extends Monitor {
   }
 
   refresh () {
-    // assertArgs(arguments, 0);
     super.refresh()
     if (!DEBUG_DISABLE_MISSIONS) {
       this.nameLabel.updateText(

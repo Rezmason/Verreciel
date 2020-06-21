@@ -392,7 +392,6 @@ class Ghost extends Empty {
   }
 
   whenRenderer () {
-    // assertArgs(arguments, 0);
     super.whenRenderer()
 
     if (this.isWaiting == true) {

@@ -3,7 +3,6 @@
 
 class LocationTransmitter extends Location {
   constructor (data) {
-    // assertArgs(arguments, 4);
     super(data, new IconTransmitter(), new StructureTransmitter())
 
     this.target = null
@@ -14,7 +13,6 @@ class LocationTransmitter extends Location {
   }
 
   makePanel () {
-    // assertArgs(arguments, 0);
     let newPanel = new Panel()
 
     let requirementLabel = new SceneLabel('Orientation Location$Transmit Access')
@@ -44,7 +42,6 @@ class LocationTransmitter extends Location {
   }
 
   dockUpdate () {
-    // assertArgs(arguments, 0);
     super.dockUpdate()
 
     // Update target coming through the wire
@@ -93,7 +90,6 @@ class LocationTransmitter extends Location {
   }
 
   touch (id) {
-    // assertArgs(arguments, 1);
     if (id === 2) {
       this.shouldAlign = true
     } else {
@@ -105,7 +101,6 @@ class LocationTransmitter extends Location {
 
 class IconTransmitter extends Icon {
   constructor () {
-    // assertArgs(arguments, 0);
     super()
 
     this.mesh.add(
@@ -133,7 +128,6 @@ class IconTransmitter extends Icon {
 
 class StructureTransmitter extends Structure {
   constructor () {
-    // assertArgs(arguments, 0);
     super()
 
     this.root.position.set(0, 0, 0)
@@ -190,7 +184,6 @@ class StructureTransmitter extends Structure {
   }
 
   sightUpdate () {
-    // assertArgs(arguments, 0);
     this.root.rotation.y = degToRad(this.host.orientation / 2)
     this.root.rotation.x = degToRad(this.host.orientation / 3)
     this.root.rotation.z = degToRad(this.host.orientation / 6)

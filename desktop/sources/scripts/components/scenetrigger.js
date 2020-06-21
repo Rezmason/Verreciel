@@ -3,8 +3,6 @@
 
 class SceneTrigger extends Empty {
   constructor (host, name, width, height, operation) {
-    // assertArgs(arguments, 5);
-
     super()
     this.name = name
     verreciel.ghost.triggersByName[name] = this
@@ -31,7 +29,6 @@ class SceneTrigger extends Empty {
   }
 
   tap () {
-    // assertArgs(arguments, 1);
     if (this.isEnabled == false) {
       return false
     }
@@ -49,7 +46,6 @@ class SceneTrigger extends Empty {
   }
 
   enable () {
-    // assertArgs(arguments, 0);
     if (!this.isEnabled) {
       this.isEnabled = true
       this.mouseUpTarget.color = SceneTrigger.DEBUG_BLUE
@@ -58,7 +54,6 @@ class SceneTrigger extends Empty {
   }
 
   disable () {
-    // assertArgs(arguments, 0);
     if (this.isEnabled) {
       this.isEnabled = false
       this.mouseUpTarget.color = SceneTrigger.DEBUG_WHITE

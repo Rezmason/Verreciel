@@ -3,7 +3,6 @@
 
 class LocationAitasla extends Location {
   constructor (data) {
-    // assertArgs(arguments, 3);
     super(data, new IconStar(), new StructureStar())
 
     this.isComplete = false
@@ -13,14 +12,12 @@ class LocationAitasla extends Location {
   // MARK: Panel -
 
   makePanel () {
-    // assertArgs(arguments, 0);
     let newPanel = new Panel()
 
     return newPanel
   }
 
   sightUpdate () {
-    // assertArgs(arguments, 0);
 
     this.color = verreciel.black
     this.structure.updateChildrenColors(this.color)
@@ -28,12 +25,10 @@ class LocationAitasla extends Location {
   }
 
   onDock () {
-    // assertArgs(arguments, 0);
     verreciel.player.eject()
   }
 
   onUpdate () {
-    // assertArgs(arguments, 0);
 
   }
 }

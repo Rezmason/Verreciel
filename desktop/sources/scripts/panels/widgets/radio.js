@@ -3,7 +3,6 @@
 
 class Radio extends Widget {
   constructor () {
-    // assertArgs(arguments, 0);
     super('radio')
 
     this.seek = 0
@@ -23,13 +22,11 @@ class Radio extends Widget {
   }
 
   update () {
-    // assertArgs(arguments, 0);
     super.update()
     this.refresh()
   }
 
   onPowered () {
-    // assertArgs(arguments, 0);
     super.onPowered()
     if (this.hasRecord()) {
       this.play()
@@ -39,19 +36,16 @@ class Radio extends Widget {
   }
 
   onUnpowered () {
-    // assertArgs(arguments, 0);
     super.onUnpowered()
     this.stop()
   }
 
   play () {
-    // assertArgs(arguments, 0);
     verreciel.music.setRecord(Records[this.port.event.id])
     verreciel.music.playRecord()
   }
 
   hasRecord () {
-    // assertArgs(arguments, 0);
     let event = this.port.event
     return (
       event != null && event instanceof Item && event.type == ItemTypes.record
@@ -59,7 +53,6 @@ class Radio extends Widget {
   }
 
   stop () {
-    // assertArgs(arguments, 0);
     verreciel.music.playAmbience()
   }
 
@@ -77,7 +70,6 @@ class Radio extends Widget {
   }
 
   onUploadComplete () {
-    // assertArgs(arguments, 0);
     super.onUploadComplete()
 
     if (verreciel.battery.isRadioPowered() == true) {
@@ -90,13 +82,11 @@ class Radio extends Widget {
   }
 
   onInstallationBegin () {
-    // assertArgs(arguments, 0);
     super.onInstallationBegin()
     verreciel.player.lookAt(0, -30)
   }
 
   onInstallationComplete () {
-    // assertArgs(arguments, 0);
     super.onInstallationComplete()
     verreciel.battery.installRadio()
   }

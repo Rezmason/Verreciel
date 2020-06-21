@@ -3,13 +3,11 @@
 
 class LocationBeacon extends Location {
   constructor (data) {
-    // assertArgs(arguments, 5);
     super(data, new IconBeacon(), new Structure())
     this.message = data.message
   }
 
   makePanel () {
-    // assertArgs(arguments, 0);
     let newPanel = new Panel()
 
     let text1 = this.message.substr(0, 19)
@@ -39,7 +37,6 @@ class LocationBeacon extends Location {
 
 class IconBeacon extends Icon {
   constructor () {
-    // assertArgs(arguments, 0);
     super()
 
     this.mesh.add(

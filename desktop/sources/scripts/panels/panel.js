@@ -3,7 +3,6 @@
 
 class Panel extends Empty {
   constructor (name) {
-    // assertArgs(arguments, 0);
     super()
     this.name = name
     this.isEnabled = false
@@ -14,23 +13,19 @@ class Panel extends Empty {
   }
 
   refresh () {
-    // assertArgs(arguments, 0);
   }
 
   enable () {
-    // assertArgs(arguments, 0);
     this.isEnabled = true
   }
 
   disable () {
-    // assertArgs(arguments, 0);
     this.isEnabled = false
   }
 
   // MARK: Installation -
 
   install () {
-    // assertArgs(arguments, 0);
     if (this.isInstalled == true) {
       return
     }
@@ -40,7 +35,6 @@ class Panel extends Empty {
   }
 
   installProgress () {
-    // assertArgs(arguments, 0);
     this.installPercentage += (Math.random() * 6 + 1) * verreciel.game.gameSpeed
 
     if (this.installPercentage > 100) {
@@ -51,12 +45,10 @@ class Panel extends Empty {
   }
 
   onInstallationBegin () {
-    // assertArgs(arguments, 0);
     verreciel.music.playEffect('beep1')
   }
 
   onInstallationComplete () {
-    // assertArgs(arguments, 0);
     this.installPercentage = 0
     this.isInstalled = true
     verreciel.music.playEffect('beep2')
@@ -64,7 +56,6 @@ class Panel extends Empty {
   }
 
   payload () {
-    // assertArgs(arguments, 0);
     return new ConsolePayload([
       new ConsoleData('Capsule', 'Panel'),
       new ConsoleData(this.details)

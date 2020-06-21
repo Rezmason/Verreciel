@@ -15,7 +15,6 @@ class Location extends Event {
       mapRequirementID,
       connectedAddress
     } = data
-    // assertArgs(arguments, 5);
     super(name, new THREE.Vector2(at.x, at.y), 'unknown', verreciel.grey, false)
 
     this.system = system
@@ -59,7 +58,6 @@ class Location extends Event {
   // MARK: System -
 
   whenStart () {
-    // assertArgs(arguments, 0);
     this.panel = this.makePanel()
     this.icon.position.set(this.at.x, this.at.y, 0)
     this.distance = distanceBetweenTwoPoints(verreciel.capsule.at, this.at)
@@ -69,11 +67,9 @@ class Location extends Event {
   }
 
   refresh () {
-    // assertArgs(arguments, 0);
   }
 
   whenRenderer () {
-    // assertArgs(arguments, 0);
 
     this.icon.position.set(this.at.x, this.at.y, 0)
     this.distance = distanceBetweenTwoPoints(verreciel.capsule.at, this.at)
@@ -120,17 +116,14 @@ class Location extends Event {
   }
 
   onRadarView () {
-    // assertArgs(arguments, 0);
     this.icon.label.opacity = 1
   }
 
   onHelmetView () {
-    // assertArgs(arguments, 0);
     this.icon.label.opacity = 0
   }
 
   onSight () {
-    // assertArgs(arguments, 0);
     this.update()
     this.icon.onUpdate()
 
@@ -142,7 +135,6 @@ class Location extends Event {
   }
 
   onApproach () {
-    // assertArgs(arguments, 0);
     if (this.isVisible() !== true) {
       return
     }
@@ -161,12 +153,10 @@ class Location extends Event {
   }
 
   onCollision () {
-    // assertArgs(arguments, 0);
     this.update()
   }
 
   onDock () {
-    // assertArgs(arguments, 0);
     if (
       verreciel.thruster.isLocked &&
       verreciel.universe.loiqe.city.isKnown == true
@@ -184,7 +174,6 @@ class Location extends Event {
   }
 
   onUndock () {
-    // assertArgs(arguments, 0);
     this.isDocked = false
     this.retrieveStorage()
     this.structure.onUndock()
@@ -192,7 +181,6 @@ class Location extends Event {
   }
 
   retrieveStorage () {
-    // assertArgs(arguments, 0);
     if (this.storage.length == 0) {
       return
     }
@@ -206,7 +194,6 @@ class Location extends Event {
   }
 
   onComplete () {
-    // assertArgs(arguments, 0);
     this.isComplete = true
     verreciel.progress.refresh()
     this.icon.onUpdate()
@@ -224,25 +211,20 @@ class Location extends Event {
   }
 
   sightUpdate () {
-    // assertArgs(arguments, 0);
     this.structure.sightUpdate()
   }
 
   approachUpdate () {
-    // assertArgs(arguments, 0);
   }
 
   collisionUpdate () {
-    // assertArgs(arguments, 0);
   }
 
   dockUpdate () {
-    // assertArgs(arguments, 0);
     this.structure.dockUpdate()
   }
 
   radarCulling () {
-    // assertArgs(arguments, 0);
 
     if (this.isReach() === true && this.isVisible() === true) {
       this.icon.show()
@@ -280,7 +262,6 @@ class Location extends Event {
   // MARK: Events -
 
   touch (id) {
-    // assertArgs(arguments, 1);
     if (this.isTargetable == false) {
       return false
     }
@@ -304,7 +285,6 @@ class Location extends Event {
   }
 
   calculateAngle () {
-    // assertArgs(arguments, 0);
     const angle = angleBetweenTwoPoints(
       verreciel.capsule.at,
       this.at,
@@ -314,7 +294,6 @@ class Location extends Event {
   }
 
   calculateAlignment (direction = verreciel.capsule.direction) {
-    // assertArgs(arguments, 0);
     var diff =
       Math.max(direction, this.angle) - Math.min(direction, this.angle)
     if (diff > 180) {
@@ -327,7 +306,6 @@ class Location extends Event {
   // MARK: Storage -
 
   storedItems () {
-    // assertArgs(arguments, 0);
     var collection = []
     for (const port of this.storage) {
       if (port.hasEvent() == true && port.event.isDestroyable == false) {
@@ -338,7 +316,6 @@ class Location extends Event {
   }
 
   payload () {
-    // assertArgs(arguments, 0);
     return new ConsolePayload([
       new ConsoleData('Name', this.name),
       new ConsoleData('System', this.system),

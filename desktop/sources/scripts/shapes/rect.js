@@ -3,7 +3,6 @@
 
 class Rect extends SceneLine {
   constructor (size, color = verreciel.white) {
-    // assertArgs(arguments, 1);
     super(
       [
         new THREE.Vector3(-size.width / 2, 0, size.height / 2),

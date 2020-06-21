@@ -12,8 +12,6 @@ class ScenePortSlot extends ScenePort {
     if (host == null) {
       host = new Empty()
     }
-
-    // assertArgs(arguments, 2);
     super(host, name)
 
     this.placeholder = placeholder
@@ -56,7 +54,6 @@ class ScenePortSlot extends ScenePort {
   }
 
   refresh () {
-    // assertArgs(arguments, 0);
     this.detailsLabel.opacity = this.hasDetails == true ? 1 : 0
 
     if (this.event != null) {
@@ -89,13 +86,11 @@ class ScenePortSlot extends ScenePort {
   }
 
   removeEvent () {
-    // assertArgs(arguments, 0);
     super.removeEvent()
     this.refresh()
   }
 
   onConnect () {
-    // assertArgs(arguments, 0);
     super.onConnect()
 
     if (
@@ -113,13 +108,11 @@ class ScenePortSlot extends ScenePort {
   }
 
   onDisconnect () {
-    // assertArgs(arguments, 0);
     super.onDisconnect()
     this.host.onDisconnect()
   }
 
   addEvent (event) {
-    // assertArgs(arguments, 1);
     super.addEvent(event)
     this.refresh()
   }
@@ -127,13 +120,11 @@ class ScenePortSlot extends ScenePort {
   // MARK: Upload -
 
   upload (item) {
-    // assertArgs(arguments, 1);
     this.uploadedItem = item
     this.uploadProgress()
   }
 
   uploadProgress () {
-    // assertArgs(arguments, 0);
     if (this.origin == null) {
       this.uploadCancel()
       return
@@ -154,12 +145,10 @@ class ScenePortSlot extends ScenePort {
   }
 
   updateText (text, color = null) {
-    // assertArgs(arguments, 1);
     this.label.updateText(text, color)
   }
 
   uploadComplete () {
-    // assertArgs(arguments, 0);
     if (this.origin != null) {
       let originHost = this.origin.host
       this.addEvent(this.syphon())
@@ -178,7 +167,6 @@ class ScenePortSlot extends ScenePort {
   }
 
   uploadCancel () {
-    // assertArgs(arguments, 0);
     this.uploadPercentage = 0
     this.refresh()
   }

@@ -3,7 +3,6 @@
 
 class Radar extends MainPanel {
   constructor () {
-    // assertArgs(arguments, 0);
     super('radar')
 
     this.x = 0
@@ -138,11 +137,9 @@ class Radar extends MainPanel {
   }
 
   refresh () {
-    // assertArgs(arguments, 0);
   }
 
   whenRenderer () {
-    // assertArgs(arguments, 0);
     super.whenRenderer()
 
     this.eventView.position.set(
@@ -160,7 +157,6 @@ class Radar extends MainPanel {
   // MARK: Custom -
 
   updateTarget () {
-    // assertArgs(arguments, 0);
     if (this.port.hasEvent() == false) {
       return
     }
@@ -207,7 +203,6 @@ class Radar extends MainPanel {
   }
 
   addTarget (event) {
-    // assertArgs(arguments, 1);
     if (
       verreciel.capsule.location != null &&
       verreciel.capsule.isDocked == false
@@ -244,7 +239,6 @@ class Radar extends MainPanel {
   }
 
   removeTarget () {
-    // assertArgs(arguments, 0);
     if (this.port.event != null) {
       this.port.event.isSelected = false
       this.port.event = null
@@ -253,7 +247,6 @@ class Radar extends MainPanel {
   }
 
   onInstallationBegin () {
-    // assertArgs(arguments, 0);
     super.onInstallationBegin()
 
     verreciel.player.lookAt(-90)
@@ -262,7 +255,6 @@ class Radar extends MainPanel {
   // MARK: Map
 
   modeNormal () {
-    // assertArgs(arguments, 0);
     this.overviewMode = false
 
     verreciel.thruster.show()
@@ -278,7 +270,6 @@ class Radar extends MainPanel {
   }
 
   modeOverview () {
-    // assertArgs(arguments, 0);
     this.overviewMode = true
 
     verreciel.thruster.hide()

@@ -3,7 +3,6 @@
 
 class Journey extends Monitor {
   constructor () {
-    // assertArgs(arguments, 0);
     super()
     this.distance = 0
     this.name = 'journey'
@@ -13,7 +12,6 @@ class Journey extends Monitor {
   }
 
   whenSecond () {
-    // assertArgs(arguments, 0);
     super.whenSecond()
     this.nameLabel.updateText(Math.floor(this.distance / 100).toString())
   }

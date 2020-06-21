@@ -3,7 +3,6 @@
 
 class Cross extends SceneLine {
   constructor (size, color = verreciel.white, offset = { x: 0, y: 0, z: 0 }) {
-    // assertArgs(arguments, 1);
     super(
       [
         new THREE.Vector3(-size + offset.x, 0 + offset.y, 0 + offset.z),

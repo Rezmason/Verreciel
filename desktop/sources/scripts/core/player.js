@@ -3,7 +3,6 @@
 
 class Player extends Empty {
   constructor () {
-    // assertArgs(arguments, 0);
     super()
 
     console.info('^ Player | Init')
@@ -24,13 +23,11 @@ class Player extends Empty {
   }
 
   whenStart () {
-    // assertArgs(arguments, 0);
     super.whenStart()
     console.info('+ Player | Start')
   }
 
   whenRenderer () {
-    // assertArgs(arguments, 0);
     super.whenRenderer()
 
     if (!this.isLocked) {
@@ -58,7 +55,6 @@ class Player extends Empty {
   }
 
   lookAt (yDeg = 0, xDeg = 0) {
-    // assertArgs(arguments, 1);
     let normalizedYDeg = radToDeg(this.rotation.y) % 360
     this.rotation.y = degToRad(normalizedYDeg)
     verreciel.helmet.rotation.y = degToRad(normalizedYDeg)
@@ -140,7 +136,6 @@ class Player extends Empty {
 
   eject () {
     this.isLocked = true
-    // assertArgs(arguments, 0);
     verreciel.animator.begin()
     verreciel.animator.animationDuration = 60
     verreciel.capsule.opacity = 0
@@ -237,7 +232,6 @@ class Player extends Empty {
   // MARK: Left Hand -
 
   holdPort (port) {
-    // assertArgs(arguments, 1);
     if (port.host != null && port.host.name != null) {
       verreciel.helmet.leftHandLabel.updateText(
         port.host.name,
@@ -250,7 +244,6 @@ class Player extends Empty {
   }
 
   connectPorts (from, to) {
-    // assertArgs(arguments, 2);
     verreciel.helmet.leftHandLabel.updateText('--', verreciel.grey)
 
     this.activePort = null
@@ -261,7 +254,6 @@ class Player extends Empty {
   }
 
   releasePort () {
-    // assertArgs(arguments, 0);
     if (!this.activePort) { return }
     verreciel.helmet.leftHandLabel.updateText('--', verreciel.grey)
 
@@ -273,7 +265,6 @@ class Player extends Empty {
   // MARK: Right Hand -
 
   holdHandle (handle) {
-    // assertArgs(arguments, 1);
     this.releaseHandle()
 
     verreciel.helmet.rightHandLabel.updateText(
@@ -303,7 +294,6 @@ class Player extends Empty {
       cancelDelay(this.lastDelay)
       this.lastDelay = null
     }
-    // assertArgs(arguments, 0);
     if (this.activeHandle == null) {
       return
     }
@@ -322,7 +312,6 @@ class Player extends Empty {
   }
 
   onConnect () {
-    // assertArgs(arguments, 0);
     super.onConnect()
     if (this.port.isReceivingFromPanel(verreciel.nav) == true) {
       verreciel.radar.modeOverview()
@@ -333,7 +322,6 @@ class Player extends Empty {
   }
 
   onDisconnect () {
-    // assertArgs(arguments, 0);
     super.onDisconnect()
     if (this.port.isReceivingFromPanel(verreciel.nav) != true) {
       verreciel.radar.modeNormal()
@@ -346,7 +334,6 @@ class Player extends Empty {
   }
 
   payload () {
-    // assertArgs(arguments, 0);
     return new ConsolePayload([
       new ConsoleData('Ronin repl', `${Object.keys(verreciel.console.lisplib).length} fns`),
       new ConsoleData('', '--'),

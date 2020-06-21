@@ -3,7 +3,6 @@
 
 class SceneHandle extends Empty {
   constructor (destination, host, name) {
-    // assertArgs(arguments, 2);
     super()
     this.isEnabled = true
     this.destination = destination
@@ -51,19 +50,16 @@ class SceneHandle extends Empty {
   }
 
   enable () {
-    // assertArgs(arguments, 0);
     this.isEnabled = true
     this.selectionLine.color = verreciel.cyan
   }
 
   disable () {
-    // assertArgs(arguments, 0);
     this.isEnabled = false
     this.selectionLine.color = verreciel.grey
   }
 
   touch (id = 0) {
-    // assertArgs(arguments, 1);
     verreciel.player.holdHandle(this)
     verreciel.music.playEffect('click4')
     return true

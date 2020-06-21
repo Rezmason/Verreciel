@@ -3,7 +3,6 @@
 
 class Console extends MainPanel {
   constructor () {
-    // assertArgs(arguments, 0);
     super('console')
 
     this.lines = [
@@ -88,7 +87,6 @@ class Console extends MainPanel {
   }
 
   onConnect () {
-    // assertArgs(arguments, 0);
     super.onDisconnect()
 
     this.text = ''
@@ -105,7 +103,6 @@ class Console extends MainPanel {
   }
 
   onDisconnect () {
-    // assertArgs(arguments, 0);
     super.onDisconnect()
 
     this.text = ''
@@ -115,7 +112,6 @@ class Console extends MainPanel {
   }
 
   whenStart () {
-    // assertArgs(arguments, 0);
     super.whenStart()
 
     this.nameLabel.color = verreciel.grey
@@ -123,7 +119,6 @@ class Console extends MainPanel {
   }
 
   clear () {
-    // assertArgs(arguments, 0);
     for (let line of this.lines) {
       line.updateData(new ConsoleData())
     }
@@ -132,7 +127,6 @@ class Console extends MainPanel {
   }
 
   inject (payload, animate = true) {
-    // assertArgs(arguments, 1);
     this.clear()
     var id = 0
     for (let data of payload.data) {
@@ -163,7 +157,6 @@ class Console extends MainPanel {
   }
 
   inputPayload (response = '') {
-    // assertArgs(arguments, 0);
     const segments = this.text.match(/.{1,20}/g)
     const responseSegments = `${response}`.match(/.{1,20}/g)
     return new ConsolePayload([
@@ -177,7 +170,6 @@ class Console extends MainPanel {
   }
 
   defaultPayload () {
-    // assertArgs(arguments, 0);
     return new ConsolePayload([
       new ConsoleData('nataniev network', 'OK', null, verreciel.white),
       new ConsoleData('systems status', verreciel.capsule.systemsInstalledCount() + '/' + verreciel.capsule.systemsCount(), null, verreciel.grey),
@@ -189,14 +181,12 @@ class Console extends MainPanel {
   }
 
   onInstallationBegin () {
-    // assertArgs(arguments, 0);
     super.onInstallationBegin()
 
     verreciel.player.lookAt(-270)
   }
 
   onInstallationComplete () {
-    // assertArgs(arguments, 0);
     super.onInstallationComplete()
     if (this.port.origin == null) {
       this.nameLabel.updateText('Console', verreciel.grey)
@@ -212,7 +202,6 @@ class Console extends MainPanel {
 
 class ConsoleLine extends Empty {
   constructor (index) {
-    // assertArgs(arguments, 0);
     super()
 
     this.port = new ScenePortRedirect(this, 'console_line_' + (index + 1), index)
@@ -235,7 +224,6 @@ class ConsoleLine extends Empty {
   }
 
   updateData (data) {
-    // assertArgs(arguments, 1);
     this.detailsLabel.updateText(data.details)
 
     if (data.event != null) {
@@ -255,7 +243,6 @@ class ConsoleLine extends Empty {
 
 class ConsoleData {
   constructor (text = '', details = '', event = null, color = verreciel.white) {
-    // assertArgs(arguments, 0);
     this.text = text
     this.details = details
     this.event = event
@@ -265,7 +252,6 @@ class ConsoleData {
 
 class ConsolePayload {
   constructor (data) {
-    // assertArgs(arguments, 1);
     this.data = data
   }
 }

@@ -8,7 +8,6 @@ class LocationSatellite extends Location {
       message,
       itemID
     } = data
-    // assertArgs(arguments, 5);
     super(
       data,
       new IconSatellite(),
@@ -35,7 +34,6 @@ class LocationSatellite extends Location {
   // MARK: Panel
 
   makePanel () {
-    // assertArgs(arguments, 0);
     if (this.isComplete === true) {
       return null
     }
@@ -50,13 +48,11 @@ class LocationSatellite extends Location {
   }
 
   onDock () {
-    // assertArgs(arguments, 0);
     super.onDock()
     this.port.refresh()
   }
 
   update () {
-    // assertArgs(arguments, 0);
     super.update()
 
     if (this.port.event == null) {
@@ -65,7 +61,6 @@ class LocationSatellite extends Location {
   }
 
   onUploadComplete () {
-    // assertArgs(arguments, 0);
     this.onComplete()
     this.structure.update()
   }
@@ -73,7 +68,6 @@ class LocationSatellite extends Location {
 
 class IconSatellite extends Icon {
   constructor () {
-    // assertArgs(arguments, 0);
     super()
 
     this.mesh.add(
@@ -96,7 +90,6 @@ class IconSatellite extends Icon {
 
 class StructureSatellite extends Structure {
   constructor () {
-    // assertArgs(arguments, 0);
     super()
 
     let nodes = 4
@@ -131,7 +124,6 @@ class StructureSatellite extends Structure {
   }
 
   onSight () {
-    // assertArgs(arguments, 0);
     super.onSight()
 
     verreciel.animator.begin()
@@ -147,7 +139,6 @@ class StructureSatellite extends Structure {
   }
 
   onUndock () {
-    // assertArgs(arguments, 0);
     super.onUndock()
 
     verreciel.animator.begin()
@@ -163,7 +154,6 @@ class StructureSatellite extends Structure {
   }
 
   onDock () {
-    // assertArgs(arguments, 0);
     super.onDock()
 
     verreciel.animator.begin()
@@ -179,19 +169,16 @@ class StructureSatellite extends Structure {
   }
 
   onComplete () {
-    // assertArgs(arguments, 0);
     super.onComplete()
 
     this.root.updateChildrenColors(verreciel.cyan)
   }
 
   sightUpdate () {
-    // assertArgs(arguments, 0);
     this.root.rotation.y += degToRad(0.1)
   }
 
   dockUpdate () {
-    // assertArgs(arguments, 0);
     for (let node of this.root.children) {
       for (let subnode of node.children) {
         subnode.rotation.z += degToRad(0.25)
@@ -202,7 +189,6 @@ class StructureSatellite extends Structure {
 
 class StructureSpaceship extends Structure {
   constructor () {
-    // assertArgs(arguments, 0);
     super()
 
     this.root.position.set(0, 5, 0)
@@ -210,7 +196,6 @@ class StructureSpaceship extends Structure {
   }
 
   onSight () {
-    // assertArgs(arguments, 0);
     super.onSight()
 
     verreciel.animator.begin()
@@ -224,21 +209,18 @@ class StructureSpaceship extends Structure {
   }
 
   onComplete () {
-    // assertArgs(arguments, 0);
     super.onComplete()
 
     this.root.updateChildrenColors(verreciel.grey)
   }
 
   dockUpdate () {
-    // assertArgs(arguments, 0);
     this.root.rotation.y += degToRad(0.1)
     this.root.rotation.x += degToRad(0.05)
     this.root.rotation.z += degToRad(0.025)
   }
 
   sightUpdate () {
-    // assertArgs(arguments, 0);
     super.sightUpdate()
 
     this.root.rotation.y += degToRad(0.1)

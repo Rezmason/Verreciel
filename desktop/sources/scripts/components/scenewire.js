@@ -3,7 +3,6 @@
 
 class SceneWire extends Empty {
   constructor (host, endA = new THREE.Vector3(), endB = new THREE.Vector3()) {
-    // assertArgs(arguments, 3);
     super()
     this.isEnabled = true
     this.isUploading = false
@@ -70,7 +69,6 @@ class SceneWire extends Empty {
   }
 
   whenRenderer () {
-    // assertArgs(arguments, 0);
     super.whenRenderer()
 
     if (
@@ -117,7 +115,6 @@ class SceneWire extends Empty {
     endB = new THREE.Vector3(),
     reset = true
   ) {
-    // assertArgs(arguments, 2);
     this.endA = endA
     this.endB = endB
     this.length = Math.sqrt(
@@ -172,19 +169,16 @@ class SceneWire extends Empty {
   }
 
   enable () {
-    // assertArgs(arguments, 0);
     this.isEnabled = true
     this.show()
   }
 
   disable () {
-    // assertArgs(arguments, 0);
     this.isEnabled = false
     this.hide()
   }
 
   isCompatible () {
-    // assertArgs(arguments, 0);
     return true
   }
 

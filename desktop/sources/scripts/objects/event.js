@@ -9,7 +9,6 @@ class Event {
     color = verreciel.grey,
     isDestroyable = true
   ) {
-    // assertArgs(arguments, 5);
 
     this.isDestroyable = isDestroyable
 

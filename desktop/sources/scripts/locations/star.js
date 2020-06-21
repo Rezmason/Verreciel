@@ -3,13 +3,11 @@
 
 class LocationStar extends Location {
   constructor (data) {
-    // assertArgs(arguments, 3);
     super(data, new IconStar(), new StructureStar())
     this.isComplete = false
   }
 
   makePanel () {
-    // assertArgs(arguments, 0);
     let newPanel = new Panel()
 
     let requirementLabel = new SceneLabel('drop the veil$extinguish the sun')
@@ -36,7 +34,6 @@ class LocationStar extends Location {
   }
 
   sightUpdate () {
-    // assertArgs(arguments, 0);
 
     let radiation = this.isComplete == true ? 0 : (1 - this.distance / 0.7) / 0.6
 
@@ -49,7 +46,6 @@ class LocationStar extends Location {
   }
 
   onApproach () {
-    // assertArgs(arguments, 0);
     if (verreciel.capsule.hasShield() === true) {
       super.onApproach()
       verreciel.helmet.addWarning('shield ok', verreciel.cyan, 3, 'shield')
@@ -59,7 +55,6 @@ class LocationStar extends Location {
   }
 
   touch (id) {
-    // assertArgs(arguments, 1);
     super.touch(id)
     if (id == 1) {
       this.onComplete()
@@ -70,19 +65,16 @@ class LocationStar extends Location {
   }
 
   onComplete () {
-    // assertArgs(arguments, 0);
     super.onComplete()
     verreciel.space.onSystemEnter(verreciel.capsule.system)
   }
 
   onDisconnect () {
-    // assertArgs(arguments, 0);
   }
 }
 
 class IconStar extends Icon {
   constructor () {
-    // assertArgs(arguments, 0);
     super()
 
     this.mesh.add(
@@ -121,7 +113,6 @@ class IconStar extends Icon {
 
 class StructureStar extends Structure {
   constructor () {
-    // assertArgs(arguments, 0);
     super()
 
     this.root.position.set(0, 5, 0)
@@ -136,7 +127,6 @@ class StructureStar extends Structure {
   }
 
   onDock () {
-    // assertArgs(arguments, 0);
     super.onDock()
 
     verreciel.animator.begin()
@@ -152,13 +142,11 @@ class StructureStar extends Structure {
   }
 
   sightUpdate () {
-    // assertArgs(arguments, 0);
     super.sightUpdate()
     this.root.rotation.y += degToRad(0.1)
   }
 
   onUndock () {
-    // assertArgs(arguments, 0);
     super.onDock()
 
     verreciel.animator.begin()
@@ -173,7 +161,6 @@ class StructureStar extends Structure {
   }
 
   onComplete () {
-    // assertArgs(arguments, 0);
     super.onComplete()
 
     this.root.updateChildrenColors(verreciel.cyan)

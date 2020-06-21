@@ -3,7 +3,6 @@
 
 class Above extends Panel {
   constructor () {
-    // assertArgs(arguments, 0);
     super()
 
     let aim = new Empty()
@@ -25,7 +24,6 @@ class Above extends Panel {
   }
 
   whenSecond () {
-    // assertArgs(arguments, 0);
     super.whenSecond()
 
     if (verreciel.thruster.speed > 0) {

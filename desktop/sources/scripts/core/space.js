@@ -3,7 +3,6 @@
 
 class Space extends Empty {
   constructor () {
-    // assertArgs(arguments, 0);
     super()
 
     console.info('^ Space | Init')
@@ -26,7 +25,6 @@ class Space extends Empty {
   }
 
   whenStart () {
-    // assertArgs(arguments, 0);
     super.whenStart()
     console.info('+ Space | Start')
   }
@@ -34,7 +32,6 @@ class Space extends Empty {
   // Space Color
 
   onSystemEnter (system) {
-    // assertArgs(arguments, 1);
     verreciel.capsule.system = system
     switch (system) {
       case Systems.valen:
@@ -72,7 +69,6 @@ class Space extends Empty {
   // Instances
 
   startInstance (location) {
-    // assertArgs(arguments, 1);
     this.structuresRoot.add(location.structure)
   }
 
@@ -191,7 +187,6 @@ Space.unit = 19
 
 class StarCluster extends Empty {
   constructor () {
-    // assertArgs(arguments, 0);
     super()
     this.mesh = new SceneLine([], verreciel.white)
     this.add(this.mesh)
@@ -244,7 +239,6 @@ class StarCluster extends Empty {
   }
 
   whenRenderer () {
-    // assertArgs(arguments, 0);
     var starSpeed = verreciel.thruster.actualSpeed
     if (verreciel.capsule.isDocked == false && verreciel.capsule.location != null) {
       starSpeed = 0.3

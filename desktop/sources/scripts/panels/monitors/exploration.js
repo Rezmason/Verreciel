@@ -3,7 +3,6 @@
 
 class Exploration extends Monitor {
   constructor () {
-    // assertArgs(arguments, 0);
     super()
 
     this.distance = 0
@@ -17,7 +16,6 @@ class Exploration extends Monitor {
   }
 
   refresh () {
-    // assertArgs(arguments, 0);
     super.refresh()
 
     var kl = 0
@@ -44,7 +42,6 @@ class Exploration extends Monitor {
   }
 
   whenSecond () {
-    // assertArgs(arguments, 0);
     this.refresh()
   }
 }

@@ -4,7 +4,6 @@
 class LocationTrade extends Location {
   constructor (data) {
     const { name, wantID, giveID } = data
-    // assertArgs(arguments, 5);
     super(data, new IconTrade(), name === 'tower' ? new StructureTower() : new StructureTrade())
 
     const give = verreciel.items[giveID]
@@ -22,7 +21,6 @@ class LocationTrade extends Location {
   }
 
   whenStart () {
-    // assertArgs(arguments, 0);
     super.whenStart()
     this.refresh()
   }
@@ -30,7 +28,6 @@ class LocationTrade extends Location {
   // MARK: Panels -
 
   makePanel () {
-    // assertArgs(arguments, 0);
     if (this.isComplete == true) {
       return null
     }
@@ -92,19 +89,16 @@ class LocationTrade extends Location {
   }
 
   onUploadComplete () {
-    // assertArgs(arguments, 0);
     verreciel.player.releasePort()
     this.refresh()
     verreciel.music.playEffect('beep2')
   }
 
   onDisconnect () {
-    // assertArgs(arguments, 0);
     this.refresh()
   }
 
   refresh () {
-    // assertArgs(arguments, 0);
     if (
       this.wantPort.event != null &&
       this.wantPort.event.name == this.wantPort.requirement.name
@@ -137,7 +131,6 @@ class LocationTrade extends Location {
 
 class IconTrade extends Icon {
   constructor () {
-    // assertArgs(arguments, 0);
     super()
 
     this.mesh.add(
@@ -162,7 +155,6 @@ class IconTrade extends Icon {
 
 class StructureTrade extends Structure {
   constructor () {
-    // assertArgs(arguments, 0);
     super()
 
     this.root.position.set(0, 5, 0)
@@ -197,7 +189,6 @@ class StructureTrade extends Structure {
   }
 
   onSight () {
-    // assertArgs(arguments, 0);
     super.onSight()
 
     verreciel.animator.begin()
@@ -213,7 +204,6 @@ class StructureTrade extends Structure {
   }
 
   onUndock () {
-    // assertArgs(arguments, 0);
     super.onUndock()
 
     verreciel.animator.begin()
@@ -229,7 +219,6 @@ class StructureTrade extends Structure {
   }
 
   onDock () {
-    // assertArgs(arguments, 0);
     super.onDock()
 
     verreciel.animator.begin()
@@ -243,19 +232,16 @@ class StructureTrade extends Structure {
   }
 
   onComplete () {
-    // assertArgs(arguments, 0);
     super.onComplete()
   }
 
   sightUpdate () {
-    // assertArgs(arguments, 0);
     this.root.rotation.y += degToRad(0.1)
   }
 }
 
 class StructureTower extends Structure {
   constructor () {
-    // assertArgs(arguments, 0);
     super()
 
     this.root.position.set(0, 5, 0)
@@ -263,7 +249,6 @@ class StructureTower extends Structure {
   }
 
   onSight () {
-    // assertArgs(arguments, 0);
     super.onSight()
 
     verreciel.animator.begin()
@@ -277,21 +262,18 @@ class StructureTower extends Structure {
   }
 
   onComplete () {
-    // assertArgs(arguments, 0);
     super.onComplete()
 
     this.root.updateChildrenColors(verreciel.grey)
   }
 
   dockUpdate () {
-    // assertArgs(arguments, 0);
     this.root.rotation.y += degToRad(0.1)
     this.root.rotation.x += degToRad(0.05)
     this.root.rotation.z += degToRad(0.025)
   }
 
   sightUpdate () {
-    // assertArgs(arguments, 0);
     super.sightUpdate()
 
     this.root.rotation.y += degToRad(0.1)

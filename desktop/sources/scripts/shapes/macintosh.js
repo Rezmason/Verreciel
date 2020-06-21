@@ -5,7 +5,6 @@ class Macintosh extends SceneLine {
   // from a C++ QD3D Demo from 1995
 
   constructor (size, color = verreciel.white) {
-    // assertArgs(arguments, 1);
 
     const points = [
       [ -60, -80, -70 ], /* 0  */

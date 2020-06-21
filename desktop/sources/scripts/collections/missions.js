@@ -3,7 +3,6 @@
 
 class Missions {
   constructor () {
-    // assertArgs(arguments, 0);
     this.story = []
     this.currentMission = new Mission(0, '--')
 
@@ -1640,21 +1639,18 @@ class Missions {
   // MARK: Tools -
 
   setToInstalled (panels) {
-    // assertArgs(arguments, 1);
     for (let panel of panels) {
       panel.onInstallationComplete()
     }
   }
 
   setToKnown (locations) {
-    // assertArgs(arguments, 1);
     for (let location of locations) {
       location.isKnown = true
     }
   }
 
   setToCompleted (locations) {
-    // assertArgs(arguments, 1);
     for (let location of locations) {
       if (location.isComplete !== true) {
         location.onComplete()
@@ -1664,7 +1660,6 @@ class Missions {
   }
 
   refresh () {
-    // assertArgs(arguments, 0);
     this.currentMission.validate()
     if (this.currentMission.isCompleted === true) {
       this.updateCurrentMission()
@@ -1672,7 +1667,6 @@ class Missions {
   }
 
   updateCurrentMission () {
-    // assertArgs(arguments, 0);
     for (let mission of this.story) {
       if (mission.isCompleted == false) {
         this.currentMission = mission

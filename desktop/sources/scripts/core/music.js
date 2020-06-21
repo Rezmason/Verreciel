@@ -3,7 +3,6 @@
 
 class Music {
   constructor () {
-    // assertArgs(arguments, 0);
     this.track = null
     this.trackCatalog = {}
     this.ambience = null
@@ -26,7 +25,6 @@ class Music {
   }
 
   playEffect (name) {
-    // assertArgs(arguments, 1);
     // console.info("Effect: ",name);
     let track = this.fetchTrack(
       name,
@@ -114,7 +112,6 @@ class Music {
   }
 
   fetchTrack (name, role, src, loop, analyze) {
-    // assertArgs(arguments, 3);
     let audioId = role + '_' + name
     if (!(audioId in this.trackCatalog)) {
       this.trackCatalog[audioId] = new Track(name, role, src, loop, analyze)

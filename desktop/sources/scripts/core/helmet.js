@@ -3,7 +3,6 @@
 
 class Helmet extends Empty {
   constructor () {
-    // assertArgs(arguments, 0);
     super()
 
     // Useful snippet. I should put it somewhere else, but this is where I'd go looking for it.
@@ -209,13 +208,11 @@ class Helmet extends Empty {
   }
 
   whenStart () {
-    // assertArgs(arguments, 0);
     super.whenStart()
     console.info('+ Helmet | Start')
   }
 
   whenRenderer () {
-    // assertArgs(arguments, 0);
     super.whenRenderer()
 
     let rotX = this.rotation.x
@@ -243,7 +240,6 @@ class Helmet extends Empty {
   }
 
   updatePortWires () {
-    // assertArgs(arguments, 0);
     let port = verreciel.player.port
     if (port.origin != null) {
       port.origin.updateWire()
@@ -290,7 +286,6 @@ class Helmet extends Empty {
   }
 
   addMessage (message, color = verreciel.white) {
-    // assertArgs(arguments, 1);
     if (this.message == message) {
       return
     }
@@ -312,7 +307,6 @@ class Helmet extends Empty {
   }
 
   addPassive (passive) {
-    // assertArgs(arguments, 1);
     if (this.passive == passive) {
       return
     }
@@ -335,7 +329,6 @@ class Helmet extends Empty {
   }
 
   addWarning (text, color, duration, flag) {
-    // assertArgs(arguments, 3);
     if (verreciel.game.time - this.lastWarning <= 10) {
       return
     }
@@ -358,7 +351,6 @@ class Helmet extends Empty {
   }
 
   hideWarning () {
-    // assertArgs(arguments, 0);
     this.warningFlag = ''
     this.warningString = ''
     this.warningLabel.updateText('')

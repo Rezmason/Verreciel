@@ -3,7 +3,6 @@
 
 class Shield extends Widget {
   constructor () {
-    // assertArgs(arguments, 0);
     super('shield')
 
     this.details = 'star protection'
@@ -15,7 +14,6 @@ class Shield extends Widget {
   }
 
   setShield (item) {
-    // assertArgs(arguments, 1);
     if (this.port.event == null) {
       this.port.addEvent(item)
       this.onUploadComplete()
@@ -24,7 +22,6 @@ class Shield extends Widget {
   }
 
   hasShield (shield) {
-    // assertArgs(arguments, 1);
     if (this.port.hasEvent() == false) {
       return false
     }
@@ -41,7 +38,6 @@ class Shield extends Widget {
   }
 
   update () {
-    // assertArgs(arguments, 0);
     if (this.port.hasItemOfType(ItemTypes.shield) == true) {
       if (verreciel.battery.isShieldPowered() == true) {
         this.mode_powered()
@@ -58,7 +54,6 @@ class Shield extends Widget {
   }
 
   mode_powered () {
-    // assertArgs(arguments, 0);
     if (this.hasShield(verreciel.items.shield2)) {
       verreciel.capsule.shieldRoot.updateChildrenColors(verreciel.red)
     } else {
@@ -69,37 +64,31 @@ class Shield extends Widget {
   }
 
   mode_unpowered () {
-    // assertArgs(arguments, 0);
     verreciel.capsule.shieldRoot.updateChildrenColors(verreciel.grey)
     verreciel.capsule.shieldRoot.show()
   }
 
   mode_blank () {
-    // assertArgs(arguments, 0);
     verreciel.capsule.shieldRoot.updateChildrenColors(verreciel.grey)
     verreciel.capsule.shieldRoot.show()
   }
 
   mode_none () {
-    // assertArgs(arguments, 0);
     verreciel.capsule.shieldRoot.updateChildrenColors(verreciel.clear)
     verreciel.capsule.shieldRoot.hide()
   }
 
   onPowered () {
-    // assertArgs(arguments, 0);
     super.onPowered()
     this.update()
   }
 
   onUnpowered () {
-    // assertArgs(arguments, 0);
     super.onUnpowered()
     this.update()
   }
 
   createShield () {
-    // assertArgs(arguments, 0);
     verreciel.capsule.add(verreciel.capsule.shieldRoot)
     let radius = 6
     var scale = 2.5
@@ -196,13 +185,11 @@ class Shield extends Widget {
   }
 
   onInstallationBegin () {
-    // assertArgs(arguments, 0);
     super.onInstallationBegin()
     verreciel.player.lookAt(90, -30)
   }
 
   onInstallationComplete () {
-    // assertArgs(arguments, 0);
     super.onInstallationComplete()
     this.createShield()
     verreciel.battery.installShield()

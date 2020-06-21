@@ -3,7 +3,6 @@
 
 class LocationAntenna extends Location {
   constructor (data) {
-    // assertArgs(arguments, 6);
     super(data, new IconStation(), new StructureStation())
     const { installID, installName } = data
     this.installer = this.makeInstaller(installID)
@@ -20,7 +19,6 @@ class LocationAntenna extends Location {
     if (this.isComplete == true) {
       return null
     }
-    // assertArgs(arguments, 0);
     let newPanel = new Panel()
 
     let text = new SceneLabel('Orient Transmitters$install ' + this.installName, 0.1, Alignment.left)
@@ -78,7 +76,6 @@ class LocationAntenna extends Location {
   }
 
   touch (id) {
-    // assertArgs(arguments, 1);
     super.touch(id)
     if (id == 1) {
       this.installer()
@@ -90,7 +87,6 @@ class LocationAntenna extends Location {
 
 class IconAntenna extends Icon {
   constructor () {
-    // assertArgs(arguments, 0);
     super()
 
     this.mesh.add(
@@ -115,7 +111,6 @@ class IconAntenna extends Icon {
 
 class StructurAntenna extends Structure {
   constructor () {
-    // assertArgs(arguments, 0);
     super()
 
     this.root.position.set(0, 5, 0)
@@ -143,7 +138,6 @@ class StructurAntenna extends Structure {
   }
 
   onSight () {
-    // assertArgs(arguments, 0);
     super.onSight()
 
     verreciel.animator.begin()
@@ -157,7 +151,6 @@ class StructurAntenna extends Structure {
   }
 
   onUndock () {
-    // assertArgs(arguments, 0);
     super.onUndock()
 
     verreciel.animator.begin()
@@ -171,7 +164,6 @@ class StructurAntenna extends Structure {
   }
 
   onDock () {
-    // assertArgs(arguments, 0);
     super.onDock()
 
     verreciel.animator.begin()
@@ -185,14 +177,12 @@ class StructurAntenna extends Structure {
   }
 
   onComplete () {
-    // assertArgs(arguments, 0);
     super.onComplete()
 
     this.updateChildrenColors(verreciel.cyan)
   }
 
   sightUpdate () {
-    // assertArgs(arguments, 0);
     this.root.rotation.y += degToRad(0.1)
   }
 }

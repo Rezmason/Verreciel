@@ -10,7 +10,6 @@ class AnimatedXYZ {
     snapToEnd = false,
     onChange = null
   ) {
-    // assertArgs(arguments, 3);
     this.target = target
     this.property = property
     this.xyz = target[property]
@@ -62,21 +61,18 @@ class AnimatedXYZ {
   }
 
   set (x, y, z) {
-    // assertArgs(arguments, 3, true);
     this.x = x
     this.y = y
     this.z = z
   }
 
   setNow (x, y, z) {
-    // assertArgs(arguments, 3, true);
     this.__xProperty.setNow(x)
     this.__yProperty.setNow(y)
     this.__zProperty.setNow(z)
   }
 
   copy (other) {
-    // assertArgs(arguments, 1, true);
     this.x = other.x
     this.y = other.y
     this.z = other.z

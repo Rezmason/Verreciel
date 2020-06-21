@@ -3,7 +3,6 @@
 
 class Game {
   constructor () {
-    // assertArgs(arguments, 0);
     console.info('^ Game | Init')
     this.time = 0
     this.seconds = 0
@@ -14,7 +13,6 @@ class Game {
   }
 
   whenStart (jump_mission) {
-    // assertArgs(arguments, 0);
     console.info('+ Game | Start')
     if (JUMP_MISSION) {
       this.load(jump_mission)
@@ -27,7 +25,6 @@ class Game {
   }
 
   save (id) {
-    // assertArgs(arguments, 1);
     if (DEBUG_DONT_SAVE) {
       return
     }
@@ -43,7 +40,6 @@ class Game {
   }
 
   load (id) {
-    // assertArgs(arguments, 1);
     id = id == 20 ? 0 : id
 
     console.info('@ GAME     | Loaded State to ' + id)
@@ -59,7 +55,6 @@ class Game {
   }
 
   get state () {
-    // assertArgs(arguments, 0);
     if ('state' in localStorage) {
       return parseInt(localStorage.state)
     }
@@ -67,7 +62,6 @@ class Game {
   }
 
   erase () {
-    // assertArgs(arguments, 0);
     console.info('$ GAME     | Erase')
     localStorage.clear()
   }
@@ -79,7 +73,6 @@ class Game {
   }
 
   tick ( delta ) {
-    // assertArgs(arguments, 0);
     this.time += this.gameSpeed
     this.seconds += delta
 

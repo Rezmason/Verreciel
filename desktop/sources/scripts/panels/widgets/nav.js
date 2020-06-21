@@ -3,7 +3,6 @@
 
 class Nav extends Widget {
   constructor () {
-    // assertArgs(arguments, 0);
     super('map')
     this.details = 'disk drive'
     this.requirement = ItemTypes.map
@@ -14,14 +13,12 @@ class Nav extends Widget {
   }
 
   setMap (map) {
-    // assertArgs(arguments, 1);
     if (!this.hasMap(map)) {
       this.port.addEvent(map)
     }
   }
 
   hasMap (map) {
-    // assertArgs(arguments, 1);
     if (this.port.hasEvent() == false) {
       return false
     }
@@ -32,19 +29,16 @@ class Nav extends Widget {
   }
 
   onUploadComplete () {
-    // assertArgs(arguments, 0);
     super.onUploadComplete()
   }
 
   onInstallationBegin () {
-    // assertArgs(arguments, 0);
     super.onInstallationBegin()
 
     verreciel.player.lookAt(-90, -30)
   }
 
   onInstallationComplete () {
-    // assertArgs(arguments, 0);
     super.onInstallationComplete()
     verreciel.battery.installNav()
   }

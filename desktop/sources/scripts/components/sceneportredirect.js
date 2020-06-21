@@ -9,7 +9,6 @@ class ScenePortRedirect extends ScenePort {
   }
 
   removeEvent () {
-    // assertArgs(arguments, 0);
     let redirectedHost = verreciel.console.port.origin.host
     if (redirectedHost instanceof Cargo) {
       redirectedHost.removeItem(this.event, this.index)
@@ -19,19 +18,16 @@ class ScenePortRedirect extends ScenePort {
   /*
   disable()
   {
-    // assertArgs(arguments, 0);
     this.isEnabled = false;
     this.disconnect();
     this.trigger.disable();
   }
   */
   whenRenderer () {
-    // assertArgs(arguments, 0);
     super.whenRenderer()
   }
 
   disconnect () {
-    // assertArgs(arguments, 0);
     if (this.connection == null) {
       return
     }

@@ -10,7 +10,6 @@ class AnimatedProperty {
     snapToEnd = false,
     onChange = null
   ) {
-    // assertArgs(arguments, 3);
     this.animator = animator
     this.animation = null
     this.registered = false
@@ -79,7 +78,6 @@ class AnimatedProperty {
   }
 
   commit (animation) {
-    // assertArgs(arguments, 1, true);
     this.from = this.target[this.property]
     if (this.isAngle) {
       this.from = sanitizeAngle(this.from)

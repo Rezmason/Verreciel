@@ -2,24 +2,20 @@
 //  Copyright © 2017 XXIIVV. All rights reserved.
 
 function degToRad (degrees) {
-  // assertArgs(arguments, 1);
   return degrees / 180 * Math.PI
 }
 
 function radToDeg (value) {
-  // assertArgs(arguments, 1);
   return value * 180 / Math.PI
 }
 
 function distanceBetweenTwoPoints (point1, point2) {
-  // assertArgs(arguments, 2);
   let xDist = point2.x - point1.x
   let yDist = point2.y - point1.y
   return Math.sqrt(xDist * xDist + yDist * yDist)
 }
 
 function angleBetweenTwoPoints (point1, point2, center = { x: 0, y: 0 }) {
-  // assertArgs(arguments, 3);
   let dx1 = point1.x - center.x
   let dy1 = point1.y - center.y
   let dx2 = point2.x - center.x
@@ -50,26 +46,11 @@ function sanitizeDiffAngle (angle1, angle2, inDegrees = false) {
 }
 
 function delay (seconds, callback) {
-  // assertArgs(arguments, 2);
   return setTimeout(callback, seconds * 1000 / verreciel.game.gameSpeed)
 }
 
 function cancelDelay (delayID) {
-  // assertArgs(arguments, 1);
   clearTimeout(delayID)
-}
-
-function assertArgs (args, length, exact = false) {
-  if (args.length < length || (exact && args.length != length)) {
-    console.warn(
-      'INCORRECT ARGS: ' +
-        args.length +
-        ' != ' +
-        length +
-        '\n' +
-        getStackTrace()
-    )
-  }
 }
 
 function getStackTrace () {

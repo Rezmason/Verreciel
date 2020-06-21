@@ -3,7 +3,6 @@
 
 class Hexagon extends SceneLine {
   constructor (size, color = verreciel.white) {
-    // assertArgs(arguments, 1);
     let angle = 1.5
 
     super(

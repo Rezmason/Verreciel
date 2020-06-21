@@ -3,7 +3,6 @@
 
 class SceneLine extends SceneDrawNode {
   constructor (vertices, color = verreciel.white) {
-    // assertArgs(arguments, 1);
     super()
     this.updateVertices(vertices)
     this.color = color
@@ -19,7 +18,6 @@ class SceneLine extends SceneDrawNode {
   }
 
   updateChildrenColors (color) {
-    // assertArgs(arguments, 1);
     this.color = color
     super.updateChildrenColors(color)
   }
@@ -30,7 +28,6 @@ class SceneLine extends SceneDrawNode {
   }
 
   updateVertices (vertices) {
-    // assertArgs(arguments, 1);
     if (vertices.indexOf(null) != -1) {
       throw 'BAD GEOMETRY'
     }

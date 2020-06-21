@@ -3,7 +3,6 @@
 
 class LocationStation extends Location {
   constructor (data) {
-    // assertArgs(arguments, 6);
     super(data, new IconStation(), new StructureStation())
 
     const {
@@ -27,7 +26,6 @@ class LocationStation extends Location {
     if (this.isComplete == true) {
       return null
     }
-    // assertArgs(arguments, 0);
     let newPanel = new Panel()
 
     let requirementLabel = new SceneLabel(
@@ -67,7 +65,6 @@ class LocationStation extends Location {
   }
 
   onUploadComplete () {
-    // assertArgs(arguments, 0);
     if (this.port.hasEvent() == false) {
       this.tradeLabel.color = verreciel.grey
       return
@@ -87,7 +84,6 @@ class LocationStation extends Location {
   }
 
   touch (id) {
-    // assertArgs(arguments, 1);
     super.touch(id)
     if (id == 1) {
       this.installer()
@@ -99,7 +95,6 @@ class LocationStation extends Location {
 
 class IconStation extends Icon {
   constructor () {
-    // assertArgs(arguments, 0);
     super()
 
     this.mesh.add(
@@ -124,7 +119,6 @@ class IconStation extends Icon {
 
 class StructureStation extends Structure {
   constructor () {
-    // assertArgs(arguments, 0);
     super()
 
     this.root.position.set(0, 5, 0)
@@ -152,7 +146,6 @@ class StructureStation extends Structure {
   }
 
   onSight () {
-    // assertArgs(arguments, 0);
     super.onSight()
 
     verreciel.animator.begin()
@@ -166,7 +159,6 @@ class StructureStation extends Structure {
   }
 
   onUndock () {
-    // assertArgs(arguments, 0);
     super.onUndock()
 
     verreciel.animator.begin()
@@ -180,7 +172,6 @@ class StructureStation extends Structure {
   }
 
   onDock () {
-    // assertArgs(arguments, 0);
     super.onDock()
 
     verreciel.animator.begin()
@@ -194,14 +185,12 @@ class StructureStation extends Structure {
   }
 
   onComplete () {
-    // assertArgs(arguments, 0);
     super.onComplete()
 
     this.updateChildrenColors(verreciel.cyan)
   }
 
   sightUpdate () {
-    // assertArgs(arguments, 0);
     this.root.rotation.y += degToRad(0.1)
   }
 }

@@ -3,14 +3,12 @@
 
 class LocationConstellation extends Location {
   constructor (data) {
-    // assertArgs(arguments, 4);
     const structure = new (structureClassesByID[data.structureID])()
     super(data, new IconConstellation(), structure)
     this.isTargetable = false
   }
 
   onApproach () {
-    // assertArgs(arguments, 0);
     // super.onApproach() // Disable docking
 
     verreciel.space.startInstance(this)
@@ -20,7 +18,6 @@ class LocationConstellation extends Location {
 
 class IconConstellation extends Icon {
   constructor () {
-    // assertArgs(arguments, 0);
     super()
     this.size = 0.02
     this.mesh.add(
@@ -44,7 +41,6 @@ class IconConstellation extends Icon {
 
 class StructureTunnel extends Structure {
   constructor () {
-    // assertArgs(arguments, 0);
     super()
 
     let hex1 = new Hexagon(6, verreciel.grey)
@@ -67,7 +63,6 @@ class StructureTunnel extends Structure {
 
 class StructureDoor extends Structure {
   constructor () {
-    // assertArgs(arguments, 0);
     super()
 
     this.root.add(new Diamond(5, verreciel.grey))
@@ -76,7 +71,6 @@ class StructureDoor extends Structure {
   }
 
   sightUpdate () {
-    // assertArgs(arguments, 0);
     super.sightUpdate()
 
     this.root.rotation.y += 0.001

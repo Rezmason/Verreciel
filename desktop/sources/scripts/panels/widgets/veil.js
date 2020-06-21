@@ -3,7 +3,6 @@
 
 class Veil extends Widget {
   constructor () {
-    // assertArgs(arguments, 0);
     super('veil')
 
     this.details = 'extra'
@@ -15,14 +14,12 @@ class Veil extends Widget {
   }
 
   setVeil (veil) {
-    // assertArgs(arguments, 1);
     if (!this.hasVeil(veil)) {
       this.port.addEvent(veil)
     }
   }
 
   hasVeil (veil) {
-    // assertArgs(arguments, 1);
     if (this.port.hasEvent() == false) {
       return false
     }
@@ -33,13 +30,11 @@ class Veil extends Widget {
   }
 
   onInstallationBegin () {
-    // assertArgs(arguments, 0);
     super.onInstallationBegin()
     verreciel.player.lookAt(180, -30)
   }
 
   onInstallationComplete () {
-    // assertArgs(arguments, 0);
     super.onInstallationComplete()
     verreciel.battery.installVeil()
   }

@@ -8,7 +8,6 @@ class SceneLabel extends SceneLine {
     align = Alignment.left,
     color = verreciel.white
   ) {
-    // assertArgs(arguments, 1);
     super([], color)
 
     this.activeText = text
@@ -19,7 +18,6 @@ class SceneLabel extends SceneLine {
   }
 
   updateText (text, color = null) {
-    // assertArgs(arguments, 1);
 
     if (text == null) {
       text = this.activeText
@@ -37,7 +35,6 @@ class SceneLabel extends SceneLine {
   }
 
   updateScale (scale) {
-    // assertArgs(arguments, 1);
     if (this.activeScale != scale) {
       this.activeScale = scale
       this.redrawLetters(this.activeText, this.activeScale)

@@ -10,7 +10,6 @@ class Mission {
     },
     state = function () {}
   ) {
-    // assertArgs(arguments, 2);
     this.isCompleted = false
     this.quests = []
     this.predicate = function () {
@@ -23,7 +22,6 @@ class Mission {
   }
 
   validate () {
-    // assertArgs(arguments, 0);
     if (this.currentQuest == null) {
       this.currentQuest = this.quests[0]
     }
@@ -44,7 +42,6 @@ class Mission {
   }
 
   prompt () {
-    // assertArgs(arguments, 0);
     if (this.currentQuest.location != null) {
       if (verreciel.capsule.isDockedAtLocation(this.currentQuest.location)) {
         verreciel.helmet.addMessage(this.currentQuest.name)
@@ -68,12 +65,10 @@ class Mission {
   }
 
   onComplete () {
-    // assertArgs(arguments, 0);
     verreciel.completion.refresh()
   }
 
   complete () {
-    // assertArgs(arguments, 0);
     this.isCompleted = true
     for (let quest of this.quests) {
       quest.complete()

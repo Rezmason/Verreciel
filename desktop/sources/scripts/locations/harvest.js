@@ -3,7 +3,6 @@
 
 class LocationHarvest extends Location {
   constructor (data) {
-    // assertArgs(arguments, 4);
     super(data, new IconHarvest(), new StructureHarvest())
 
     this.grows = Item.like(verreciel.items[data.harvestedID])
@@ -24,7 +23,6 @@ class LocationHarvest extends Location {
   }
 
   whenStart () {
-    // assertArgs(arguments, 0);
     super.whenStart()
     this.generate()
     this.port.addEvent(this.grows)
@@ -32,7 +30,6 @@ class LocationHarvest extends Location {
   }
 
   generate () {
-    // assertArgs(arguments, 0);
     delay(1, this.generate.bind(this))
 
     if (this.port == null) {
@@ -71,7 +68,6 @@ class LocationHarvest extends Location {
   }
 
   makePanel () {
-    // assertArgs(arguments, 0);
     let newPanel = new Panel()
 
     this.timeLeftLabel = new SceneLabel('', 0.15, Alignment.center)
@@ -87,7 +83,6 @@ class LocationHarvest extends Location {
   }
 
   onUploadComplete () {
-    // assertArgs(arguments, 0);
     super.onUploadComplete()
 
     this.refresh()
@@ -95,7 +90,6 @@ class LocationHarvest extends Location {
   }
 
   refresh () {
-    // assertArgs(arguments, 0);
     if (this.port.hasEvent(this.grows) != true) {
       this.icon.mesh.updateChildrenColors(verreciel.grey)
     } else {
@@ -106,7 +100,6 @@ class LocationHarvest extends Location {
 
 class IconHarvest extends Icon {
   constructor () {
-    // assertArgs(arguments, 0);
     super()
     this.mesh.add(
       new SceneLine(
@@ -130,7 +123,6 @@ class IconHarvest extends Icon {
 
 class StructureHarvest extends Structure {
   constructor () {
-    // assertArgs(arguments, 0);
     super()
 
     this.root.position.set(0, 5, 0)
@@ -161,7 +153,6 @@ class StructureHarvest extends Structure {
   }
 
   update () {
-    // assertArgs(arguments, 0);
     super.update()
 
     if (this.host.port.hasEvent() != true) {
@@ -172,7 +163,6 @@ class StructureHarvest extends Structure {
   }
 
   sightUpdate () {
-    // assertArgs(arguments, 0);
     super.sightUpdate()
 
     this.root.rotation.y += degToRad(0.1)

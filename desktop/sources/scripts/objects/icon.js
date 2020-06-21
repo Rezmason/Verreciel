@@ -3,7 +3,6 @@
 
 class Icon extends Empty {
   constructor () {
-    // assertArgs(arguments, 0);
     super()
 
     this.color = new THREE.Vector4(0.5, 0, 0.5, 1) // Haha, weird!
@@ -34,13 +33,11 @@ class Icon extends Empty {
   }
 
   addHost (host) {
-    // assertArgs(arguments, 1);
     this.host = host
     this.label.updateText(this.host.name)
   }
 
   whenStart () {
-    // assertArgs(arguments, 0);
     super.whenStart()
 
     if (this.host.mapRequirementID != null) {
@@ -50,7 +47,6 @@ class Icon extends Empty {
   }
 
   onUpdate () {
-    // assertArgs(arguments, 0);
     if (this.host.name === 'aitasla') {
       this.color = verreciel.black
     } else if (this.host.isComplete == null) {
@@ -65,6 +61,5 @@ class Icon extends Empty {
   }
 
   close () {
-    // assertArgs(arguments, 0);
   }
 }

@@ -3,7 +3,6 @@
 
 class LocationHoradric extends Location {
   constructor (data) {
-    // assertArgs(arguments, 3);
     super(data, new IconHoradric(), new StructureHoradric())
 
     this.details = 'unknown'
@@ -12,7 +11,6 @@ class LocationHoradric extends Location {
   }
 
   makePanel () {
-    // assertArgs(arguments, 0);
     let newPanel = new Panel()
 
     this.inPort1 = new ScenePortSlot(
@@ -108,7 +106,6 @@ class LocationHoradric extends Location {
   }
 
   dockUpdate () {
-    // assertArgs(arguments, 0);
     if (this.inPort1.isEnabled == true && this.inPort2.isEnabled == true) {
     }
 
@@ -118,12 +115,10 @@ class LocationHoradric extends Location {
   }
 
   onUploadComplete () {
-    // assertArgs(arguments, 0);
     this.verifyRecipes()
   }
 
   verifyRecipes () {
-    // assertArgs(arguments, 0);
     var ingredients = []
 
     if (this.inPort1.event != null) {
@@ -147,7 +142,6 @@ class LocationHoradric extends Location {
   }
 
   refresh () {
-    // assertArgs(arguments, 0);
     if (this.outPort.hasEvent() == true) {
       this.inPort1.disable()
       this.inPort2.disable()
@@ -192,7 +186,6 @@ class LocationHoradric extends Location {
   // MARK: Combinatrix
 
   combine (recipe) {
-    // assertArgs(arguments, 1);
     this.inPort1.disable()
     this.inPort2.disable()
     this.inPort1.label.color = verreciel.cyan
@@ -204,7 +197,6 @@ class LocationHoradric extends Location {
   }
 
   combineProgress () {
-    // assertArgs(arguments, 0);
     this.combinationPercentage += Math.random() * 2 * verreciel.game.gameSpeed
 
     if (this.combinationPercentage > 100) {
@@ -220,7 +212,6 @@ class LocationHoradric extends Location {
   }
 
   onCombinationComplete () {
-    // assertArgs(arguments, 0);
     this.inPort1.removeEvent()
     this.inPort2.removeEvent()
     this.inPort1.label.color = verreciel.grey
@@ -243,7 +234,6 @@ class LocationHoradric extends Location {
 
 class IconHoradric extends Icon {
   constructor () {
-    // assertArgs(arguments, 0);
     super()
 
     this.mesh.add(
@@ -270,7 +260,6 @@ class IconHoradric extends Icon {
 
 class StructureHoradric extends Structure {
   constructor () {
-    // assertArgs(arguments, 0);
     super()
     this.root.position.set(0, 0, 0)
     let radius = 5
@@ -289,7 +278,6 @@ class StructureHoradric extends Structure {
   }
 
   onUndock () {
-    // assertArgs(arguments, 0);
     super.onUndock()
 
     verreciel.animator.begin()
@@ -310,7 +298,6 @@ class StructureHoradric extends Structure {
   }
 
   onDock () {
-    // assertArgs(arguments, 0);
     super.onDock()
 
     verreciel.animator.begin()

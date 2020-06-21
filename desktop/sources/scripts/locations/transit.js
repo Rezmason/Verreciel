@@ -3,14 +3,12 @@
 
 class LocationTransit extends Location {
   constructor (data) {
-    // assertArgs(arguments, 3);
     super(data, new IconTransit(), new StructureTransit())
   }
 
   // MARK: Panel -
 
   makePanel () {
-    // assertArgs(arguments, 0);
     let newPanel = new Panel()
 
     return newPanel
@@ -19,7 +17,6 @@ class LocationTransit extends Location {
 
 class IconTransit extends Icon {
   constructor () {
-    // assertArgs(arguments, 0);
     super()
 
     this.label.hide()
@@ -45,7 +42,6 @@ class IconTransit extends Icon {
 
 class StructureTransit extends Structure {
   constructor () {
-    // assertArgs(arguments, 0);
     super()
   }
 }

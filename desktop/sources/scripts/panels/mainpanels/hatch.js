@@ -3,7 +3,6 @@
 
 class Hatch extends MainPanel {
   constructor () {
-    // assertArgs(arguments, 0);
     super('hatch')
 
     this.outline = new Empty()
@@ -68,7 +67,6 @@ class Hatch extends MainPanel {
   }
 
   whenStart () {
-    // assertArgs(arguments, 0);
     super.whenStart()
 
     this.update()
@@ -84,7 +82,6 @@ class Hatch extends MainPanel {
   }
 
   touch (id = 0) {
-    // assertArgs(arguments, 1);
 
     if (
       this.port.origin != null &&
@@ -121,7 +118,6 @@ class Hatch extends MainPanel {
   }
 
   update () {
-    // assertArgs(arguments, 0);
     var load = this.port.origin == null ? null : this.port.origin.event
 
     if (load != null) {
@@ -139,7 +135,6 @@ class Hatch extends MainPanel {
   }
 
   onConnect () {
-    // assertArgs(arguments, 0);
     super.onConnect()
 
     if (
@@ -157,13 +152,11 @@ class Hatch extends MainPanel {
   }
 
   onDisconnect () {
-    // assertArgs(arguments, 0);
     this.pendingErase = false
     this.update()
   }
 
   onInstallationBegin () {
-    // assertArgs(arguments, 0);
     super.onInstallationBegin()
 
     verreciel.player.lookAt(-315)

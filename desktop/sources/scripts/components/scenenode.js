@@ -3,7 +3,6 @@
 
 class SceneNode {
   constructor () {
-    // assertArgs(arguments, 0);
     this.nodeID = SceneNode.nodeIDs++
     // console.debug(this.nodeID);
     this.children = []
@@ -117,42 +116,36 @@ class SceneNode {
   }
 
   whenStart () {
-    // assertArgs(arguments, 0);
     for( let i = 0; i < this.children.length; i++ ) {
       this.children[i].whenStart()
     }
   }
 
   whenSecond () {
-    // assertArgs(arguments, 0);
     for( let i = 0; i < this.children.length; i++ ) {
       this.children[i].whenSecond()
     }
   }
 
   whenRenderer () {
-    // assertArgs(arguments, 0);
     for( let i = 0; i < this.children.length; i++ ) {
       this.children[i].whenRenderer()
     }
   }
 
   whenResize () {
-    // assertArgs(arguments, 0);
     for( let i = 0; i < this.children.length; i++ ) {
       this.children[i].whenResize()
     }
   }
 
   removeFromParentNode () {
-    // assertArgs(arguments, 0);
     if (this.parent != null) {
       this.parent.remove(this)
     }
   }
 
   convertPositionToNode (xyz, node) {
-    // assertArgs(arguments, 2);
     let position = new THREE.Vector3(xyz.x, xyz.y, xyz.z)
     this.hardUpdateMatrixWorld()
     node.hardUpdateMatrixWorld()
@@ -165,7 +158,6 @@ class SceneNode {
   }
 
   convertPositionFromNode (xyz, node) {
-    // assertArgs(arguments, 2);
     let position = new THREE.Vector3(xyz.x, xyz.y, xyz.z)
     this.hardUpdateMatrixWorld()
     node.hardUpdateMatrixWorld()

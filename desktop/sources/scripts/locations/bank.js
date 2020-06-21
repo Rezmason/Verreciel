@@ -3,7 +3,6 @@
 
 class LocationBank extends Location {
   constructor (data) {
-    // assertArgs(arguments, 3);
     super(data, new IconBank(), new StructureBank())
 
     this.details = 'storage'
@@ -24,7 +23,6 @@ class LocationBank extends Location {
   }
 
   makePanel () {
-    // assertArgs(arguments, 0);
     let newPanel = new Panel()
 
     this.port1.position.set(
@@ -73,7 +71,6 @@ class LocationBank extends Location {
   }
 
   addItems (items) {
-    // assertArgs(arguments, 1);
     for (let item of items) {
       if (this.port1.hasItem() == false) {
         this.port1.addEvent(item)
@@ -92,7 +89,6 @@ class LocationBank extends Location {
   }
 
   contains (item) {
-    // assertArgs(arguments, 1);
     if (this.port1.event != null && this.port1.event == item) {
       return true
     }
@@ -117,7 +113,6 @@ class LocationBank extends Location {
 
 class IconBank extends Icon {
   constructor () {
-    // assertArgs(arguments, 0);
     super()
 
     this.mesh.add(
@@ -142,7 +137,6 @@ class IconBank extends Icon {
 
 class StructureBank extends Structure {
   constructor () {
-    // assertArgs(arguments, 0);
     super()
 
     var i = 0

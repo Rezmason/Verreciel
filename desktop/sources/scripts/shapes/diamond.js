@@ -3,7 +3,6 @@
 
 class Diamond extends SceneLine {
   constructor (size, color = verreciel.white) {
-    // assertArgs(arguments, 1);
 
     super(
       [

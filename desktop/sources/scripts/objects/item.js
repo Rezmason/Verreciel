@@ -11,7 +11,6 @@ class Item extends Event {
       details,
       isDestroyable
     } = data
-    // assertArgs(arguments, 6);
     super(name, new THREE.Vector2(), details, verreciel.grey, false)
     this.id = id
     this.name = name
@@ -22,7 +21,6 @@ class Item extends Event {
   }
 
   payload () {
-    // assertArgs(arguments, 0);
     return new ConsolePayload([
       new ConsoleData('Item', this.type),
       new ConsoleData(this.details)
@@ -30,7 +28,6 @@ class Item extends Event {
   }
 
   static like (other) {
-    // assertArgs(arguments, 1);
     if (other.type === ItemTypes.currency) {
       return new Item(other)
     } else {

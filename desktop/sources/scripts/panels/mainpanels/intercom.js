@@ -5,7 +5,6 @@ class Intercom extends MainPanel {
   // MARK: Default -
 
   constructor () {
-    // assertArgs(arguments, 0);
     super('mission')
 
     this.details = 'displays informations'
@@ -116,7 +115,6 @@ class Intercom extends MainPanel {
   }
 
   whenRenderer () {
-    // assertArgs(arguments, 0);
     super.whenRenderer()
 
     if (
@@ -165,14 +163,12 @@ class Intercom extends MainPanel {
   }
 
   touch (id) {
-    // assertArgs(arguments, 1);
     this.refresh()
     verreciel.music.playEffect('click3')
     return false
   }
 
   refresh () {
-    // assertArgs(arguments, 0);
     if (this.isInstalled == true) {
       if (verreciel.capsule.location == null) {
         this.nameLabel.updateText('mission', verreciel.white)
@@ -198,7 +194,6 @@ class Intercom extends MainPanel {
   // MARK: Custom -
 
   complete () {
-    // assertArgs(arguments, 0);
     // Animate
 
     if (this.isCompleting) {
@@ -236,7 +231,6 @@ class Intercom extends MainPanel {
   }
 
   connectToLocation (location) {
-    // assertArgs(arguments, 1);
     this.locationPanel.empty()
     let panel = location.panel
     if (panel != null) {
@@ -286,7 +280,6 @@ class Intercom extends MainPanel {
   }
 
   disconnectFromLocation () {
-    // assertArgs(arguments, 0);
 
     ScenePort.stripAllPorts(this)
 
@@ -320,28 +313,24 @@ class Intercom extends MainPanel {
   }
 
   onInstallationBegin () {
-    // assertArgs(arguments, 0);
     super.onInstallationBegin()
 
     verreciel.player.lookAt(-180)
   }
 
   onInstallationComplete () {
-    // assertArgs(arguments, 0);
     super.onInstallationComplete()
 
     this.touch(1)
   }
 
   onConnect () {
-    // assertArgs(arguments, 0);
     if (verreciel.capsule.isDocked == true) {
       verreciel.capsule.location.onConnect()
     }
   }
 
   onDisconnect () {
-    // assertArgs(arguments, 0);
     if (verreciel.capsule.isDocked == true) {
       verreciel.capsule.location.onDisconnect()
     }

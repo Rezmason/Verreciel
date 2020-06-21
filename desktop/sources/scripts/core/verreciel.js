@@ -3,11 +3,9 @@
 
 class Verreciel {
   constructor () {
-    // assertArgs(arguments, 0);
   }
 
   install () {
-    // assertArgs(arguments, 0);
     this.version = 'r1'
 
     this.phase = Phase.install
@@ -125,8 +123,6 @@ class Verreciel {
   start (jump_mission) {
     this.theme.start()
     this.phase = Phase.start
-
-    // assertArgs(arguments, 0);
     console.info('Starting Verreciel')
 
     this.mouseIsDown = false
@@ -218,7 +214,6 @@ class Verreciel {
 
   render () {
     this.phase = Phase.render
-    // assertArgs(arguments, 0);
     requestAnimationFrame(this.render)
 
     if (DEBUG_SHOW_STATS) {
@@ -252,7 +247,6 @@ class Verreciel {
 
   mouseDown (e) {
     e.preventDefault()
-    // assertArgs(arguments, 1);
     if (this.player.isLocked) {
       return
     }
@@ -280,7 +274,6 @@ class Verreciel {
 
   mouseMove (e) {
     e.preventDefault()
-    // assertArgs(arguments, 1);
     if (!this.mouseIsDown) {
       return
     }
@@ -305,7 +298,6 @@ class Verreciel {
 
   mouseUp (e) {
     e.preventDefault()
-    // assertArgs(arguments, 1);
     this.mouseIsDown = false
     if (this.player.isLocked) {
       return
@@ -372,7 +364,6 @@ class Verreciel {
   }
 
   windowResize () {
-    // assertArgs(arguments, 0);
     this.width = window.innerWidth
     this.height = window.innerHeight
     this.camera.aspect = this.width / this.height

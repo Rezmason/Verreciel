@@ -3,7 +3,6 @@
 
 class MainPanel extends Panel {
   constructor (name) {
-    assertArgs(arguments, 1)
     super(name)
 
     this.installNode = new Empty()
@@ -108,7 +107,6 @@ class MainPanel extends Panel {
   }
 
   whenStart () {
-    // assertArgs(arguments, 0);
     super.whenStart()
 
     this.decals.hide()
@@ -119,14 +117,12 @@ class MainPanel extends Panel {
   // MARK: Installation -
 
   onInstallationBegin () {
-    // assertArgs(arguments, 0);
     super.onInstallationBegin()
     verreciel.helmet.addWarning('Installing', null, 3, 'install')
     this.installNode.show()
   }
 
   installProgress () {
-    // assertArgs(arguments, 0);
     super.installProgress()
 
     this.installLabel.updateText(
@@ -136,7 +132,6 @@ class MainPanel extends Panel {
   }
 
   onInstallationComplete () {
-    // assertArgs(arguments, 0);
     super.onInstallationComplete()
 
     this.mainNode.position.set(0, 0, -0.2)

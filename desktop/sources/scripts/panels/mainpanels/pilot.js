@@ -3,7 +3,6 @@
 
 class Pilot extends MainPanel {
   constructor () {
-    // assertArgs(arguments, 0);
     super('pilot')
 
     this.details = 'aligns to locations'
@@ -75,12 +74,10 @@ class Pilot extends MainPanel {
   }
 
   touch (id = 0) {
-    // assertArgs(arguments, 1);
     return true
   }
 
   whenRenderer () {
-    // assertArgs(arguments, 0);
     super.whenRenderer()
 
     let lastTarget = this.target
@@ -116,7 +113,6 @@ class Pilot extends MainPanel {
   }
 
   align () {
-    // assertArgs(arguments, 0);
     let left = this.target.calculateAlignment(
       verreciel.capsule.direction - 0.5
     )
@@ -145,19 +141,16 @@ class Pilot extends MainPanel {
   }
 
   turnLeft (deg) {
-    // assertArgs(arguments, 1);
     verreciel.capsule.direction = verreciel.capsule.direction - deg
     verreciel.capsule.direction = verreciel.capsule.direction % 360
   }
 
   turnRight (deg) {
-    // assertArgs(arguments, 1);
     verreciel.capsule.direction = verreciel.capsule.direction + deg
     verreciel.capsule.direction = verreciel.capsule.direction % 360
   }
 
   animate () {
-    // assertArgs(arguments, 0);
     this.targetDirectionIndicator.rotation.z =
       degToRad(verreciel.capsule.direction) * -1
     this.staticDirectionIndicator.rotation.z = degToRad(
@@ -182,7 +175,6 @@ class Pilot extends MainPanel {
   }
 
   onInstallationBegin () {
-    // assertArgs(arguments, 0);
     super.onInstallationBegin()
 
     verreciel.player.lookAt(-135)
