@@ -15,37 +15,15 @@ class Cargo extends MainPanel {
 
     // Quantity
 
-    this.line1 = new SceneLine(
-      [new THREE.Vector3(-0.5, -0.5, 0), new THREE.Vector3(0.5, -0.5, 0)],
-      verreciel.grey
-    )
-    this.line2 = new SceneLine(
-      [new THREE.Vector3(-0.5, -0.3, 0), new THREE.Vector3(0.5, -0.3, 0)],
-      verreciel.grey
-    )
-    this.line3 = new SceneLine(
-      [new THREE.Vector3(-0.5, -0.1, 0), new THREE.Vector3(0.5, -0.1, 0)],
-      verreciel.grey
-    )
-    this.line4 = new SceneLine(
-      [new THREE.Vector3(-0.5, 0.1, 0), new THREE.Vector3(0.5, 0.1, 0)],
-      verreciel.grey
-    )
-    this.line5 = new SceneLine(
-      [new THREE.Vector3(-0.5, 0.3, 0), new THREE.Vector3(0.5, 0.3, 0)],
-      verreciel.grey
-    )
-    this.line6 = new SceneLine(
-      [new THREE.Vector3(-0.5, 0.5, 0), new THREE.Vector3(0.5, 0.5, 0)],
-      verreciel.grey
-    )
-
-    this.mainNode.add(this.line1)
-    this.mainNode.add(this.line2)
-    this.mainNode.add(this.line3)
-    this.mainNode.add(this.line4)
-    this.mainNode.add(this.line5)
-    this.mainNode.add(this.line6)
+    let lineCoords = [new THREE.Vector3(-0.5, 0, 0), new THREE.Vector3(0.5, 0, 0)]
+    this.lines = []
+    let line
+    for (let i = 0; i < 6; i++) {
+      line = new SceneLine(lineCoords, verreciel.grey),
+      line.position.y = -0.5 + i * 0.2
+      this.lines.push(line)
+      this.mainNode.add(line)
+    }
 
     this.detailsLabel.updateText('Empty', verreciel.grey)
   }
@@ -96,47 +74,11 @@ class Cargo extends MainPanel {
   }
 
   removeItem (target, index) {
-    if (this.cargohold.content.length == 1) {
-      this.line1.position.x = 0.25
-    }
-    if (this.cargohold.content.length == 2) {
-      this.line2.position.x = 0.25
-    }
-    if (this.cargohold.content.length == 3) {
-      this.line3.position.x = 0.25
-    }
-    if (this.cargohold.content.length == 4) {
-      this.line4.position.x = 0.25
-    }
-    if (this.cargohold.content.length == 5) {
-      this.line5.position.x = 0.25
-    }
-    if (this.cargohold.content.length == 6) {
-      this.line6.position.x = 0.25
-    }
-
+    const lineToAnimate = this.lines[this.cargohold.content.length - 1]
+    lineToAnimate.position.x = 0.25
     verreciel.animator.begin()
     verreciel.animator.animationDuration = 0.5
-
-    if (this.cargohold.content.length == 1) {
-      this.line1.position.x = 0
-    }
-    if (this.cargohold.content.length == 2) {
-      this.line2.position.x = 0
-    }
-    if (this.cargohold.content.length == 3) {
-      this.line3.position.x = 0
-    }
-    if (this.cargohold.content.length == 4) {
-      this.line4.position.x = 0
-    }
-    if (this.cargohold.content.length == 5) {
-      this.line5.position.x = 0
-    }
-    if (this.cargohold.content.length == 6) {
-      this.line6.position.x = 0
-    }
-
+    lineToAnimate.position.x = 0
     verreciel.animator.completionBlock = function () {
       this.removeTransfer(target, index)
     }.bind(this)
@@ -144,7 +86,6 @@ class Cargo extends MainPanel {
   }
 
   removeTransfer (target, index) {
-
     if (this.cargohold.content[index] != target) {
       index = this.cargohold.content.indexOf(target)
     }
@@ -164,48 +105,15 @@ class Cargo extends MainPanel {
 
     // Animate
 
-    this.line1.color = verreciel.grey
-    this.line2.color = verreciel.grey
-    this.line3.color = verreciel.grey
-    this.line4.color = verreciel.grey
-    this.line5.color = verreciel.grey
-    this.line6.color = verreciel.grey
-
-    if (this.cargohold.content.length > 0) {
-      this.line1.color =
-        this.cargohold.content[0].isDestroyable == true
-          ? verreciel.white
-          : verreciel.cyan
-    }
-    if (this.cargohold.content.length > 1) {
-      this.line2.color =
-        this.cargohold.content[1].isDestroyable == true
-          ? verreciel.white
-          : verreciel.cyan
-    }
-    if (this.cargohold.content.length > 2) {
-      this.line3.color =
-        this.cargohold.content[2].isDestroyable == true
-          ? verreciel.white
-          : verreciel.cyan
-    }
-    if (this.cargohold.content.length > 3) {
-      this.line4.color =
-        this.cargohold.content[3].isDestroyable == true
-          ? verreciel.white
-          : verreciel.cyan
-    }
-    if (this.cargohold.content.length > 4) {
-      this.line5.color =
-        this.cargohold.content[4].isDestroyable == true
-          ? verreciel.white
-          : verreciel.cyan
-    }
-    if (this.cargohold.content.length > 5) {
-      this.line6.color =
-        this.cargohold.content[5].isDestroyable == true
-          ? verreciel.white
-          : verreciel.cyan
+    for (let i = 0; i < this.lines.length; i++) {
+      if (this.cargohold.content.length > i) {
+        this.lines[i].color =
+          this.cargohold.content[i].isDestroyable == true
+            ? verreciel.white
+            : verreciel.cyan
+      } else {
+        this.lines[i].color = verreciel.grey
+      }
     }
 
     if (this.cargohold.content.length == 0) {
@@ -286,47 +194,11 @@ class Cargo extends MainPanel {
   }
 
   uploadComplete () {
-    if (this.cargohold.content.length == 0) {
-      this.line1.position.x = -0.25
-    }
-    if (this.cargohold.content.length == 1) {
-      this.line2.position.x = -0.25
-    }
-    if (this.cargohold.content.length == 2) {
-      this.line3.position.x = -0.25
-    }
-    if (this.cargohold.content.length == 3) {
-      this.line4.position.x = -0.25
-    }
-    if (this.cargohold.content.length == 4) {
-      this.line5.position.x = -0.25
-    }
-    if (this.cargohold.content.length == 5) {
-      this.line6.position.x = -0.25
-    }
-
+    const lineToAnimate = this.lines[this.cargohold.content.length]
+    lineToAnimate.position.x = -0.25
     verreciel.animator.begin()
     verreciel.animator.animationDuration = 0.5
-
-    if (this.cargohold.content.length == 0) {
-      this.line1.position.x = 0
-    }
-    if (this.cargohold.content.length == 1) {
-      this.line2.position.x = 0
-    }
-    if (this.cargohold.content.length == 2) {
-      this.line3.position.x = 0
-    }
-    if (this.cargohold.content.length == 3) {
-      this.line4.position.x = 0
-    }
-    if (this.cargohold.content.length == 4) {
-      this.line5.position.x = 0
-    }
-    if (this.cargohold.content.length == 5) {
-      this.line6.position.x = 0
-    }
-
+    lineToAnimate.position.x = 0
     verreciel.animator.completionBlock = function () {
       this.uploadTransfer()
     }.bind(this)
