@@ -70,4 +70,8 @@ function LispLibrary () {
   this.help = () => {
     return `${Object.keys(this).join(' ')}`
   }
+
+  for (let functionName in this) {
+    this[functionName].fname = functionName
+  }
 }

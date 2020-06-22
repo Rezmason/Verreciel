@@ -112,6 +112,10 @@ function Lisp (lib = {}) {
   }
 
   this.run = (input) => {
-    return interpret(this.parse(`${input}`))
+    const output = interpret(this.parse(`${input}`))
+    if (output instanceof Function) {
+      return `Missing parentheses around "${output.fname}"`
+    }
+    return output
   }
 }

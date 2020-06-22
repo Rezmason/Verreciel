@@ -39,7 +39,7 @@ class Console extends MainPanel {
     this.validate = () => {
       let result = 'unknown'
       try {
-        result = this.lisp.run(this.text)
+        result = this.lisp.run(this.text.toLowerCase())
       } catch (err) {
         result = 'error'
       }

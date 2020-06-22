@@ -247,6 +247,5 @@ class Battery extends MainPanel {
 
   onInstallationComplete () {
     super.onInstallationComplete()
-    this.port.disable()
   }
 }
