@@ -240,21 +240,14 @@ class ScenePort extends Empty {
 
   // MARK: Checks -
 
-  hasEvent (target) {
-    if (this.event === null) {
+  hasEvent (target = null) {
+    if (this.event == null) {
       return false
     }
-    if (this.event.id === target.id) {
-      return true
+    if (target != null && this.event.id !== target.id) {
+      return false
     }
-    return false
-  }
-
-  hasEvent () {
-    if (this.event != null) {
-      return true
-    }
-    return false
+    return true
   }
 
   hasItem () {

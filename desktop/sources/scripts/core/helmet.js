@@ -329,7 +329,7 @@ class Helmet extends Empty {
   }
 
   addWarning (text, color, duration, flag) {
-    if (verreciel.game.time - this.lastWarning <= 10) {
+    if (verreciel.game.time - this.lastWarning <= 20) {
       return
     }
     if (text == '') {

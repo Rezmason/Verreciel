@@ -91,6 +91,16 @@ class Location extends Event {
         this.inApproach = true
         this.onApproach()
       }
+
+      if (
+        verreciel.capsule.radiation < 0.25 &&
+        !verreciel.capsule.isDocked &&
+        verreciel.capsule.location == null &&
+        verreciel.radar.port.hasEvent(this)
+      ) {
+        verreciel.capsule.dock(this)
+      }
+
       this.approachUpdate()
     } else {
       this.inApproach = false

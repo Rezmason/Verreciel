@@ -24,7 +24,13 @@ class Thruster extends MainPanel {
     this.mainNode.add(this.interface_flight)
 
     this.line1 = new SceneLine(
-      [new THREE.Vector3(-0.5, -0.3, 0), new THREE.Vector3(0.5, -0.3, 0)],
+      [
+        new THREE.Vector3(-0.50, -0.3, 0), new THREE.Vector3(-0.34, -0.3, 0),
+        new THREE.Vector3(-0.29, -0.3, 0), new THREE.Vector3(-0.13, -0.3, 0),
+        new THREE.Vector3(-0.08, -0.3, 0), new THREE.Vector3( 0.08, -0.3, 0),
+        new THREE.Vector3( 0.13, -0.3, 0), new THREE.Vector3( 0.29, -0.3, 0),
+        new THREE.Vector3( 0.34, -0.3, 0), new THREE.Vector3( 0.50, -0.3, 0)
+      ],
       verreciel.grey
     )
     this.line2 = new SceneLine(
@@ -355,22 +361,22 @@ class Thruster extends MainPanel {
   }
 
   update () {
+    this.line1.show()
     if (this.maxSpeed() > 0) {
-      this.line1.show()
-    } else {
-      this.line1.hide()
-    }
-    if (this.maxSpeed() > 1) {
       this.line2.show()
     } else {
       this.line2.hide()
     }
-    if (this.maxSpeed() > 2) {
+    if (this.maxSpeed() > 1) {
       this.line3.show()
     } else {
       this.line3.hide()
     }
-    this.line4.hide()
+    if (this.maxSpeed() > 2) {
+      this.line4.show()
+    } else {
+      this.line4.hide()
+    }
   }
 
   hasWarpPower () {
@@ -452,26 +458,10 @@ class Thruster extends MainPanel {
     this.interface_dock.hide()
     this.interface_warp.hide()
 
-    if (this.speed > 0) {
-      this.line1.color = verreciel.white
-    } else {
-      this.line1.color = verreciel.grey
-    }
-    if (this.speed > 1) {
-      this.line2.color = verreciel.white
-    } else {
-      this.line2.color = verreciel.grey
-    }
-    if (this.speed > 2) {
-      this.line3.color = verreciel.white
-    } else {
-      this.line3.color = verreciel.grey
-    }
-    if (this.speed > 3) {
-      this.line4.color = verreciel.white
-    } else {
-      this.line4.color = verreciel.grey
-    }
+    this.line1.color = verreciel.white
+    this.line2.color = this.speed >= 1 ? verreciel.white : verreciel.grey
+    this.line3.color = this.speed >= 2 ? verreciel.white : verreciel.grey
+    this.line4.color = this.speed >= 3 ? verreciel.white : verreciel.grey
 
     this.action.disable()
 
@@ -639,15 +629,8 @@ class Thruster extends MainPanel {
   }
 
   modeDocking () {
-    let dockingProgress = Math.floor(
-      (1 -
-        distanceBetweenTwoPoints(
-          verreciel.capsule.at,
-          verreciel.capsule.location.at
-        ) /
-          0.5) *
-        100
-    )
+    let distance = distanceBetweenTwoPoints(verreciel.capsule.at, verreciel.capsule.location.at)
+    let dockingProgress = Math.floor((1 - Math.max(0, distance - 0.05) * 2) * 100)
     this.detailsLabel.updateText(
       'docking ' + dockingProgress.toFixed(0) + '%',
       verreciel.grey
@@ -732,11 +715,6 @@ class Thruster extends MainPanel {
   }
 
   thrust () {
-    if (verreciel.capsule.isWarping == true) {
-      this.speed = 100
-      verreciel.journey.distance += this.actualSpeed
-      return
-    }
     if (verreciel.capsule.isDocked == true) {
       this.speed = 0
       this.actualSpeed = 0
@@ -751,24 +729,63 @@ class Thruster extends MainPanel {
       this.actualSpeed -= 0.1
     }
 
+    let capsuleAt = verreciel.capsule.at
+
     if (verreciel.capsule.location != null) {
+      let locationAt = verreciel.capsule.location.at
+
       this.speed = 0
-    } else if (this.actualSpeed < 0.1) {
+      this.actualSpeed *= 0.95
+
+      let distance = distanceBetweenTwoPoints(capsuleAt, locationAt)
+      let speed = distance * 0.5
+      let dockingLerp = 0.001 + Math.max(distance, 1) * 0.015
+
+      capsuleAt.x = capsuleAt.x * (1 - dockingLerp) + locationAt.x * dockingLerp
+      capsuleAt.y = capsuleAt.y * (1 - dockingLerp) + locationAt.y * dockingLerp
+
+      if (distance < 0.05) {
+        verreciel.capsule.docked()
+      } else {
+        this.goForward(speed)
+      }
+
+      return
+    }
+
+    if (verreciel.capsule.isWarping == true) {
+      if (verreciel.capsule.warpLocation.distance > 1.5) {
+        this.speed = 100
+        if (this.actualSpeed < 10) {
+          this.actualSpeed += 0.025
+        }
+      } else {
+        this.speed = this.maxSpeed()
+        if (this.actualSpeed > 1) {
+          this.actualSpeed -= 0.1
+        } else {
+          verreciel.capsule.warpStop()
+        }
+      }
+    }
+
+    if (this.actualSpeed < 0.1) {
       this.actualSpeed = DEBUG_LOG_GHOST ? 0 : 0.1
     }
 
     if (this.actualSpeed > 0) {
-      // Should this be this.speed?
-      let speed = this.actualSpeed / 600
-      let angle = verreciel.capsule.direction % 360
-
-      let angleRad = degToRad(angle)
-
-      verreciel.capsule.at.x += speed * Math.sin(angleRad)
-      verreciel.capsule.at.y += speed * Math.cos(angleRad)
+      this.goForward(this.actualSpeed)
     }
 
     verreciel.journey.distance += this.actualSpeed
+  }
+
+  goForward(speed) {
+    speed = speed / 600
+    let angle = verreciel.capsule.direction % 360
+    let angleRad = degToRad(angle)
+    verreciel.capsule.at.x += speed * Math.sin(angleRad)
+    verreciel.capsule.at.y += speed * Math.cos(angleRad)
   }
 
   onInstallationBegin () {

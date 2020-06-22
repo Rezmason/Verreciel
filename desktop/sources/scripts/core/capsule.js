@@ -78,47 +78,6 @@ class Capsule extends Empty {
 
   whenRenderer () {
     super.whenRenderer()
-
-    // Docking
-
-    if (this.location != null && this.isDocked != true) {
-      var approachSpeed = 0.5
-
-      let distanceRatio =
-        distanceBetweenTwoPoints(this.at, this.location.at) / 0.5
-      approachSpeed = approachSpeed * distanceRatio
-
-      var speed = distanceRatio / 600
-      if (speed < 0.0005) {
-        speed = 0.005
-      }
-      let angle = this.direction % 360
-
-      this.at.x += speed * Math.sin(degToRad(angle))
-      this.at.y += speed * Math.cos(degToRad(angle))
-
-      if (distanceBetweenTwoPoints(this.at, this.location.at) < 0.003) {
-        this.docked()
-      }
-    }
-
-    // Warping
-
-    if (this.isWarping == true) {
-      if (this.warp.distance > 1.5) {
-        this.warpUp()
-      } else {
-        this.warpDown()
-      }
-      let speed = verreciel.thruster.actualSpeed / 600
-      let angle = this.direction % 360
-
-      let angleRad = degToRad(angle)
-
-      this.at.x += speed * Math.sin(angleRad)
-      this.at.y += speed * Math.cos(angleRad)
-    }
-
     if (this.closestKnownLocation().distance > 1.5 && this.isWarping == false) {
       verreciel.helmet.addWarning('Returning', null, 0.1, 'radiation')
       verreciel.helmet.addPassive('stamina exhausted')
@@ -141,6 +100,7 @@ class Capsule extends Empty {
     this.location.isKnown = true
     this.dock(location)
     this.docked()
+    verreciel.radar.addTarget(location)
     verreciel.space.onSystemEnter(location.system)
   }
 
@@ -211,39 +171,26 @@ class Capsule extends Empty {
 
   // MARK: Warping -
 
-  warpTo (destination) {
-    if (!destination) { return }
-    let portal = this.location
+  warpTo (location) {
+    if (location == null) {
+      return
+    }
 
+    let portal = this.location
     portal.pilotPort.disconnect()
     portal.thrusterPort.disconnect()
     portal.onWarp()
 
-    destination.isKnown = true
-    verreciel.radar.addTarget(destination)
-    this.warp = destination
+    location.isKnown = true
+    verreciel.radar.addTarget(location)
+    this.warpLocation = location
     this.isWarping = true
     this.undock()
   }
 
-  warpUp () {
-    if (verreciel.thruster.actualSpeed < 10) {
-      verreciel.thruster.actualSpeed += 0.025
-    }
-  }
-
-  warpDown () {
-    verreciel.thruster.speed = 1
-    if (verreciel.thruster.actualSpeed > 1) {
-      verreciel.thruster.actualSpeed -= 0.1
-    } else {
-      this.warpStop()
-    }
-  }
-
   warpStop () {
     this.isWarping = false
-    this.warp = null
+    this.warpLocation = null
   }
 
   // MARK: Docking -
@@ -277,12 +224,16 @@ class Capsule extends Empty {
   }
 
   undock () {
+    const location = this.location
     this.location.onUndock()
     this.isDocked = false
     this.location = null
     verreciel.thruster.enable()
     verreciel.helmet.addPassive('in flight')
     verreciel.intercom.disconnectFromLocation()
+    if (verreciel.radar.port.hasEvent(location)) {
+      verreciel.radar.removeTarget()
+    }
   }
 
   // MARK: Fleeing -
@@ -300,7 +251,7 @@ class Capsule extends Empty {
   autoReturn () {
     this.isReturning = true
     verreciel.thruster.lock()
-    verreciel.thruster.speed = 1
+    verreciel.thruster.speed = verreciel.thruster.maxSpeed()
     verreciel.radar.addTarget(this.closestKnownLocation())
   }
 

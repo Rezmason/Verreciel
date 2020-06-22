@@ -239,13 +239,9 @@ class StarCluster extends Empty {
   }
 
   whenRenderer () {
-    var starSpeed = verreciel.thruster.actualSpeed
-    if (verreciel.capsule.isDocked == false && verreciel.capsule.location != null) {
-      starSpeed = 0.3
-    } else if (verreciel.capsule.isWarping == true) {
+    let starSpeed = verreciel.thruster.actualSpeed
+    if (verreciel.capsule.isWarping == true) {
       starSpeed = 40
-    } else {
-      starSpeed = verreciel.thruster.actualSpeed
     }
 
     starSpeed *= 0.15
