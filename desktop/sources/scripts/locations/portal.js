@@ -84,8 +84,6 @@ class LocationPortal extends Location {
       )
     )
 
-    this.thrusterPort.addEvent(verreciel.items.warpDrive)
-
     return newPanel
   }
 
@@ -131,6 +129,7 @@ class LocationPortal extends Location {
   inactive () {
     this.pilotPort.removeEvent()
     this.pilotPort.disable()
+    this.thrusterPort.removeEvent()
     this.thrusterPort.disable()
     this.keyLabel.updateText('error', verreciel.red)
 
@@ -140,6 +139,7 @@ class LocationPortal extends Location {
   lock () {
     this.pilotPort.removeEvent()
     this.pilotPort.disable()
+    this.thrusterPort.removeEvent()
     this.thrusterPort.disable()
     this.keyLabel.updateText('no key', verreciel.red)
 
@@ -167,6 +167,7 @@ class LocationPortal extends Location {
 
     this.pilotPort.addEvent(destination)
     this.pilotPort.enable()
+    this.thrusterPort.addEvent(verreciel.items.warpDrive)
     this.thrusterPort.enable()
 
     if (this.structure instanceof StructurePortal) {

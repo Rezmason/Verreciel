@@ -154,6 +154,16 @@ class ScenePort extends Empty {
     }
 
     this.disconnect()
+
+    // All the methods above have side effects
+    // that may cause this connection action to cancel.
+    // The repeated checks below are necessary
+    // to detect and handle these situations.
+
+    if (port.isEnabled == false) {
+      return
+    }
+
     this.connection = port
     this.connection.origin = this
 
@@ -161,7 +171,15 @@ class ScenePort extends Empty {
     this.updateWire(true)
 
     this.connection.host.onConnect()
-    this.connection.onConnect()
+    // The connection's host might disconnect this port
+    // in its onConnect function, so we need to null-check it:
+    if (this.connection != null) {
+      this.connection.onConnect()
+    }
+
+    if (port.isEnabled == false) {
+      return
+    }
 
     this.onConnect()
   }
@@ -179,13 +197,14 @@ class ScenePort extends Empty {
       return
     }
 
-    let targetOrigin = this.connection.host
-
-    this.connection.origin = null
-    this.connection.update()
-    this.connection.onDisconnect()
+    let connection = this.connection
     this.connection = null
 
+    connection.origin = null
+    connection.update()
+    connection.onDisconnect()
+
+    let targetOrigin = connection.host
     if (targetOrigin != null) {
       targetOrigin.onDisconnect()
       targetOrigin.update()
