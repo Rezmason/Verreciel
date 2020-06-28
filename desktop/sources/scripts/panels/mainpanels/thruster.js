@@ -729,9 +729,24 @@ class Thruster extends MainPanel {
       this.actualSpeed -= 0.1
     }
 
-    let capsuleAt = verreciel.capsule.at
+    if (verreciel.capsule.isWarping == true) {
+      if (verreciel.capsule.warpLocation.distance > 1.5) {
+        this.speed = 100
+        if (this.actualSpeed < 10) {
+          this.actualSpeed += 0.025
+        }
+      } else {
+        this.speed = this.maxSpeed()
+        if (this.actualSpeed > 1) {
+          this.actualSpeed -= 0.1
+        } else {
+          verreciel.capsule.warpStop()
+        }
+      }
+    }
 
     if (verreciel.capsule.location != null) {
+      let capsuleAt = verreciel.capsule.at
       let locationAt = verreciel.capsule.location.at
 
       this.speed = 0
@@ -751,22 +766,6 @@ class Thruster extends MainPanel {
       }
 
       return
-    }
-
-    if (verreciel.capsule.isWarping == true) {
-      if (verreciel.capsule.warpLocation.distance > 1.5) {
-        this.speed = 100
-        if (this.actualSpeed < 10) {
-          this.actualSpeed += 0.025
-        }
-      } else {
-        this.speed = this.maxSpeed()
-        if (this.actualSpeed > 1) {
-          this.actualSpeed -= 0.1
-        } else {
-          verreciel.capsule.warpStop()
-        }
-      }
     }
 
     if (this.actualSpeed < 0.1) {
